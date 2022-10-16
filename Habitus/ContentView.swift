@@ -8,14 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var habits = Habits()
+    @State var showingAddView = false
+    
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                HabitView(title: "Habits", habits: habits.viewedHabits, deleteItems: removeViewedHabits)
+            }
+            .navigationTitle("Habitus")
+            .toolbar {
+                Button {
+                    showingAddView = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            .sheet(isPresented: $showingAddView) {
+                    AddView()
+            }
         }
-        .padding()
+        
+    }
+    
+    func removeViewedHabits(at offsets: IndexSet) {
+        removeItems(at: offsets, in: habits.viewedHabits)
+    }
+    
+    func removeItems(at offsets: IndexSet, in inputArray: [Habit]) {
+        var objectsToDelete = IndexSet()
+        
+        for offset in offsets {
+            let item = inputArray[offset]
+            
+            if let index = habits.items.firstIndex(of: item) {
+                objectsToDelete.insert(index)
+            }
+        }
+        
+        habits.items.remove(atOffsets: objectsToDelete)
     }
 }
 
