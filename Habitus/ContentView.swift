@@ -14,26 +14,59 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                HabitView(title: "Habits", habits: habits.viewedHabits, deleteItems: removeViewedHabits)
-            }
-            .navigationTitle("Habitus")
-            .toolbar {
-                Button {
-                    showingAddView = true
-                } label: {
-                    Image(systemName: "plus")
+            VStack {
+                Text("Today")
+                    .font(.system(size: 35).bold())
+                
+                ZStack {
+                    ScrollView {
+                        HabitListView(title: "Habits", habits: habits.items, deleteItems: removeHabits)
+                    }
+                    .navigationTitle("")
+                    
+                    VStack {
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+                            
+                            NavigationLink {
+                                AddView(habits: habits)
+                            } label: {
+                                Image(systemName: "plus")
+                                    .foregroundColor(Color(red: 0.88, green: 0.40, blue: 0.49))
+                                    .font(.system(size: 35))
+                                    .padding(50)
+                            }
+                            .frame(width: 50, height: 50)
+                            .background(Color.white)
+                            .cornerRadius(38.5)
+                            .padding()
+                            .shadow(color: Color.black.opacity(1),
+                                    radius: 1,
+                                    x: 0,
+                                    y: 0)
+                        }
+                    }
                 }
-            }
-            .sheet(isPresented: $showingAddView) {
-                    AddView()
-            }
+                .toolbar {
+                    Button {
+                        //How to pop up
+                        print("How to prompt")
+                    } label: {
+                        Text("?")
+                            .foregroundColor(Color(red: 0.88, green: 0.40, blue: 0.49))
+                            .font(.system(size: 35).bold())
+                            .padding()
+                    }
+                }
+        }
         }
         
     }
     
-    func removeViewedHabits(at offsets: IndexSet) {
-        removeItems(at: offsets, in: habits.viewedHabits)
+    func removeHabits(at offsets: IndexSet) {
+        removeItems(at: offsets, in: habits.items)
     }
     
     func removeItems(at offsets: IndexSet, in inputArray: [Habit]) {
@@ -52,6 +85,9 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    //static @StateObject var habits = Habits()
+    
+    
     static var previews: some View {
         ContentView()
     }

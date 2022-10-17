@@ -11,22 +11,14 @@ class Habits: ObservableObject {
     @Published var items = [Habit]()
     
     let defaultItems: [Habit] = [
-        Habit(title: "Walking", viewable: true),
-        Habit(title: "Running"),
-        Habit(title: "Learning a language"),
-        Habit(title: "Practicing an instrumnet"),
-        Habit(title: "Exercising")
+        Habit(icon: "brain", title: "Walking", endGoal: 2000, unitOfMeasurement: "steps"),
+        Habit(title: "Running", endGoal: 30, unitOfMeasurement: "minutes"),
+        Habit(title: "Learning a language", endGoal: 1, unitOfMeasurement: "hour"),
+        Habit(title: "Practicing an instrument", endGoal: 1, unitOfMeasurement: "hour"),
+        Habit(title: "Exercising", endGoal: 1, unitOfMeasurement: "hour")
     ]
     
-    var viewedHabits: [Habit] {
-        items.filter { $0.viewable == true }
-    }
-    
-    var nonViewedHabits: [Habit] {
-        items.filter { $0.viewable == false }
-    }
-    
     init() {
-        items.append(contentsOf: defaultItems)
+        items = defaultItems
     }
 }

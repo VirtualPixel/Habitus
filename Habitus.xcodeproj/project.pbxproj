@@ -12,9 +12,11 @@
 		57C151AF28FC3603002BD16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151AE28FC3603002BD16A /* Assets.xcassets */; };
 		57C151B228FC3603002BD16A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151B128FC3603002BD16A /* Preview Assets.xcassets */; };
 		57C151B928FC5BCF002BD16A /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151B828FC5BCF002BD16A /* Habit.swift */; };
-		57C151BB28FC5EB9002BD16A /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BA28FC5EB9002BD16A /* HabitView.swift */; };
+		57C151BB28FC5EB9002BD16A /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BA28FC5EB9002BD16A /* HabitListView.swift */; };
 		57C151BD28FC6066002BD16A /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BC28FC6066002BD16A /* Habits.swift */; };
 		57C151BF28FC6BC0002BD16A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BE28FC6BC0002BD16A /* AddView.swift */; };
+		57C151DB28FDDD18002BD16A /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151DA28FDDD18002BD16A /* HabitView.swift */; };
+		57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +26,11 @@
 		57C151AE28FC3603002BD16A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C151B128FC3603002BD16A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		57C151B828FC5BCF002BD16A /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
-		57C151BA28FC5EB9002BD16A /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		57C151BA28FC5EB9002BD16A /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
 		57C151BC28FC6066002BD16A /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
 		57C151BE28FC6BC0002BD16A /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		57C151DA28FDDD18002BD16A /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +65,10 @@
 			children = (
 				57C151AA28FC3602002BD16A /* HabitusApp.swift */,
 				57C151AC28FC3602002BD16A /* ContentView.swift */,
+				57C151DA28FDDD18002BD16A /* HabitView.swift */,
 				57C151BE28FC6BC0002BD16A /* AddView.swift */,
-				57C151BA28FC5EB9002BD16A /* HabitView.swift */,
+				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
+				57C151BA28FC5EB9002BD16A /* HabitListView.swift */,
 				57C151B828FC5BCF002BD16A /* Habit.swift */,
 				57C151BC28FC6066002BD16A /* Habits.swift */,
 				57C151AE28FC3603002BD16A /* Assets.xcassets */,
@@ -152,9 +158,11 @@
 				57C151B928FC5BCF002BD16A /* Habit.swift in Sources */,
 				57C151BD28FC6066002BD16A /* Habits.swift in Sources */,
 				57C151BF28FC6BC0002BD16A /* AddView.swift in Sources */,
-				57C151BB28FC5EB9002BD16A /* HabitView.swift in Sources */,
+				57C151BB28FC5EB9002BD16A /* HabitListView.swift in Sources */,
+				57C151DB28FDDD18002BD16A /* HabitView.swift in Sources */,
 				57C151AD28FC3602002BD16A /* ContentView.swift in Sources */,
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
+				57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

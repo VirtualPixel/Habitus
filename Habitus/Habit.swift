@@ -8,8 +8,11 @@
 import Foundation
 
 struct Habit: Identifiable, Codable, Equatable {
+    var icon = "blank"
     var id = UUID()
     let title: String
     var description: String = ""
-    var viewable: Bool = false
+    var endGoal: Int
+    var currentValue = 0
+    var unitOfMeasurement = ""
 }
