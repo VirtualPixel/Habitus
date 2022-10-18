@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var habits = Habits()
-    @State var showingAddView = false
+    @State var isActive = false
     
     
     var body: some View {
@@ -29,7 +29,7 @@ struct ContentView: View {
                         
                         HStack {
                             Spacer()
-                            
+                                                        
                             NavigationLink {
                                 AddView(habits: habits)
                             } label: {
@@ -79,15 +79,13 @@ struct ContentView: View {
                 objectsToDelete.insert(index)
             }
         }
-        
-        habits.items.remove(atOffsets: objectsToDelete)
+        withAnimation {
+            habits.items.remove(atOffsets: objectsToDelete)
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    //static @StateObject var habits = Habits()
-    
-    
     static var previews: some View {
         ContentView()
     }

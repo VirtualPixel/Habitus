@@ -14,7 +14,7 @@ struct HabitListView: View {
     
     var body: some View {
         Section {
-            ForEach(habits) { item in
+            ForEach(Array(habits.enumerated()), id:\.offset) { index, item in
                 HStack {
                     Image(item.icon)
                         .resizable()
@@ -38,6 +38,13 @@ struct HabitListView: View {
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(Color.black, lineWidth: 0.3)
                 )
+                .onTapGesture {
+                    //print("\(item.title)")
+                    deleteItems([index])
+                }
+                .onLongPressGesture {
+                    print("Delete \(item.title)?")
+                }
                 
             }
             .onDelete(perform: deleteItems)
@@ -48,6 +55,6 @@ struct HabitListView: View {
 
 struct HabitListView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitListView(title: "Example", habits: [Habit(title: "Walk", description: "Just strolling on by", endGoal: 2000, unitOfMeasurement: "steps")]) { _ in }
+        HabitListView(title: "Example", habits: [Habit(icon: "brain", title: "Walk", description: "Just strolling on by", endGoal: 2000, unitOfMeasurement: "steps")]) { _ in }
     }
 }

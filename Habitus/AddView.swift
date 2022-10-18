@@ -10,6 +10,7 @@ import SwiftUI
 struct AddView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var habits: Habits
+    var addedHabit = false
     
     var body: some View {
         NavigationView {
@@ -17,21 +18,26 @@ struct AddView: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        HStack {
-                            Image(systemName: "plus")
-                                .foregroundColor(Color(red: 0.56, green: 0.42, blue: 1.00))
-                                .font(.system(size: 30))
-                            Text("Custom Habit")
+                        NavigationLink {
+                            CreateHabitView(habit: habits)
+                                .navigationBarBackButtonHidden(true)
+                        } label: {
+                            HStack {
+                                Image(systemName: "plus")
+                                    .foregroundColor(Color(red: 0.56, green: 0.42, blue: 1.00))
+                                    .font(.system(size: 30))
+                                Text("Custom Habit")
+                                    .foregroundColor(.black)
                         }
-                        
+                    }
                         Text("Habits")
                             .font(.system(.title2, weight: .semibold))
                             .frame(height: 30)
                         
                         ForEach(habits.defaultItems, id: \.id) { habit in
-                            Button {
-                                habits.items.append(habit)
-                                dismiss()
+                            NavigationLink {
+                                CreateHabitView(habit: habits, newHabit: habit)
+                                    .navigationBarBackButtonHidden(true)
                             } label: {
                                 HStack {
                                     Image(habit.icon)
@@ -41,19 +47,21 @@ struct AddView: View {
                                     Text(habit.title)
                                     
                                     Spacer()
-                                    
-                                    Text("")
                                 }
                             }
+                            
                         }
                     }
                     .padding()
                     Spacer()
                 }
-                //Spacer()
             }
+            
         }
         .navigationBarTitle(Text("Add habit"), displayMode: .inline)
+        .onAppear {
+            if addedHabit { dismiss() }
+        }
     }
     
 }
