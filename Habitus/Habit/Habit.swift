@@ -5,14 +5,19 @@
 //  Created by Justin Wells on 10/16/22.
 //
 
-import Foundation
+import SwiftUI
 
 struct Habit: Identifiable, Codable, Equatable {
-    var icon = "blank"
+    var icon = ""
     var id = UUID()
-    let title: String
+    var title: String
     var description: String = ""
+    var color: Color
     var endGoal: Int
     var currentValue = 0
     var unitOfMeasurement = ""
+    
+    var percentComplete: Int {
+        currentValue / endGoal * 100
+    }
 }

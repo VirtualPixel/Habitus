@@ -11,14 +11,18 @@ struct HabitListView: View {
     let title: String
     let habits: [Habit]
     let deleteItems: (IndexSet) -> Void
+    @State private var selected = 0
     
+    @State private var deleteAlert = false
+        
     var body: some View {
         Section {
             ForEach(Array(habits.enumerated()), id:\.offset) { index, item in
                 HStack {
-                    Image(item.icon)
-                        .resizable()
-                        .frame(width: 40, height: 40)
+                    Text(item.icon)
+                        .frame(width: 50, height: 50)
+                        .font(.system(size: 500))
+                        .minimumScaleFactor(0.01)
                     VStack(alignment: .leading) {
                         Text(item.title)
                             .font(.headline)
@@ -32,29 +36,38 @@ struct HabitListView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                //.background() place background here
+                .background(item.color)
                 .cornerRadius(15)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.black, lineWidth: 0.3)
-                )
                 .onTapGesture {
-                    //print("\(item.title)")
-                    deleteItems([index])
+                    //Navigate to edit habit
                 }
                 .onLongPressGesture {
-                    print("Delete \(item.title)?")
+                    selected = index
+                    deleteAlert = true
                 }
+                .alert("Confirmation", isPresented: $deleteAlert, actions: {
+                    Button("Delete", role: .destructive, action: {
+                        withAnimation {
+                            deleteItems([selected])
+                        }
+                    })
+                }, message: {
+                    Text("Are you sure you want to delete this habit?")
+                })
+
                 
             }
             .onDelete(perform: deleteItems)
+            .transition(.move(edge: .trailing))
+            
         }
         .padding()
+        
     }
 }
 
 struct HabitListView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitListView(title: "Example", habits: [Habit(icon: "brain", title: "Walk", description: "Just strolling on by", endGoal: 2000, unitOfMeasurement: "steps")]) { _ in }
+        HabitListView(title: "Example", habits: [Habit(icon: "🏃‍♂️", title: "Walk", description: "Just strolling on by", color: .paleMauve, endGoal: 2000, unitOfMeasurement: "steps")]) { _ in }
     }
 }

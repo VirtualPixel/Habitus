@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		573539E22900691A00C0FD2E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E12900691A00C0FD2E /* Color.swift */; };
+		573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E4290073AF00C0FD2E /* AddHabitListView.swift */; };
 		57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AA28FC3602002BD16A /* HabitusApp.swift */; };
 		57C151AD28FC3602002BD16A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AC28FC3602002BD16A /* ContentView.swift */; };
 		57C151AF28FC3603002BD16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151AE28FC3603002BD16A /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		573539E12900691A00C0FD2E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		573539E4290073AF00C0FD2E /* AddHabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitListView.swift; sourceTree = "<group>"; };
 		57C151A728FC3602002BD16A /* Habitus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C151AA28FC3602002BD16A /* HabitusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitusApp.swift; sourceTree = "<group>"; };
 		57C151AC28FC3602002BD16A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +48,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		573539DF2900690300C0FD2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				57C151DA28FDDD18002BD16A /* HabitView.swift */,
+				57C151BE28FC6BC0002BD16A /* AddView.swift */,
+				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
+				57C151BA28FC5EB9002BD16A /* HabitListView.swift */,
+				573539E4290073AF00C0FD2E /* AddHabitListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		573539E02900690E00C0FD2E /* Habit */ = {
+			isa = PBXGroup;
+			children = (
+				57C151B828FC5BCF002BD16A /* Habit.swift */,
+				57C151BC28FC6066002BD16A /* Habits.swift */,
+			);
+			path = Habit;
+			sourceTree = "<group>";
+		};
+		573539E329006A0000C0FD2E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				573539E12900691A00C0FD2E /* Color.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		57C1519E28FC3602002BD16A = {
 			isa = PBXGroup;
 			children = (
@@ -65,14 +98,11 @@
 			children = (
 				57C151AA28FC3602002BD16A /* HabitusApp.swift */,
 				57C151AC28FC3602002BD16A /* ContentView.swift */,
-				57C151DA28FDDD18002BD16A /* HabitView.swift */,
-				57C151BE28FC6BC0002BD16A /* AddView.swift */,
-				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
-				57C151BA28FC5EB9002BD16A /* HabitListView.swift */,
-				57C151B828FC5BCF002BD16A /* Habit.swift */,
-				57C151BC28FC6066002BD16A /* Habits.swift */,
-				57C151AE28FC3603002BD16A /* Assets.xcassets */,
+				573539DF2900690300C0FD2E /* Views */,
+				573539E02900690E00C0FD2E /* Habit */,
+				573539E329006A0000C0FD2E /* Extension */,
 				57C151B028FC3603002BD16A /* Preview Content */,
+				57C151AE28FC3603002BD16A /* Assets.xcassets */,
 			);
 			path = Habitus;
 			sourceTree = "<group>";
@@ -163,6 +193,8 @@
 				57C151AD28FC3602002BD16A /* ContentView.swift in Sources */,
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
 				57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */,
+				573539E22900691A00C0FD2E /* Color.swift in Sources */,
+				573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

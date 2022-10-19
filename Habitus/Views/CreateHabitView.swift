@@ -11,7 +11,7 @@ struct CreateHabitView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var habit: Habits
     
-    var newHabit = Habit(title: "", endGoal: 0)
+    var newHabit = Habit(title: "", color: .babyBlue, endGoal: 0)
     
     var body: some View {
         Text("Create a habit")

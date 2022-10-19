@@ -10,7 +10,7 @@ import SwiftUI
 struct AddView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var habits: Habits
-    var addedHabit = false
+    
     
     var body: some View {
         NavigationView {
@@ -24,10 +24,13 @@ struct AddView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "plus")
-                                    .foregroundColor(Color(red: 0.56, green: 0.42, blue: 1.00))
+                                    .foregroundColor(.pastelTurquoise)
                                     .font(.system(size: 30))
                                 Text("Custom Habit")
                                     .foregroundColor(.black)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
                         }
                     }
                         Text("Habits")
@@ -35,21 +38,18 @@ struct AddView: View {
                             .frame(height: 30)
                         
                         ForEach(habits.defaultItems, id: \.id) { habit in
-                            NavigationLink {
-                                CreateHabitView(habit: habits, newHabit: habit)
-                                    .navigationBarBackButtonHidden(true)
-                            } label: {
-                                HStack {
-                                    Image(habit.icon)
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                    
-                                    Text(habit.title)
-                                    
-                                    Spacer()
+                            let habitsContains = habits.items.contains(habit)
+                            
+                            if habitsContains {
+                                AddHabitListView(habit: habit, contains: habitsContains, habits: habits)
+                            } else {
+                                NavigationLink {
+                                    CreateHabitView(habit: habits, newHabit: habit)
+                                        .navigationBarBackButtonHidden(true)
+                                } label: {
+                                    AddHabitListView(habit: habit, contains: habitsContains, habits: habits)
                                 }
                             }
-                            
                         }
                     }
                     .padding()
@@ -59,9 +59,6 @@ struct AddView: View {
             
         }
         .navigationBarTitle(Text("Add habit"), displayMode: .inline)
-        .onAppear {
-            if addedHabit { dismiss() }
-        }
     }
     
 }

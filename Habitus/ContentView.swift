@@ -79,9 +79,7 @@ struct ContentView: View {
                 objectsToDelete.insert(index)
             }
         }
-        withAnimation {
-            habits.items.remove(atOffsets: objectsToDelete)
-        }
+        habits.items.remove(atOffsets: objectsToDelete)
     }
 }
 
