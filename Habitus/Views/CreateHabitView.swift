@@ -11,10 +11,35 @@ struct CreateHabitView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var habit: Habits
     
-    var newHabit = Habit(title: "", color: .babyBlue, endGoal: 0)
+    var newHabit = Habit(title: "", color: .pastelRed, endGoal: 0)
     
     var body: some View {
-        Text("Create a habit")
+        VStack {
+            ScrollView {
+                Text("Hellow")
+                Text("Hellow")
+            }
+            
+            Text("Preview")
+                .font(.title.bold())
+            HabitListView(habits: [newHabit], deleteItems: {_ in })
+            
+            Button {
+                
+            } label: {
+                Image("brain")
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(newHabit.color)
+                    .padding(10)
+                    .overlay(
+                        Circle()
+                        .stroke(newHabit.color, lineWidth: 6)
+                    )
+            }
+            
+            .frame(width: 60, height: 60)
+        }
     }
 }
 

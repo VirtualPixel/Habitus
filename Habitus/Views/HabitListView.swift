@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HabitListView: View {
-    let title: String
     let habits: [Habit]
     let deleteItems: (IndexSet) -> Void
     @State private var selected = 0
@@ -68,6 +67,6 @@ struct HabitListView: View {
 
 struct HabitListView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitListView(title: "Example", habits: [Habit(icon: "🏃‍♂️", title: "Walk", description: "Just strolling on by", color: .paleMauve, endGoal: 2000, unitOfMeasurement: "steps")]) { _ in }
+        HabitListView(habits: [Habit(icon: "🏃‍♂️", title: "Walk", description: "Just strolling on by", color: .paleMauve, endGoal: 2000, unitOfMeasurement: "steps")]) { _ in }
     }
 }

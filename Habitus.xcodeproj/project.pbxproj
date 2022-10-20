@@ -17,7 +17,7 @@
 		57C151BB28FC5EB9002BD16A /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BA28FC5EB9002BD16A /* HabitListView.swift */; };
 		57C151BD28FC6066002BD16A /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BC28FC6066002BD16A /* Habits.swift */; };
 		57C151BF28FC6BC0002BD16A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BE28FC6BC0002BD16A /* AddView.swift */; };
-		57C151DB28FDDD18002BD16A /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151DA28FDDD18002BD16A /* HabitView.swift */; };
+		57C151DB28FDDD18002BD16A /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151DA28FDDD18002BD16A /* HabitDetailView.swift */; };
 		57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +33,7 @@
 		57C151BA28FC5EB9002BD16A /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
 		57C151BC28FC6066002BD16A /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
 		57C151BE28FC6BC0002BD16A /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
-		57C151DA28FDDD18002BD16A /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		57C151DA28FDDD18002BD16A /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 		573539DF2900690300C0FD2E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				57C151DA28FDDD18002BD16A /* HabitView.swift */,
+				57C151DA28FDDD18002BD16A /* HabitDetailView.swift */,
 				57C151BE28FC6BC0002BD16A /* AddView.swift */,
 				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
 				57C151BA28FC5EB9002BD16A /* HabitListView.swift */,
@@ -189,7 +189,7 @@
 				57C151BD28FC6066002BD16A /* Habits.swift in Sources */,
 				57C151BF28FC6BC0002BD16A /* AddView.swift in Sources */,
 				57C151BB28FC5EB9002BD16A /* HabitListView.swift in Sources */,
-				57C151DB28FDDD18002BD16A /* HabitView.swift in Sources */,
+				57C151DB28FDDD18002BD16A /* HabitDetailView.swift in Sources */,
 				57C151AD28FC3602002BD16A /* ContentView.swift in Sources */,
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
 				57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */,

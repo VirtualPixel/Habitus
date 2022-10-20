@@ -20,7 +20,7 @@ struct ContentView: View {
                 
                 ZStack {
                     ScrollView {
-                        HabitListView(title: "Habits", habits: habits.items, deleteItems: removeHabits)
+                        HabitListView(habits: habits.items, deleteItems: removeHabits)
                     }
                     .navigationTitle("")
                     
