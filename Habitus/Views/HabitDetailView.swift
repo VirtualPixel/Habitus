@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct HabitView: View {
+struct HabitDetailView: View {
+    @ObservedObject var habits: Habits
+    var index: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(habits.items[index].title)
     }
 }
 
-struct HabitView_Previews: PreviewProvider {
+struct HabitDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitView()
+        HabitDetailView(habits: Habits(), index: 0)
     }
 }

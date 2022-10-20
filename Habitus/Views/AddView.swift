@@ -13,52 +13,57 @@ struct AddView: View {
     
     
     var body: some View {
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                
-                HStack {
-                    VStack(alignment: .leading) {
-                        NavigationLink {
-                            CreateHabitView(habit: habits)
-                                .navigationBarBackButtonHidden(true)
-                        } label: {
-                            HStack {
-                                Image(systemName: "plus")
-                                    .foregroundColor(.pastelTurquoise)
-                                    .font(.system(size: 30))
-                                Text("Custom Habit")
-                                    .foregroundColor(.black)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.gray)
-                        }
+        ScrollView(.vertical, showsIndicators: false) {
+            
+            HStack {
+                VStack(alignment: .leading) {
+                    NavigationLink {
+                        CreateHabitView(customHabit: true, habit: habits)
+                    } label: {
+                        HStack {
+                            Image(systemName: "plus")
+                                .foregroundColor(.pastelTurquoise)
+                                .font(.system(size: 30))
+                            Text("Custom Habit")
+                                .foregroundColor(.black)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
                     }
-                        Text("Habits")
-                            .font(.system(.title2, weight: .semibold))
-                            .frame(height: 30)
+                }
+                    Text("Habits")
+                        .font(.system(.title2, weight: .semibold))
+                        .frame(height: 30)
+                    
+                    ForEach(habits.defaultItems, id: \.id) { habit in
+                        let habitsContains = habits.items.contains(habit)
                         
-                        ForEach(habits.defaultItems, id: \.id) { habit in
-                            let habitsContains = habits.items.contains(habit)
-                            
-                            if habitsContains {
+                        if habitsContains {
+                            AddHabitListView(habit: habit, contains: habitsContains, habits: habits)
+                        } else {
+                            NavigationLink {
+                                CreateHabitView(customHabit: false, habit: habits, newHabit: habit)
+                            } label: {
                                 AddHabitListView(habit: habit, contains: habitsContains, habits: habits)
-                            } else {
-                                NavigationLink {
-                                    CreateHabitView(habit: habits, newHabit: habit)
-                                        .navigationBarBackButtonHidden(true)
-                                } label: {
-                                    AddHabitListView(habit: habit, contains: habitsContains, habits: habits)
-                                }
                             }
                         }
                     }
-                    .padding()
-                    Spacer()
                 }
+                .padding()
+                Spacer()
             }
-            
         }
         .navigationBarTitle(Text("Add habit"), displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(.gray)
+                        }
+                })
     }
     
 }

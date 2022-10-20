@@ -20,4 +20,10 @@ struct Habit: Identifiable, Codable, Equatable {
     var percentComplete: Int {
         currentValue / endGoal * 100
     }
+    
+    var isValidHabit: Bool {
+        if icon.isEmpty || unitOfMeasurement.isEmpty || title.isEmpty || endGoal == 0 { return false }
+        
+        return true
+    }
 }
