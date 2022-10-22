@@ -16,17 +16,41 @@ struct CreateHabitView: View {
     @State private var message = "Unkown error"
     @State private var showingAlert = false
     
+    let frequency = ["Daily", "Weekly", "Monthly"]
+    let unit = ["count", "steps", "m", "km", "mile", "second", "minute", "hour", "ml", "oz", "Cal"]
+    
     var body: some View {
         VStack {
             ScrollView {
-                VStack(alignment: .leading) {
-                    Text("Name:")
-                        .font(.headline)
-                    TextField("Name (Required)", text: $newHabit.title)
-                    
-                    Text("Description:")
-                        .font(.headline)
-                    TextField("Description (Optional)", text: $newHabit.description)
+                Section {
+                    VStack(alignment: .leading) {
+                        Text("Name:")
+                            .font(.headline)
+                        TextField("Name (Required)", text: $newHabit.title)
+                        
+                        Text("Description:")
+                            .font(.headline)
+                        TextField("Description (Optional)", text: $newHabit.description)
+                    }
+                }
+                .padding()
+                
+                Section {
+                    VStack(alignment: .leading) {
+                        Text("Color:")
+                            .font(.headline)
+                            .padding()
+                        ColorPicker(selectedColor: $newHabit.color)
+                        
+                        Text("Icon:")
+                            .font(.headline)
+                            .padding()
+                        EmojiTextField(text: $newHabit.icon, placeholder: "Emoji")
+                            .padding(.horizontal)
+                            .onReceive(newHabit.icon.publisher.collect()) {
+                                self.newHabit.icon = String($0.prefix(1))
+                            } // limit to only one
+                    }
                 }
             }
             
@@ -59,6 +83,9 @@ struct CreateHabitView: View {
                 Text(message)
             }
             .frame(width: 60, height: 60)
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
