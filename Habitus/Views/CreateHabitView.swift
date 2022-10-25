@@ -15,43 +15,70 @@ struct CreateHabitView: View {
     @State var newHabit = Habit(title: "", color: .pastelRed, endGoal: 0)
     @State private var message = "Unkown error"
     @State private var showingAlert = false
+    @State private var showingUnits = false
     
     let frequency = ["Daily", "Weekly", "Monthly"]
     let unit = ["count", "steps", "m", "km", "mile", "second", "minute", "hour", "ml", "oz", "Cal"]
     
+    
     var body: some View {
         VStack {
             ScrollView {
-                Section {
-                    VStack(alignment: .leading) {
-                        Text("Name:")
-                            .font(.headline)
-                        TextField("Name (Required)", text: $newHabit.title)
-                        
-                        Text("Description:")
-                            .font(.headline)
-                        TextField("Description (Optional)", text: $newHabit.description)
+                VStack(alignment: .leading) {
+                    Text("Name:")
+                        .font(.headline)
+                    TextField("Name (Required)", text: $newHabit.title)
+                    
+                    Text("Description:")
+                        .font(.headline)
+                    TextField("Description (Optional)", text: $newHabit.description)
+                }
+                .padding()
+
+                
+                VStack(alignment: .leading) {
+                    Text("Color:")
+                        .font(.headline)
+                        .padding()
+                    ColorPicker(selectedColor: $newHabit.color)
+                    
+                    Text("Icon:")
+                        .font(.headline)
+                        .padding()
+                    EmojiTextField(text: $newHabit.icon, placeholder: "Emoji")
+                        .padding(.horizontal)
+                        .onReceive(newHabit.icon.publisher.collect()) {
+                            self.newHabit.icon = String($0.prefix(1))
+                        } // limit to only one
+                }
+                
+                VStack(alignment: .leading) {
+                    if showingUnits {
+                        HStack {
+                            Text("\(newHabit.unitOfMeasurement)")
+                            Text("Unit")
+                                .font(.headline)
+                            Image(systemName: "chevron.down")
+                            Spacer()
+                        }
+                        .onTapGesture {
+                            showingUnits.toggle()
+                        }
+                    } else {
+                        HStack {
+                            Text("\(newHabit.unitOfMeasurement)")
+                            Text("Unit")
+                                .font(.headline)
+                            Image(systemName: "chevron.right")
+                            Spacer()
+                        }
+                        .onTapGesture {
+                            showingUnits.toggle()
+                        }
                     }
                 }
                 .padding()
                 
-                Section {
-                    VStack(alignment: .leading) {
-                        Text("Color:")
-                            .font(.headline)
-                            .padding()
-                        ColorPicker(selectedColor: $newHabit.color)
-                        
-                        Text("Icon:")
-                            .font(.headline)
-                            .padding()
-                        EmojiTextField(text: $newHabit.icon, placeholder: "Emoji")
-                            .padding(.horizontal)
-                            .onReceive(newHabit.icon.publisher.collect()) {
-                                self.newHabit.icon = String($0.prefix(1))
-                            } // limit to only one
-                    }
-                }
             }
             
             Text("Preview")
