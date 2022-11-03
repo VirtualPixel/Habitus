@@ -32,7 +32,9 @@ struct AddView: View {
                     }
                 }
                     Text("Habits")
-                        .font(.system(.title2, weight: .semibold))
+                        //.font(.system(.title2))
+                        .font(.title2)
+                        .fontWeight(.semibold)
                         .frame(height: 30)
                     
                     ForEach(habits.defaultItems, id: \.id) { habit in

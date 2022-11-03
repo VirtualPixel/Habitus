@@ -55,8 +55,7 @@ struct CreateHabitView: View {
                 VStack(alignment: .leading) {
                     if showingUnits {
                         HStack {
-                            Text("\(newHabit.unitOfMeasurement)")
-                            Text("Unit")
+                            Text(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)")
                                 .font(.headline)
                             Image(systemName: "chevron.down")
                             Spacer()
@@ -66,8 +65,7 @@ struct CreateHabitView: View {
                         }
                     } else {
                         HStack {
-                            Text("\(newHabit.unitOfMeasurement)")
-                            Text("Unit")
+                            Text(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)")
                                 .font(.headline)
                             Image(systemName: "chevron.right")
                             Spacer()
