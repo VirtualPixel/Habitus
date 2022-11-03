@@ -55,13 +55,15 @@ struct CreateHabitView: View {
                 VStack(alignment: .leading) {
                     if showingUnits {
                         HStack {
-                            Text(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)")
+                            //Text(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)")
+                            TextField(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)", text: $newHabit.unitOfMeasurement)
                                 .font(.headline)
+                                .frame(width: 35)
                             Image(systemName: "chevron.down")
+                                .onTapGesture {
+                                    showingUnits.toggle()
+                                }
                             Spacer()
-                        }
-                        .onTapGesture {
-                            showingUnits.toggle()
                         }
                     } else {
                         HStack {

@@ -10,6 +10,7 @@
 		570ECBC62901BB0200811945 /* SwipeBackGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570ECBC52901BB0200811945 /* SwipeBackGesture.swift */; };
 		573539E22900691A00C0FD2E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E12900691A00C0FD2E /* Color.swift */; };
 		573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E4290073AF00C0FD2E /* AddHabitListView.swift */; };
+		579E7C2F2913DB4800794F91 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E7C2E2913DB4800794F91 /* PickerTextField.swift */; };
 		57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AA28FC3602002BD16A /* HabitusApp.swift */; };
 		57C151AD28FC3602002BD16A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AC28FC3602002BD16A /* ContentView.swift */; };
 		57C151AF28FC3603002BD16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151AE28FC3603002BD16A /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		570ECBC52901BB0200811945 /* SwipeBackGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBackGesture.swift; sourceTree = "<group>"; };
 		573539E12900691A00C0FD2E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		573539E4290073AF00C0FD2E /* AddHabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitListView.swift; sourceTree = "<group>"; };
+		579E7C2E2913DB4800794F91 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		57C151A728FC3602002BD16A /* Habitus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C151AA28FC3602002BD16A /* HabitusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitusApp.swift; sourceTree = "<group>"; };
 		57C151AC28FC3602002BD16A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				57C151DA28FDDD18002BD16A /* HabitDetailView.swift */,
 				57C151BE28FC6BC0002BD16A /* AddView.swift */,
 				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
+				579E7C2E2913DB4800794F91 /* PickerTextField.swift */,
 				57C151BA28FC5EB9002BD16A /* HabitListView.swift */,
 				573539E4290073AF00C0FD2E /* AddHabitListView.swift */,
 				57D0FEE129048EFA009253A2 /* ColorPicker.swift */,
@@ -208,6 +211,7 @@
 				57C151AD28FC3602002BD16A /* ContentView.swift in Sources */,
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
 				57D0FEE029048D3B009253A2 /* View.swift in Sources */,
+				579E7C2F2913DB4800794F91 /* PickerTextField.swift in Sources */,
 				57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */,
 				573539E22900691A00C0FD2E /* Color.swift in Sources */,
 				573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */,
@@ -345,8 +349,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -375,8 +379,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
