@@ -18,7 +18,7 @@ struct CreateHabitView: View {
     @State private var showingUnits = false
     
     let frequency = ["Daily", "Weekly", "Monthly"]
-    let unit = ["count", "steps", "m", "km", "mile", "second", "minute", "hour", "ml", "oz", "Cal"]
+    let units = ["count", "steps", "m", "km", "mile", "second", "minute", "hour", "ml", "oz", "Cal"]
     
     
     var body: some View {
@@ -49,32 +49,16 @@ struct CreateHabitView: View {
                         .padding(.horizontal)
                         .onReceive(newHabit.icon.publisher.collect()) {
                             self.newHabit.icon = String($0.prefix(1))
-                        } // limit to only one
+                        } // limit TextField length to 1
                 }
                 
                 VStack(alignment: .leading) {
-                    if showingUnits {
-                        HStack {
-                            //Text(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)")
-                            TextField(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)", text: $newHabit.unitOfMeasurement)
-                                .font(.headline)
-                                .frame(width: 35)
-                            Image(systemName: "chevron.down")
-                                .onTapGesture {
-                                    showingUnits.toggle()
-                                }
-                            Spacer()
-                        }
-                    } else {
-                        HStack {
-                            Text(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)")
-                                .font(.headline)
-                            Image(systemName: "chevron.right")
-                            Spacer()
-                        }
-                        .onTapGesture {
-                            showingUnits.toggle()
-                        }
+                    HStack {
+                        PickerTextField(selectedUnit: $newHabit.unitOfMeasurement, units: units)
+                            .onReceive(newHabit.unitOfMeasurement.publisher.collect()) {
+                                self.newHabit.unitOfMeasurement = String($0.prefix(16))
+                            } // limit TextField length to 16
+                        Spacer()
                     }
                 }
                 .padding()
