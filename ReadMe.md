@@ -12,6 +12,7 @@ Habits allow you to set reminders, set custom goals, icons, colors, and more. It
 
 ## Tech Stack
 - SwiftUI
+- UIKit
 
 ### Prerequisites
 - An iPhone running iOS 15 or later
