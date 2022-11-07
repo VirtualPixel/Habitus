@@ -16,6 +16,7 @@ struct Habit: Identifiable, Codable, Equatable {
     var endGoal: Int
     var currentValue = 0
     var unitOfMeasurement = ""
+    var frequency: FrequencySelection = .daily
     
     var percentComplete: Int {
         currentValue / endGoal * 100
@@ -26,4 +27,11 @@ struct Habit: Identifiable, Codable, Equatable {
         
         return true
     }
+}
+
+enum FrequencySelection: String, CaseIterable, Codable, Identifiable {
+    var id: Self { self }
+    case daily = "Daily"
+    case weekly = "Weekly"
+    case monthly = "Monthly"
 }

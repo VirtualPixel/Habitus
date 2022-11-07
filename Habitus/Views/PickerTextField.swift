@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PickerTextField: View {
     @Binding var selectedUnit: String
-    @State private var showingUnits = true
+    @State private var showingUnits = false
     
     let units: [String]
     let color: Color
@@ -74,7 +74,7 @@ struct PickerTextField: View {
                                 Text(unit)
                                     .fixedSize()
                                     .padding(10)
-                                    .background(color)
+                                    .background(unit == selectedUnit ? Color.magicMint : color)
                                     .clipShape(RoundedRectangle(cornerRadius: 15))
                                     .onTapGesture {
                                         selectedUnit = unit

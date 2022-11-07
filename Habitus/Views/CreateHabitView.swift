@@ -63,6 +63,33 @@ struct CreateHabitView: View {
                 }
                 .padding()
                 
+                VStack(alignment: .leading) {
+                    Text("Goal:")
+                        .font(.headline)
+                    
+                    HStack {
+                        HStack {
+                            TextField("Goal", value: $newHabit.endGoal, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
+                            
+                            Text("\(newHabit.unitOfMeasurement)")
+                            
+                            
+                        }
+                        .fixedSize()
+                        
+                        Divider()
+                            .padding(.horizontal)
+                            .frame(maxWidth: 3)
+                            .overlay(newHabit.color)
+                        
+                        GoalPicker(frequency: $newHabit.frequency, color: newHabit.color)
+                        
+                        Spacer()
+                    }
+                }
+                .padding()
+                
             }
             
             Text("Preview")
