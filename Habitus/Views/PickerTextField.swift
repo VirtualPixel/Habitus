@@ -16,38 +16,18 @@ struct PickerTextField: View {
     var body: some View {
         VStack {
             HStack {
-                TextField(selectedUnit.isEmpty ? "Unit" : "\(selectedUnit)", text: $selectedUnit)
-                    .disabled(showingUnits ? false : true )
+                if showingUnits { TextField(selectedUnit.isEmpty ? "Unit" : "\(selectedUnit)", text: $selectedUnit) } else {
+                    Text(selectedUnit.isEmpty ? "Unit" : selectedUnit )
+                }
+                                
                 Image(systemName: showingUnits ? "chevron.down" : "chevron.right")
                     .onTapGesture {
                         showingUnits.toggle()
                     }
             }
             .fixedSize()
-            ZStack {/*
-                     if showingUnits {
-                     HStack {
-                     //Text(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)")
-                     TextField(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)", text: $newHabit.unitOfMeasurement)
-                     .font(.headline)
-                     .frame(width: 35)
-                     Image(systemName: "chevron.down")
-                     .onTapGesture {
-                     showingUnits.toggle()
-                     }
-                     Spacer()
-                     }
-                     } else {
-                     HStack {
-                     Text(newHabit.unitOfMeasurement.isEmpty ? "Unit" : "\(newHabit.unitOfMeasurement)")
-                     .font(.headline)
-                     Image(systemName: "chevron.right")
-                     Spacer()
-                     }
-                     .onTapGesture {
-                     showingUnits.toggle()
-                     }
-                     }*/
+            ZStack {
+                
             }
         }
     }
