@@ -12,7 +12,7 @@ struct CreateHabitView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var habit: Habits
     
-    @State var newHabit = Habit(title: "", color: .pastelRed, endGoal: 0)
+    @State var newHabit = Habit(title: "", color: .babyBlue, endGoal: 0)
     @State private var message = "Unkown error"
     @State private var showingAlert = false
     @State private var showingUnits = false
@@ -54,7 +54,7 @@ struct CreateHabitView: View {
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        PickerTextField(selectedUnit: $newHabit.unitOfMeasurement, units: units)
+                        PickerTextField(selection: $newHabit.unitOfMeasurement, units: units, color: newHabit.color)
                             .onReceive(newHabit.unitOfMeasurement.publisher.collect()) {
                                 self.newHabit.unitOfMeasurement = String($0.prefix(16))
                             } // limit TextField length to 16
