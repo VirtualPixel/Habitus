@@ -19,7 +19,15 @@ struct Habit: Identifiable, Codable, Equatable {
     var frequency: FrequencySelection = .daily
     
     var percentComplete: Int {
-        currentValue / endGoal * 100
+        let result = Double(currentValue) / Double(endGoal) * 100
+        
+        return result < 100 ? Int(result) : 100
+    }
+    
+    var progressBar: CGFloat {
+        let trimAmount = (Double(percentComplete)/100) / 2
+        
+        return trimAmount < 0.5 ? trimAmount : 0.5
     }
     
     var isValidHabit: Bool {

@@ -19,7 +19,7 @@ struct HabitListView: View {
         Section {
             ForEach(Array(habits.enumerated()), id:\.offset) { index, item in
                 NavigationLink {
-                    HabitDetailView(habits: habit, index: index)
+                    //HabitDetailView(habits: habit, index: index)
                 } label: {
                     HStack {
                         Text(item.icon)

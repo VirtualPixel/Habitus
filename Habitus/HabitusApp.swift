@@ -11,7 +11,9 @@ import SwiftUI
 struct HabitusApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            //    .preferredColorScheme(.light)
+            HabitDetailView()
         }
     }
 }
