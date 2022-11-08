@@ -37,7 +37,7 @@ struct HabitListView: View {
                         VStack {
                             Text("\(item.currentValue) / \(item.endGoal)")
                                 .foregroundColor(.black)
-                            Text("\(item.unitOfMeasurement)")
+                            Text("\(item.isUnitSingular ? item.unitOfMeasurement : item.unitOfMeasurement + "s")")
                                 .foregroundColor(.black)
                         }
                     }
@@ -67,6 +67,6 @@ struct HabitListView: View {
 
 struct HabitListView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitListView(habits: [Habit(icon: "🏃‍♂️", title: "Walk", description: "Just strolling on by", color: .paleMauve, endGoal: 2000, unitOfMeasurement: "steps")], habit: Habits()) { _ in }
+        HabitListView(habits: [Habit(icon: "🏃‍♂️", title: "Walk", description: "Just strolling on by", color: .paleMauve, endGoal: 2000, unitOfMeasurement: "step")], habit: Habits()) { _ in }
     }
 }

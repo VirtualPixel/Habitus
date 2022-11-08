@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GoalPicker: View {
     @Binding var frequency: FrequencySelection
-    
     let color: Color
     
     var body: some View {
@@ -21,11 +20,9 @@ struct GoalPicker: View {
                         .font(.headline.weight(.bold))
                 }
             }
+            .pickerStyle(.segmented)
             .padding(.horizontal)
-            .background(color)
-            .clipShape(RoundedRectangle(cornerRadius: 15))
-            .accentColor(.black)
-            
+            .colorMultiply(color)
         }
     }
 }

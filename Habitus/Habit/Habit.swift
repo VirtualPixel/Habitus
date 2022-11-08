@@ -27,6 +27,10 @@ struct Habit: Identifiable, Codable, Equatable {
         
         return true
     }
+    
+    var isUnitSingular: Bool {
+        (endGoal == 1 || endGoal == 0) || unitOfMeasurement.isEmpty
+    }
 }
 
 enum FrequencySelection: String, CaseIterable, Codable, Identifiable {
