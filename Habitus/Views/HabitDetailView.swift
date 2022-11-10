@@ -27,6 +27,10 @@ struct HabitDetailView: View {
                     ZStack {
                         
                         ZStack {
+                            Rectangle()
+                                .foregroundColor(.darkGray)
+                                .offset(y: 195)
+                            
                             Circle()
                                 .trim(from: 0.0, to: 0.5)
                                 .frame(width: geo.size.width)
@@ -45,9 +49,7 @@ struct HabitDetailView: View {
                                 .frame(width: geo.size.width)
                                 .rotationEffect(Angle(degrees: -180))
                             
-                            Rectangle()
-                                .foregroundColor(.darkGray)
-                                .offset(y: 195)
+                            
                             
                             Text("\(habit.currentValue)")
                                 .foregroundColor(.white)
