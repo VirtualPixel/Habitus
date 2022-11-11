@@ -10,7 +10,8 @@ import SwiftUI
 struct HabitDetailView: View {
     //@ObservedObject var habits: Habits
     //var index: Int
-    @State var habit = Habit(icon: "🚶🏼‍♂️", title: "Walk", color: .babyBlue, endGoal: 2000, unitOfMeasurement: "cup")
+    @State var habit = Habit(icon: "🚶🏼‍♂️", title: "Walk", color: .babyBlue, endGoal: 2000, currentValue: 0, unitOfMeasurement: "cup")
+    @State private var progressBarValue: CGFloat = 0
     
     var body: some View {
         //Text(habits.items[index].title)
@@ -25,15 +26,14 @@ struct HabitDetailView: View {
                     .padding(.vertical, geo.size.height / 4)
                     
                     ZStack {
-                        
                         ZStack {
                             Rectangle()
                                 .foregroundColor(.darkGray)
-                                .offset(y: 195)
+                                .offset(y: geo.size.height / 3.45)
                             
                             Circle()
                                 .trim(from: 0.0, to: 0.5)
-                                .frame(width: geo.size.width)
+                                .frame(width: geo.size.width, height: geo.size.height / 1.72)
                                 .foregroundColor(.darkGray)
                                 .rotationEffect(Angle(degrees: -180))
                             
@@ -44,13 +44,14 @@ struct HabitDetailView: View {
                                 .padding()
                             
                             Circle()
-                                .trim(from: 0, to: habit.progressBar)
+                                .trim(from: 0, to: progressBarValue)
                                 .stroke(habit.color.opacity(2.0), style: StrokeStyle(lineWidth: 12.0, lineCap: .round))
                                 .frame(width: geo.size.width)
                                 .rotationEffect(Angle(degrees: -180))
-                            
-                            
-                            
+                                .onAppear {
+                                    animateProgressBar()
+                                }
+                                                        
                             Text("\(habit.currentValue)")
                                 .foregroundColor(.white)
                                 .offset(y: -100)
@@ -84,7 +85,17 @@ struct HabitDetailView: View {
                         .fixedSize()
                     }
                 }
+                .onChange(of: habit.currentValue) { _ in 
+                    animateProgressBar()
+                }
                 
+        }
+        
+    }
+    
+    func animateProgressBar() {
+        withAnimation(.easeInOut(duration: 1.5)) {
+            progressBarValue = habit.progressBar
         }
     }
 }
