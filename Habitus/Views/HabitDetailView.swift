@@ -10,20 +10,25 @@ import SwiftUI
 struct HabitDetailView: View {
     //@ObservedObject var habits: Habits
     //var index: Int
-    @State var habit = Habit(icon: "🚶🏼‍♂️", title: "Walk", color: .babyBlue, endGoal: 2000, currentValue: 0, unitOfMeasurement: "cup")
+    @State var habit = Habit(icon: "🚶🏼‍♂️", title: "Walk", color: .babyBlue, endGoal: 2000, currentValue: 1800, unitOfMeasurement: "cup")
     @State private var progressBarValue: CGFloat = 0
     
     var body: some View {
         //Text(habits.items[index].title)
         GeometryReader { geo in
                 VStack {
-                    Button("Add 10%") {
-                        habit.currentValue += Int((Double(habit.endGoal) * 0.1))
+                    Button("Add 200") {
+                        habit.currentValue += 200
                     }
                     ZStack {
                         Text(habit.icon)
+                            .font(.system(size: 84))
+                            .padding(.vertical, geo.size.height / 5)
+
+                        Circle()
+                            .stroke(habit.color, lineWidth: 6)
+                            .frame(width: 120)
                     }
-                    .padding(.vertical, geo.size.height / 4)
                     
                     ZStack {
                         ZStack {

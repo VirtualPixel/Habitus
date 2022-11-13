@@ -104,6 +104,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		5799216B29209AB1003756E0 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		57C1519E28FC3602002BD16A = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +130,7 @@
 		57C151A928FC3602002BD16A /* Habitus */ = {
 			isa = PBXGroup;
 			children = (
+				5799216B29209AB1003756E0 /* Shapes */,
 				57C151AA28FC3602002BD16A /* HabitusApp.swift */,
 				57C151AC28FC3602002BD16A /* ContentView.swift */,
 				573539DF2900690300C0FD2E /* Views */,
