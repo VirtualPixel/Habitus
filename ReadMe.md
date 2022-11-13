@@ -7,7 +7,7 @@ Habits allow you to set reminders, set custom goals, icons, colors, and more. It
 
 
 ## Preview
-<img src="app_preview.gif" width="150" height="280">
+<img src="app_preview.gif" width="300" height="560">
 
 
 ## Tech Stack
