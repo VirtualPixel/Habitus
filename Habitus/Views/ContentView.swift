@@ -37,15 +37,16 @@ struct ContentView: View {
                                     .foregroundColor(Color(red: 0.88, green: 0.40, blue: 0.49))
                                     .font(.system(size: 35))
                                     .padding(50)
+                                    .frame(width: 50, height: 50)
+                                    .background(.white)
+                                    .cornerRadius(38.5)
+                                    .padding()
+                                    .shadow(color: Color.black.opacity(1),
+                                            radius: 1,
+                                            x: 0,
+                                            y: 0)
                             }
-                            .frame(width: 50, height: 50)
-                            .background(Color.white)
-                            .cornerRadius(38.5)
-                            .padding()
-                            .shadow(color: Color.black.opacity(1),
-                                    radius: 1,
-                                    x: 0,
-                                    y: 0)
+                            
                         }
                     }
                 }

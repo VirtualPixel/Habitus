@@ -20,7 +20,8 @@ struct HabitListView: View {
             ForEach(Array(habits.enumerated()), id:\.offset) { index, item in
                 NavigationLink {
                     //HabitDetailView(habits: habit, index: index)
-                    HabitDetailView()
+                    HabitDetailView(habit: item)
+                        .navigationBarBackButtonHidden()
                 } label: {
                     HStack {
                         Text(item.icon)
@@ -44,7 +45,8 @@ struct HabitListView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(item.color)
+                    .background(item.color
+                        .opacity(0.7))
                     .cornerRadius(15)
                     .alert("Confirmation", isPresented: $deleteAlert, actions: {
                         Button("Delete", role: .destructive, action: {

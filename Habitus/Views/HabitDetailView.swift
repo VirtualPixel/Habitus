@@ -8,26 +8,28 @@
 import SwiftUI
 
 struct HabitDetailView: View {
-    //@ObservedObject var habits: Habits
-    //var index: Int
-    @State var habit = Habit(icon: "🚶🏼‍♂️", title: "Walk", color: .babyBlue, endGoal: 2000, currentValue: 1800, unitOfMeasurement: "cup")
+    @Environment(\.dismiss) var dismiss
+    @State var habit: Habit
     @State private var progressBarValue: CGFloat = 0
     
     var body: some View {
-        //Text(habits.items[index].title)
-        GeometryReader { geo in
+        NavigationView {
+            GeometryReader { geo in
                 VStack {
-                    Button("Add 200") {
-                        habit.currentValue += 200
-                    }
-                    ZStack {
+                    Button {
+                        habit.currentValue += Int((Double(habit.endGoal) * 0.25))
+                    } label: {
                         Text(habit.icon)
                             .font(.system(size: 84))
                             .padding(.vertical, geo.size.height / 5)
-
-                        Circle()
-                            .stroke(habit.color, lineWidth: 6)
-                            .frame(width: 120)
+                            .background(
+                                //Circle()
+                                //    .stroke(habit.color, lineWidth: 6)
+                                //    .frame(width: 120)
+                                IndicaterCircle()
+                                    .foregroundColor(habit.color)
+                                    .font(.system(size: 900))
+                            )
                     }
                     
                     ZStack {
@@ -56,7 +58,7 @@ struct HabitDetailView: View {
                                 .onAppear {
                                     animateProgressBar()
                                 }
-                                                        
+                            
                             Text("\(habit.currentValue)")
                                 .foregroundColor(.white)
                                 .offset(y: -100)
@@ -90,12 +92,30 @@ struct HabitDetailView: View {
                         .fixedSize()
                     }
                 }
-                .onChange(of: habit.currentValue) { _ in 
+                .onChange(of: habit.currentValue) { _ in
                     animateProgressBar()
                 }
-                
-        }
-        
+                .navigationBarItems(
+                    leading:
+                            Button(action: {
+                                dismiss()
+                            }) {
+                                HStack {
+                                    Image(systemName: "chevron.left")
+                                    Text("\(habit.title)")
+                                }
+                                .foregroundColor(habit.color)
+                            },
+                    trailing:
+                            Menu {
+                                Button("Edit", action: editAction)
+                                Button("Delete", role: .destructive, action: deleteHabit)
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .foregroundColor(habit.color)
+                            })
+            }
+        } // NavView
     }
     
     func animateProgressBar() {
@@ -103,11 +123,19 @@ struct HabitDetailView: View {
             progressBarValue = habit.progressBar
         }
     }
+    
+    func editAction() {
+        // edit current selected Habit
+    }
+    
+    func deleteHabit() {
+        // delete current selected Habit
+    }
 }
 
 struct HabitDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        //HabitDetailView(habits: Habits(), index: 0)
-        HabitDetailView()
+        HabitDetailView(habit: Habit.example)
+        //HabitDetailView()
     }
 }

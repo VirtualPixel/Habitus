@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57016A432929324300D3C995 /* IndicaterCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57016A422929324300D3C995 /* IndicaterCircle.swift */; };
 		570ECBC62901BB0200811945 /* SwipeBackGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570ECBC52901BB0200811945 /* SwipeBackGesture.swift */; };
 		573539E22900691A00C0FD2E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E12900691A00C0FD2E /* Color.swift */; };
 		573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E4290073AF00C0FD2E /* AddHabitListView.swift */; };
 		5737EF212919B30B0026B9AE /* GoalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737EF202919B30B0026B9AE /* GoalPicker.swift */; };
 		5737EF23291A80CA0026B9AE /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737EF22291A80CA0026B9AE /* KeyboardReadable.swift */; };
 		5737EF25291ABB040026B9AE /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737EF24291ABB040026B9AE /* Collection.swift */; };
-		5737EF29291ABEE90026B9AE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737EF28291ABEE90026B9AE /* SettingsView.swift */; };
 		579E7C2F2913DB4800794F91 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E7C2E2913DB4800794F91 /* PickerTextField.swift */; };
 		57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AA28FC3602002BD16A /* HabitusApp.swift */; };
 		57C151AD28FC3602002BD16A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AC28FC3602002BD16A /* ContentView.swift */; };
@@ -31,13 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57016A422929324300D3C995 /* IndicaterCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicaterCircle.swift; sourceTree = "<group>"; };
 		570ECBC52901BB0200811945 /* SwipeBackGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBackGesture.swift; sourceTree = "<group>"; };
 		573539E12900691A00C0FD2E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		573539E4290073AF00C0FD2E /* AddHabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitListView.swift; sourceTree = "<group>"; };
 		5737EF202919B30B0026B9AE /* GoalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPicker.swift; sourceTree = "<group>"; };
 		5737EF22291A80CA0026B9AE /* KeyboardReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable.swift; sourceTree = "<group>"; };
 		5737EF24291ABB040026B9AE /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		5737EF28291ABEE90026B9AE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		579E7C2E2913DB4800794F91 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		57C151A728FC3602002BD16A /* Habitus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C151AA28FC3602002BD16A /* HabitusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitusApp.swift; sourceTree = "<group>"; };
@@ -69,6 +69,7 @@
 		573539DF2900690300C0FD2E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57C151AC28FC3602002BD16A /* ContentView.swift */,
 				57C151DA28FDDD18002BD16A /* HabitDetailView.swift */,
 				57C151BE28FC6BC0002BD16A /* AddView.swift */,
 				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
@@ -78,18 +79,17 @@
 				573539E4290073AF00C0FD2E /* AddHabitListView.swift */,
 				57D0FEE129048EFA009253A2 /* ColorPicker.swift */,
 				57D0FEE529049B27009253A2 /* EmojiView.swift */,
-				5737EF28291ABEE90026B9AE /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		573539E02900690E00C0FD2E /* Habit */ = {
+		573539E02900690E00C0FD2E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				57C151B828FC5BCF002BD16A /* Habit.swift */,
 				57C151BC28FC6066002BD16A /* Habits.swift */,
 			);
-			path = Habit;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		573539E329006A0000C0FD2E /* Extension */ = {
@@ -107,6 +107,7 @@
 		5799216B29209AB1003756E0 /* Shapes */ = {
 			isa = PBXGroup;
 			children = (
+				57016A422929324300D3C995 /* IndicaterCircle.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -132,9 +133,8 @@
 			children = (
 				5799216B29209AB1003756E0 /* Shapes */,
 				57C151AA28FC3602002BD16A /* HabitusApp.swift */,
-				57C151AC28FC3602002BD16A /* ContentView.swift */,
+				573539E02900690E00C0FD2E /* Models */,
 				573539DF2900690300C0FD2E /* Views */,
-				573539E02900690E00C0FD2E /* Habit */,
 				573539E329006A0000C0FD2E /* Extension */,
 				57C151B028FC3603002BD16A /* Preview Content */,
 				57C151AE28FC3603002BD16A /* Assets.xcassets */,
@@ -225,9 +225,9 @@
 				57C151B928FC5BCF002BD16A /* Habit.swift in Sources */,
 				57D0FEE629049B27009253A2 /* EmojiView.swift in Sources */,
 				57C151BD28FC6066002BD16A /* Habits.swift in Sources */,
-				5737EF29291ABEE90026B9AE /* SettingsView.swift in Sources */,
 				57C151BF28FC6BC0002BD16A /* AddView.swift in Sources */,
 				57C151BB28FC5EB9002BD16A /* HabitListView.swift in Sources */,
+				57016A432929324300D3C995 /* IndicaterCircle.swift in Sources */,
 				57C151DB28FDDD18002BD16A /* HabitDetailView.swift in Sources */,
 				57C151AD28FC3602002BD16A /* ContentView.swift in Sources */,
 				5737EF25291ABB040026B9AE /* Collection.swift in Sources */,

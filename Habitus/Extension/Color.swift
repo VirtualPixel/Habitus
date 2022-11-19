@@ -71,67 +71,67 @@ extension Color: Codable {
 extension Color {
     
     public static var babyBlue: Color {
-        return Color(UIColor(red: 0.54, green: 0.81, blue: 0.94, alpha: 0.5))
+        return Color(UIColor(red: 0.54, green: 0.81, blue: 0.94, alpha: 1.0))
     }
     
     public static var pastelGreen: Color {
-        return Color(UIColor(red: 0.47, green: 0.87, blue: 0.47, alpha: 0.5))
+        return Color(UIColor(red: 0.47, green: 0.87, blue: 0.47, alpha: 1.0))
     }
     
     public static var pastelBrown: Color {
-        return Color(UIColor(red: 0.51, green: 0.41, blue: 0.33, alpha: 0.5))
+        return Color(UIColor(red: 0.51, green: 0.41, blue: 0.33, alpha: 1.0))
     }
     
     public static var pastelTurquoise: Color {
-        return Color(UIColor(red: 0.60, green: 0.77, blue: 0.77, alpha: 0.5))
+        return Color(UIColor(red: 0.60, green: 0.77, blue: 0.77, alpha: 1.0))
     }
     
     public static var blueGreen: Color {
-        return Color(UIColor(red: 0.60, green: 0.87, blue: 0.86, alpha: 0.5))
+        return Color(UIColor(red: 0.60, green: 0.87, blue: 0.86, alpha: 1.0))
     }
     
     public static var pastelPersian: Color {
-        return Color(UIColor(red: 0.67, green: 0.58, blue: 0.60, alpha: 0.5))
+        return Color(UIColor(red: 0.67, green: 0.58, blue: 0.60, alpha: 1.0))
     }
     
     public static var magicMint: Color {
-        return Color(UIColor(red: 0.67, green: 0.94, blue: 0.82, alpha: 0.5))
+        return Color(UIColor(red: 0.67, green: 0.94, blue: 0.82, alpha: 1.0))
     }
     
     public static var lightGreen: Color {
-        return Color(UIColor(red: 0.70, green: 0.98, blue: 0.65, alpha: 0.5))
+        return Color(UIColor(red: 0.70, green: 0.98, blue: 0.65, alpha: 1.0))
     }
     
     public static var pastelPurple: Color {
-        return Color(UIColor(red: 0.70, green: 0.62, blue: 0.71, alpha: 0.5))
+        return Color(UIColor(red: 0.70, green: 0.62, blue: 0.71, alpha: 1.0))
     }
     
     public static var pastelLilac: Color {
-        return Color(UIColor(red: 0.74, green: 0.69, blue: 0.82, alpha: 0.5))
+        return Color(UIColor(red: 0.74, green: 0.69, blue: 0.82, alpha: 1.0))
     }
     
     public static var pastelPea: Color {
-        return Color(UIColor(red: 0.75, green: 0.91, blue: 0.65, alpha: 0.5))
+        return Color(UIColor(red: 0.75, green: 0.91, blue: 0.65, alpha: 1.0))
     }
     
     public static var lightLime: Color {
-        return Color(UIColor(red: 0.75, green: 0.99, blue: 0.45, alpha: 0.5))
+        return Color(UIColor(red: 0.75, green: 0.99, blue: 0.45, alpha: 1.0))
     }
     
     public static var lightPeriwinkle: Color {
-        return Color(UIColor(red: 0.70, green: 0.62, blue: 0.71, alpha: 0.5))
+        return Color(UIColor(red: 0.70, green: 0.62, blue: 0.71, alpha: 1.0))
     }
     
     public static var paleMauve: Color {
-        return Color(UIColor(red: 0.78, green: 0.64, blue: 0.64, alpha: 0.5))
+        return Color(UIColor(red: 0.78, green: 0.64, blue: 0.64, alpha: 1.0))
     }
     
     public static var pastelViolet: Color {
-        return Color(UIColor(red: 0.80, green: 0.60, blue: 0.79, alpha: 0.5))
+        return Color(UIColor(red: 0.80, green: 0.60, blue: 0.79, alpha: 1.0))
     }
     
     public static var pastelRed: Color {
-        return Color(UIColor(red: 1.00, green: 0.41, blue: 0.38, alpha: 0.5))
+        return Color(UIColor(red: 1.00, green: 0.41, blue: 0.38, alpha: 1.0))
     }
     
     public static var darkGray: Color {

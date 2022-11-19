@@ -39,6 +39,8 @@ struct Habit: Identifiable, Codable, Equatable {
     var isUnitSingular: Bool {
         (endGoal == 1 || endGoal == 0) || unitOfMeasurement.isEmpty
     }
+    
+    static let example = Habit(icon: "🚶", title: "Walk", color: .lightGreen, endGoal: 2000)
 }
 
 enum FrequencySelection: String, CaseIterable, Codable, Identifiable {
