@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IndicaterCircle: View {
-    let isAnimating = true
+    @State private var rotateDegree: CGFloat = 0
     let count: UInt = 4
     let width: CGFloat = 3
     let spacing: CGFloat = 3
@@ -17,12 +17,7 @@ struct IndicaterCircle: View {
         GeometryReader { geometry in
             ForEach(0..<Int(count)) { index in
                 item(forIndex: index, in: geometry.size)
-                    .rotationEffect(isAnimating ? .degrees(360) : .degrees(0))
-                    .animation(
-                        Animation.default
-                            .speed(Double.random(in: 0.2...0.5))
-                            .repeatCount(isAnimating ? .max : 1, autoreverses: false)
-                    )
+                    
             }
         }
         .aspectRatio(contentMode: .fit)

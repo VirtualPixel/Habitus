@@ -11,6 +11,7 @@ struct HabitDetailView: View {
     @Environment(\.dismiss) var dismiss
     @State var habit: Habit
     @State private var progressBarValue: CGFloat = 0
+    @State private var rotateDegree: CGFloat = 0
     
     var body: some View {
         NavigationView {
@@ -23,12 +24,15 @@ struct HabitDetailView: View {
                             .font(.system(size: 84))
                             .padding(.vertical, geo.size.height / 5)
                             .background(
-                                //Circle()
-                                //    .stroke(habit.color, lineWidth: 6)
-                                //    .frame(width: 120)
                                 IndicaterCircle()
+                                    .frame(width: 200)
                                     .foregroundColor(habit.color)
-                                    .font(.system(size: 900))
+                                    .rotationEffect(Angle(degrees: rotateDegree))
+                                    .onAppear(perform: {
+                                        withAnimation(Animation.linear(duration: 0.5).repeatForever(autoreverses: false)) {
+                                            rotateDegree = 360
+                                        }
+                                    })
                             )
                     }
                     
