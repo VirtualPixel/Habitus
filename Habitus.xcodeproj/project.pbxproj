@@ -106,7 +106,6 @@
 		573539E329006A0000C0FD2E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5799216B29209AB1003756E0 /* Shapes */,
 				573539E12900691A00C0FD2E /* Color.swift */,
 				570ECBC52901BB0200811945 /* SwipeBackGesture.swift */,
 				57D0FEDF29048D3B009253A2 /* View.swift */,
@@ -144,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				57C151AA28FC3602002BD16A /* HabitusApp.swift */,
+				5799216B29209AB1003756E0 /* Shapes */,
 				573539E02900690E00C0FD2E /* Models */,
 				573539DF2900690300C0FD2E /* Views */,
 				570C1DB3292CEC5C0093C2E4 /* ViewModel */,

@@ -27,5 +27,6 @@ class Habits: ObservableObject {
         items.append(defaultItems[1])
         items.append(defaultItems[2])
         //items = defaultItems
+        items[0].currentValue = 2000
     }
 }

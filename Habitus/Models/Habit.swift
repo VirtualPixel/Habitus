@@ -36,8 +36,37 @@ struct Habit: Identifiable, Codable, Equatable {
         return true
     }
     
-    var isUnitSingular: Bool {
-        (endGoal == 1 || endGoal == 0) || unitOfMeasurement.isEmpty
+    var correctUnitOfMeasurement: String {
+        let isUnitSingular = (endGoal == 1 || endGoal == 0) || unitOfMeasurement.isEmpty
+        
+        return isUnitSingular ? unitOfMeasurement : unitOfMeasurement + "s"
+    }
+    
+    var rotationSpeed: CGFloat {
+        switch percentComplete {
+        case 0...9:
+            return 10
+        case 10...19:
+            return 9
+        case 20...29:
+            return 8
+        case 30...39:
+            return 7
+        case 40...49:
+            return 6
+        case 50...59:
+            return 5
+        case 60...69:
+            return 4
+        case 70...79:
+            return 3
+        case 80...89:
+            return 2
+        case 90...99:
+            return 1
+        default:
+            return 0.5
+        }
     }
     
     static let example = Habit(icon: "🚶", title: "Walk", color: .lightGreen, endGoal: 2000)

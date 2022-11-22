@@ -17,10 +17,10 @@ struct IndicaterCircle: View {
         GeometryReader { geometry in
             ForEach(0..<Int(count)) { index in
                 item(forIndex: index, in: geometry.size)
-                    
             }
         }
         .aspectRatio(contentMode: .fit)
+        
     }
 
     private func item(forIndex index: Int, in geometrySize: CGSize) -> some View {

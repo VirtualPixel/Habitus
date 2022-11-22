@@ -38,7 +38,7 @@ struct HabitListView: View {
                         VStack {
                             Text("\(item.currentValue) / \(item.endGoal)")
                                 .foregroundColor(.black)
-                            Text("\(item.isUnitSingular ? item.unitOfMeasurement : item.unitOfMeasurement + "s")")
+                            Text("\(item.correctUnitOfMeasurement)")
                                 .foregroundColor(.black)
                         }
                     }

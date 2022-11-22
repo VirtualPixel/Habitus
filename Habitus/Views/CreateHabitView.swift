@@ -75,7 +75,7 @@ struct CreateHabitView: View, KeyboardReadable {
                             TextField("Goal", value: $newHabit.endGoal, formatter: NumberFormatter())
                                 .keyboardType(.numberPad)
                             
-                            Text("\(newHabit.isUnitSingular ? newHabit.unitOfMeasurement : newHabit.unitOfMeasurement + "s")")
+                            Text("\(newHabit.correctUnitOfMeasurement)")
                             
                             
                         }

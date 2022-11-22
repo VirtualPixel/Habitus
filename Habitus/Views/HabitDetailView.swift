@@ -18,7 +18,7 @@ struct HabitDetailView: View {
             GeometryReader { geo in
                 VStack {
                     Button {
-                        habit.currentValue += Int((Double(habit.endGoal) * 0.25))
+                        habit.currentValue += Int((Double(habit.endGoal) * 0.05))
                     } label: {
                         Text(habit.icon)
                             .font(.system(size: 84))
@@ -29,7 +29,7 @@ struct HabitDetailView: View {
                                     .foregroundColor(habit.color)
                                     .rotationEffect(Angle(degrees: rotateDegree))
                                     .onAppear(perform: {
-                                        withAnimation(.linear(duration: 0.5).repeatForever(autoreverses: false)) {
+                                        withAnimation(.linear(duration: habit.rotationSpeed).repeatForever(autoreverses: false)) {
                                             rotateDegree = 360
                                         }
                                     })
@@ -70,7 +70,7 @@ struct HabitDetailView: View {
                                               size: 34,
                                               relativeTo: .largeTitle))
                             
-                            Text("🏆 Goal: \(habit.endGoal)")
+                            Text("🏆 Goal: \(habit.endGoal) \(habit.correctUnitOfMeasurement)")
                                 .foregroundColor(.white)
                                 .offset(y: -50)
                                 .font(.custom("DIN Alternate Bold",
@@ -99,28 +99,29 @@ struct HabitDetailView: View {
                 .onChange(of: habit.currentValue) { _ in
                     animateProgressBar()
                 }
-                .navigationBarItems(
-                    leading:
-                            Button(action: {
-                                dismiss()
-                            }) {
-                                HStack {
-                                    Image(systemName: "chevron.left")
-                                    Text("\(habit.title)")
-                                }
-                                .foregroundColor(habit.color)
-                                
-                            },
-                    trailing:
-                            Menu {
-                                Button("Edit", action: editAction)
-                                Button("Delete", role: .destructive, action: deleteHabit)
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .foregroundColor(habit.color)
-                            })
+                
             }
         } // NavView
+        .navigationBarItems(
+            leading:
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                            Text("\(habit.title)")
+                        }
+                        .foregroundColor(habit.color)
+                        
+                    },
+            trailing:
+                    Menu {
+                        Button("Edit", action: editAction)
+                        Button("Delete", role: .destructive, action: deleteHabit)
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .foregroundColor(habit.color)
+                    })
     }
     
     func animateProgressBar() {
