@@ -18,15 +18,12 @@ class Habits: ObservableObject {
         Habit(icon: "🎼", title: "Practicing an instrument", color: .magicMint, endGoal: 1, unitOfMeasurement: "hour"),
         Habit(icon: "🏋️", title: "Exercising", color: .pastelBrown, endGoal: 1, unitOfMeasurement: "hour"),
         Habit(icon: "🧘", title: "Meditate", color: .lightGreen, endGoal: 30, unitOfMeasurement: "minute"),
-        Habit(icon: "😴", title: "Get enough sleep", color: .pastelLilac, endGoal: 8, unitOfMeasurement: "hour"),
-        
+        Habit(icon: "😴", title: "Get enough sleep", color: .pastelLilac, endGoal: 8, unitOfMeasurement: "hour")
     ]
     
     init() {
         items.append(defaultItems[0])
         items.append(defaultItems[1])
         items.append(defaultItems[2])
-        //items = defaultItems
-        items[0].currentValue = 2000
     }
 }
