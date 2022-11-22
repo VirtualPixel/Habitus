@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		57016A432929324300D3C995 /* IndicaterCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57016A422929324300D3C995 /* IndicaterCircle.swift */; };
+		570C1DB2292CEC560093C2E4 /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C1DB1292CEC560093C2E4 /* ContentView-ViewModel.swift */; };
 		570ECBC62901BB0200811945 /* SwipeBackGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570ECBC52901BB0200811945 /* SwipeBackGesture.swift */; };
 		573539E22900691A00C0FD2E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E12900691A00C0FD2E /* Color.swift */; };
 		573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E4290073AF00C0FD2E /* AddHabitListView.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		57016A422929324300D3C995 /* IndicaterCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicaterCircle.swift; sourceTree = "<group>"; };
+		570C1DB1292CEC560093C2E4 /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
 		570ECBC52901BB0200811945 /* SwipeBackGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBackGesture.swift; sourceTree = "<group>"; };
 		573539E12900691A00C0FD2E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		573539E4290073AF00C0FD2E /* AddHabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitListView.swift; sourceTree = "<group>"; };
@@ -66,17 +68,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570C1DB3292CEC5C0093C2E4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				570C1DB1292CEC560093C2E4 /* ContentView-ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		573539DF2900690300C0FD2E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				57C151AC28FC3602002BD16A /* ContentView.swift */,
-				57C151DA28FDDD18002BD16A /* HabitDetailView.swift */,
-				57C151BE28FC6BC0002BD16A /* AddView.swift */,
-				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
-				5737EF202919B30B0026B9AE /* GoalPicker.swift */,
-				579E7C2E2913DB4800794F91 /* PickerTextField.swift */,
 				57C151BA28FC5EB9002BD16A /* HabitListView.swift */,
+				57C151DA28FDDD18002BD16A /* HabitDetailView.swift */,
 				573539E4290073AF00C0FD2E /* AddHabitListView.swift */,
+				57C151BE28FC6BC0002BD16A /* AddView.swift */,
+				5737EF202919B30B0026B9AE /* GoalPicker.swift */,
+				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
+				579E7C2E2913DB4800794F91 /* PickerTextField.swift */,
 				57D0FEE129048EFA009253A2 /* ColorPicker.swift */,
 				57D0FEE529049B27009253A2 /* EmojiView.swift */,
 			);
@@ -88,6 +98,7 @@
 			children = (
 				57C151B828FC5BCF002BD16A /* Habit.swift */,
 				57C151BC28FC6066002BD16A /* Habits.swift */,
+				573539E329006A0000C0FD2E /* Extension */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -95,6 +106,7 @@
 		573539E329006A0000C0FD2E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				5799216B29209AB1003756E0 /* Shapes */,
 				573539E12900691A00C0FD2E /* Color.swift */,
 				570ECBC52901BB0200811945 /* SwipeBackGesture.swift */,
 				57D0FEDF29048D3B009253A2 /* View.swift */,
@@ -131,11 +143,10 @@
 		57C151A928FC3602002BD16A /* Habitus */ = {
 			isa = PBXGroup;
 			children = (
-				5799216B29209AB1003756E0 /* Shapes */,
 				57C151AA28FC3602002BD16A /* HabitusApp.swift */,
 				573539E02900690E00C0FD2E /* Models */,
 				573539DF2900690300C0FD2E /* Views */,
-				573539E329006A0000C0FD2E /* Extension */,
+				570C1DB3292CEC5C0093C2E4 /* ViewModel */,
 				57C151B028FC3603002BD16A /* Preview Content */,
 				57C151AE28FC3603002BD16A /* Assets.xcassets */,
 			);
@@ -237,6 +248,7 @@
 				579E7C2F2913DB4800794F91 /* PickerTextField.swift in Sources */,
 				5737EF212919B30B0026B9AE /* GoalPicker.swift in Sources */,
 				57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */,
+				570C1DB2292CEC560093C2E4 /* ContentView-ViewModel.swift in Sources */,
 				573539E22900691A00C0FD2E /* Color.swift in Sources */,
 				573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */,
 			);

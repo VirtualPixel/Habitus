@@ -29,7 +29,7 @@ struct HabitDetailView: View {
                                     .foregroundColor(habit.color)
                                     .rotationEffect(Angle(degrees: rotateDegree))
                                     .onAppear(perform: {
-                                        withAnimation(Animation.linear(duration: 0.5).repeatForever(autoreverses: false)) {
+                                        withAnimation(.linear(duration: 0.5).repeatForever(autoreverses: false)) {
                                             rotateDegree = 360
                                         }
                                     })
@@ -109,6 +109,7 @@ struct HabitDetailView: View {
                                     Text("\(habit.title)")
                                 }
                                 .foregroundColor(habit.color)
+                                
                             },
                     trailing:
                             Menu {

@@ -19,7 +19,6 @@ struct HabitListView: View {
         Section {
             ForEach(Array(habits.enumerated()), id:\.offset) { index, item in
                 NavigationLink {
-                    //HabitDetailView(habits: habit, index: index)
                     HabitDetailView(habit: item)
                         .navigationBarBackButtonHidden()
                 } label: {

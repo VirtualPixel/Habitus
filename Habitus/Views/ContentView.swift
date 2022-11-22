@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var habits = Habits()
-    @State var isActive = false
+    @StateObject private var viewModel = ViewModel()
     
     
     var body: some View {
