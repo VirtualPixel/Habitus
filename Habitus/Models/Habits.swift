@@ -22,8 +22,8 @@ class Habits: ObservableObject {
     ]
     
     init() {
-        items.append(defaultItems[0])
-        items.append(defaultItems[1])
-        items.append(defaultItems[2])
+        for i in 0..<defaultItems.count {
+            items.append(defaultItems[i])
+        }
     }
 }
