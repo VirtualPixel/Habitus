@@ -16,7 +16,7 @@ struct HabitListView: View {
     @State private var deleteAlert = false
         
     var body: some View {
-        Section {
+        Group {
             ForEach(Array(habits.enumerated()), id:\.offset) { index, item in
                 NavigationLink {
                     HabitDetailView(habit: item)
