@@ -53,7 +53,7 @@ struct ContentView: View {
                 .toolbar {
                     Button {
                         //How to pop up
-                        print("How to prompt")
+                        print("How to prompt!")
                     } label: {
                         Text("?")
                             .foregroundColor(Color(red: 0.88, green: 0.40, blue: 0.49))
