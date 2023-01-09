@@ -9,9 +9,9 @@ import SwiftUI
 
 struct HabitDetailView: View {
     @Environment(\.dismiss) var dismiss
+    @ObservedObject private var viewModel = ViewModel()
     @State var habit: Habit
-    @State private var progressBarValue: CGFloat = 0
-    @State private var rotateDegree: CGFloat = 0
+    
     
     var body: some View {
         NavigationView {
@@ -24,15 +24,7 @@ struct HabitDetailView: View {
                             .font(.system(size: 84))
                             .padding(.vertical, geo.size.height / 5)
                             .background(
-                                IndicaterCircle()
-                                    .frame(width: 200)
-                                    .foregroundColor(habit.color)
-                                    .rotationEffect(Angle(degrees: rotateDegree))
-                                    .onAppear(perform: {
-                                        withAnimation(.linear(duration: habit.rotationSpeed).repeatForever(autoreverses: false)) {
-                                            rotateDegree = 360
-                                        }
-                                    })
+                                IndicaterCircle(color: habit.color, rotationSpeed: habit.rotationSpeed)
                             )
                     }
                     
@@ -55,12 +47,12 @@ struct HabitDetailView: View {
                                 .padding()
                             
                             Circle()
-                                .trim(from: 0, to: progressBarValue)
+                                .trim(from: 0, to: viewModel.progressBarValue)
                                 .stroke(habit.color.opacity(2.0), style: StrokeStyle(lineWidth: 12.0, lineCap: .round))
                                 .frame(width: geo.size.width)
                                 .rotationEffect(Angle(degrees: -180))
                                 .onAppear {
-                                    animateProgressBar()
+                                    viewModel.animateProgressBar(progressBar: habit.progressBar)
                                 }
                             
                             Text("\(habit.currentValue)")
@@ -97,7 +89,7 @@ struct HabitDetailView: View {
                     }
                 }
                 .onChange(of: habit.currentValue) { _ in
-                    animateProgressBar()
+                    viewModel.animateProgressBar(progressBar: habit.progressBar)
                 }
                 
             }
@@ -116,32 +108,17 @@ struct HabitDetailView: View {
                     },
             trailing:
                     Menu {
-                        Button("Edit", action: editAction)
-                        Button("Delete", role: .destructive, action: deleteHabit)
+                        Button("Edit", action: viewModel.editAction)
+                        Button("Delete", role: .destructive, action: viewModel.deleteHabit)
                     } label: {
                         Image(systemName: "ellipsis")
                             .foregroundColor(habit.color)
                     })
-    }
-    
-    func animateProgressBar() {
-        withAnimation(.easeInOut(duration: 1.5)) {
-            progressBarValue = habit.progressBar
-        }
-    }
-    
-    func editAction() {
-        // edit current selected Habit
-    }
-    
-    func deleteHabit() {
-        // delete current selected Habit
     }
 }
 
 struct HabitDetailView_Previews: PreviewProvider {
     static var previews: some View {
         HabitDetailView(habit: Habit.example)
-        //HabitDetailView()
     }
 }

@@ -12,6 +12,8 @@ struct IndicaterCircle: View {
     let count: UInt = 4
     let width: CGFloat = 3
     let spacing: CGFloat = 3
+    let color: Color
+    @State var rotationSpeed: Double
 
     var body: some View {
         GeometryReader { geometry in
@@ -20,7 +22,14 @@ struct IndicaterCircle: View {
             }
         }
         .aspectRatio(contentMode: .fit)
-        
+        .frame(width: 200)
+        .foregroundColor(color)
+        .rotationEffect(Angle(degrees: rotateDegree))
+        .onAppear(perform: {
+            withAnimation(.linear(duration: rotationSpeed).repeatForever(autoreverses: false)) {
+                rotateDegree = 360
+            }
+        })
     }
 
     private func item(forIndex index: Int, in geometrySize: CGSize) -> some View {
@@ -36,3 +45,5 @@ struct IndicaterCircle: View {
         .frame(width: geometrySize.width, height: geometrySize.height)
     }
 }
+
+

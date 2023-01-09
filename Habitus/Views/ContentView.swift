@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var habits = Habits()
-    @StateObject private var viewModel = ViewModel()
-    
+    @StateObject private var viewModel = ViewModel(habits: Habits())
     
     var body: some View {
         NavigationView {
@@ -20,7 +19,7 @@ struct ContentView: View {
                 
                 ZStack {
                     ScrollView {
-                        HabitListView(habits: habits.items, habit: habits, deleteItems: removeHabits)
+                        HabitListView(habits: habits.items, habit: habits, deleteItems: viewModel.removeHabits)
                     }
                     .navigationTitle("")
                     
@@ -63,24 +62,6 @@ struct ContentView: View {
                 }
             }
         }
-        
-    }
-    
-    func removeHabits(at offsets: IndexSet) {
-        removeItems(at: offsets, in: habits.items)
-    }
-    
-    func removeItems(at offsets: IndexSet, in inputArray: [Habit]) {
-        var objectsToDelete = IndexSet()
-        
-        for offset in offsets {
-            let item = inputArray[offset]
-            
-            if let index = habits.items.firstIndex(of: item) {
-                objectsToDelete.insert(index)
-            }
-        }
-        habits.items.remove(atOffsets: objectsToDelete)
     }
 }
 

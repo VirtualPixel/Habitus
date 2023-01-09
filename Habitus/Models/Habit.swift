@@ -20,25 +20,24 @@ struct Habit: Identifiable, Codable, Equatable {
     
     var percentComplete: Int {
         let result = Double(currentValue) / Double(endGoal) * 100
-        
         return result < 100 ? Int(result) : 100
     }
     
     var progressBar: CGFloat {
-        let trimAmount = (Double(percentComplete)/100) / 2
-        
+        let trimAmount = (Double(percentComplete) / 100) / 2
         return trimAmount < 0.5 ? trimAmount : 0.5
     }
     
     var isValidHabit: Bool {
-        if icon.isEmpty || unitOfMeasurement.isEmpty || title.isEmpty || endGoal == 0 { return false }
+        if icon.isEmpty || unitOfMeasurement.isEmpty || title.isEmpty || endGoal == 0 {
+            return false
+        }
         
         return true
     }
     
     var correctUnitOfMeasurement: String {
         let isUnitSingular = (endGoal == 1 || endGoal == 0) || unitOfMeasurement.isEmpty
-        
         return isUnitSingular ? unitOfMeasurement : unitOfMeasurement + "s"
     }
     
@@ -71,6 +70,7 @@ struct Habit: Identifiable, Codable, Equatable {
     
     static let example = Habit(icon: "🚶", title: "Walk", color: .lightGreen, endGoal: 2000)
 }
+
 
 enum FrequencySelection: String, CaseIterable, Codable, Identifiable {
     var id: Self { self }

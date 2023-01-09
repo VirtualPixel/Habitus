@@ -8,7 +8,28 @@
 import Foundation
 
 extension ContentView {
-    @MainActor class ViewModel: ObservableObject {
+    class ViewModel: ObservableObject {
+        var habits: Habits
         
+        init(habits: Habits) {
+            self.habits = habits
+        }
+        
+        func removeHabits(at offsets: IndexSet) {
+            removeItems(at: offsets, in: habits.items)
+        }
+        
+        func removeItems(at offsets: IndexSet, in inputArray: [Habit]) {
+            var objectsToDelete = IndexSet()
+            
+            for offset in offsets {
+                let item = inputArray[offset]
+                
+                if let index = habits.items.firstIndex(of: item) {
+                    objectsToDelete.insert(index)
+                }
+            }
+            habits.items.remove(atOffsets: objectsToDelete)
+        }
     }
 }
