@@ -15,7 +15,7 @@ struct HabitDetailView: View {
     
     var body: some View {
         NavigationView {
-            GeometryReader { geo in //
+            GeometryReader { geo in 
                 VStack {
                     Button {
                         habit.currentValue += Int((Double(habit.endGoal) * 0.05))
