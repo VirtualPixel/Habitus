@@ -166,6 +166,8 @@ extension Welcome {
         @State private var dob = Date.now
         @State private var image: UIImage?
         @State private var showingSheet = false
+        @State private var showingActions = false
+        @State private var withCamera = false
         
         var body: some View {
             ScrollView {
@@ -178,7 +180,7 @@ extension Welcome {
                         .frame(width: 350)
                     
                     Button {
-                        showingSheet = true
+                        showingActions = true
                     } label: {
                         ZStack {
                             if image != nil {
@@ -245,6 +247,8 @@ extension Welcome {
                         UserDefaults.standard.firstName = firstName
                         UserDefaults.standard.lastName = lastName
                         
+                        saveImage()
+                        
                         withAnimation {
                             welcome = true
                         }
@@ -258,7 +262,30 @@ extension Welcome {
                     .disabled(firstName.isEmpty)
                 }
                 .sheet(isPresented: $showingSheet) {
-                    ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                    ImagePicker(sourceType: withCamera == true ? .camera : .photoLibrary, selectedImage: self.$image)
+                }
+                .actionSheet(isPresented: $showingActions) {
+                    ActionSheet(title: Text("Take a photo or select one from your library"), message: nil, buttons: [
+                        .default(Text("Take Photo"), action: {
+                            self.withCamera = true
+                            self.showingSheet = true
+                        }),
+                        .default(Text("Photo library"), action: {
+                            self.withCamera = false
+                            self.showingSheet = true
+                        }),
+                        .cancel()
+                    ])
+                }
+            }
+        }
+        
+        func saveImage() {
+            if image != nil {
+                let savePath = FileManager.documentsDirectory.appendingPathComponent("profilePicture")
+                
+                if let jpegData = image!.jpegData(compressionQuality: 0.8) {
+                    try? jpegData.write(to: savePath, options: [.atomic, .completeFileProtection])
                 }
             }
         }
@@ -289,3 +316,5 @@ struct Welcome_Previews: PreviewProvider {
         Welcome(welcome: .constant(false))
     }
 }
+
+
