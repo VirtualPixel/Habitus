@@ -9,11 +9,20 @@ import SwiftUI
 
 @main
 struct HabitusApp: App {
+    @State private var welcome = UserDefaults.standard.welcomeShown
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(.light)
-            //HabitDetailView()
+            switch welcome {
+            case true:
+                ContentView()
+                    .transition(.scale)
+                    .onAppear {
+                        //if !UserDefaults.standard.welcomeShown { UserDefaults.standard.welcomeShown = true }
+                    }
+            case false:
+                Welcome(welcome: $welcome)
+            }
         }
     }
 }

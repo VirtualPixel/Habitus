@@ -7,57 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57016A432929324300D3C995 /* IndicaterCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57016A422929324300D3C995 /* IndicaterCircle.swift */; };
-		570C1DB2292CEC560093C2E4 /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C1DB1292CEC560093C2E4 /* ContentView-ViewModel.swift */; };
-		570ECBC62901BB0200811945 /* SwipeBackGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570ECBC52901BB0200811945 /* SwipeBackGesture.swift */; };
-		573539E22900691A00C0FD2E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E12900691A00C0FD2E /* Color.swift */; };
-		573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573539E4290073AF00C0FD2E /* AddHabitListView.swift */; };
-		5737EF212919B30B0026B9AE /* GoalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737EF202919B30B0026B9AE /* GoalPicker.swift */; };
-		5737EF23291A80CA0026B9AE /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737EF22291A80CA0026B9AE /* KeyboardReadable.swift */; };
-		5737EF25291ABB040026B9AE /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737EF24291ABB040026B9AE /* Collection.swift */; };
-		579E7C2F2913DB4800794F91 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E7C2E2913DB4800794F91 /* PickerTextField.swift */; };
 		57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AA28FC3602002BD16A /* HabitusApp.swift */; };
 		57C151AD28FC3602002BD16A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AC28FC3602002BD16A /* ContentView.swift */; };
 		57C151AF28FC3603002BD16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151AE28FC3603002BD16A /* Assets.xcassets */; };
 		57C151B228FC3603002BD16A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151B128FC3603002BD16A /* Preview Assets.xcassets */; };
-		57C151B928FC5BCF002BD16A /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151B828FC5BCF002BD16A /* Habit.swift */; };
-		57C151BB28FC5EB9002BD16A /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BA28FC5EB9002BD16A /* HabitListView.swift */; };
-		57C151BD28FC6066002BD16A /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BC28FC6066002BD16A /* Habits.swift */; };
-		57C151BF28FC6BC0002BD16A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151BE28FC6BC0002BD16A /* AddView.swift */; };
-		57C151DB28FDDD18002BD16A /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151DA28FDDD18002BD16A /* HabitDetailView.swift */; };
-		57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */; };
-		57D0FEE029048D3B009253A2 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0FEDF29048D3B009253A2 /* View.swift */; };
-		57D0FEE229048EFA009253A2 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0FEE129048EFA009253A2 /* ColorPicker.swift */; };
-		57D0FEE629049B27009253A2 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0FEE529049B27009253A2 /* EmojiView.swift */; };
-		57DC9D2A296CB34100CB58FA /* HabitDetailView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DC9D29296CB34100CB58FA /* HabitDetailView-ViewModel.swift */; };
+		57FE89F12971C56A008287AF /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE89F02971C56A008287AF /* Welcome.swift */; };
+		57FE89F32971C7D0008287AF /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE89F22971C7D0008287AF /* UserDefaults.swift */; };
+		57FE89F82971E5DF008287AF /* Welcome-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE89F72971E5DF008287AF /* Welcome-ViewModel.swift */; };
+		57FE89FD297201CB008287AF /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE89FC297201CB008287AF /* Colors.swift */; };
+		57FE89FF29720366008287AF /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 57FE89FE29720366008287AF /* Fonts */; };
+		57FE8A142973A427008287AF /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE8A132973A427008287AF /* Modifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		57016A422929324300D3C995 /* IndicaterCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicaterCircle.swift; sourceTree = "<group>"; };
-		570C1DB1292CEC560093C2E4 /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
-		570ECBC52901BB0200811945 /* SwipeBackGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBackGesture.swift; sourceTree = "<group>"; };
-		573539E12900691A00C0FD2E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		573539E4290073AF00C0FD2E /* AddHabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitListView.swift; sourceTree = "<group>"; };
-		5737EF202919B30B0026B9AE /* GoalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPicker.swift; sourceTree = "<group>"; };
-		5737EF22291A80CA0026B9AE /* KeyboardReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable.swift; sourceTree = "<group>"; };
-		5737EF24291ABB040026B9AE /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		579E7C2E2913DB4800794F91 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		57C151A728FC3602002BD16A /* Habitus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C151AA28FC3602002BD16A /* HabitusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitusApp.swift; sourceTree = "<group>"; };
 		57C151AC28FC3602002BD16A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57C151AE28FC3603002BD16A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C151B128FC3603002BD16A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		57C151B828FC5BCF002BD16A /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
-		57C151BA28FC5EB9002BD16A /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
-		57C151BC28FC6066002BD16A /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
-		57C151BE28FC6BC0002BD16A /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
-		57C151DA28FDDD18002BD16A /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
-		57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitView.swift; sourceTree = "<group>"; };
-		57D0FEDF29048D3B009253A2 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		57D0FEE129048EFA009253A2 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
-		57D0FEE529049B27009253A2 /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		57DC9D28296CB23400CB58FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		57DC9D29296CB34100CB58FA /* HabitDetailView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitDetailView-ViewModel.swift"; sourceTree = "<group>"; };
+		57FE89F02971C56A008287AF /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
+		57FE89F22971C7D0008287AF /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		57FE89F72971E5DF008287AF /* Welcome-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Welcome-ViewModel.swift"; sourceTree = "<group>"; };
+		57FE89FC297201CB008287AF /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		57FE89FE29720366008287AF /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		57FE8A132973A427008287AF /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,57 +45,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		570C1DB3292CEC5C0093C2E4 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				570C1DB1292CEC560093C2E4 /* ContentView-ViewModel.swift */,
-				57DC9D29296CB34100CB58FA /* HabitDetailView-ViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		573539DF2900690300C0FD2E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				57C151AC28FC3602002BD16A /* ContentView.swift */,
-				57C151DA28FDDD18002BD16A /* HabitDetailView.swift */,
-				57C151BE28FC6BC0002BD16A /* AddView.swift */,
-				57C151DC28FDE7B9002BD16A /* CreateHabitView.swift */,
-				57DC9D27296CB19A00CB58FA /* Elements */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		573539E02900690E00C0FD2E /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				57C151B828FC5BCF002BD16A /* Habit.swift */,
-				57C151BC28FC6066002BD16A /* Habits.swift */,
-				573539E329006A0000C0FD2E /* Extension */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		573539E329006A0000C0FD2E /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				573539E12900691A00C0FD2E /* Color.swift */,
-				570ECBC52901BB0200811945 /* SwipeBackGesture.swift */,
-				57D0FEDF29048D3B009253A2 /* View.swift */,
-				5737EF22291A80CA0026B9AE /* KeyboardReadable.swift */,
-				5737EF24291ABB040026B9AE /* Collection.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		5799216B29209AB1003756E0 /* Shapes */ = {
-			isa = PBXGroup;
-			children = (
-				57016A422929324300D3C995 /* IndicaterCircle.swift */,
-			);
-			path = Shapes;
-			sourceTree = "<group>";
-		};
 		57C1519E28FC3602002BD16A = {
 			isa = PBXGroup;
 			children = (
@@ -143,12 +66,12 @@
 			children = (
 				57DC9D28296CB23400CB58FA /* Info.plist */,
 				57C151AA28FC3602002BD16A /* HabitusApp.swift */,
-				5799216B29209AB1003756E0 /* Shapes */,
-				573539E02900690E00C0FD2E /* Models */,
-				573539DF2900690300C0FD2E /* Views */,
-				570C1DB3292CEC5C0093C2E4 /* ViewModel */,
+				57FE89F42971C7D5008287AF /* Model */,
+				57FE89F62971E5BF008287AF /* View */,
+				57FE89F92971E5EB008287AF /* ViewModel */,
 				57C151B028FC3603002BD16A /* Preview Content */,
 				57C151AE28FC3603002BD16A /* Assets.xcassets */,
+				57FE89FE29720366008287AF /* Fonts */,
 			);
 			path = Habitus;
 			sourceTree = "<group>";
@@ -161,17 +84,39 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		57DC9D27296CB19A00CB58FA /* Elements */ = {
+		57FE89F42971C7D5008287AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				573539E4290073AF00C0FD2E /* AddHabitListView.swift */,
-				57D0FEE129048EFA009253A2 /* ColorPicker.swift */,
-				57D0FEE529049B27009253A2 /* EmojiView.swift */,
-				5737EF202919B30B0026B9AE /* GoalPicker.swift */,
-				57C151BA28FC5EB9002BD16A /* HabitListView.swift */,
-				579E7C2E2913DB4800794F91 /* PickerTextField.swift */,
+				57FE89F52971C9A7008287AF /* DataManagement */,
+				57FE89FC297201CB008287AF /* Colors.swift */,
+				57FE8A132973A427008287AF /* Modifiers.swift */,
 			);
-			path = Elements;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		57FE89F52971C9A7008287AF /* DataManagement */ = {
+			isa = PBXGroup;
+			children = (
+				57FE89F22971C7D0008287AF /* UserDefaults.swift */,
+			);
+			path = DataManagement;
+			sourceTree = "<group>";
+		};
+		57FE89F62971E5BF008287AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57C151AC28FC3602002BD16A /* ContentView.swift */,
+				57FE89F02971C56A008287AF /* Welcome.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57FE89F92971E5EB008287AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				57FE89F72971E5DF008287AF /* Welcome-ViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FE89FF29720366008287AF /* Fonts in Resources */,
 				57C151B228FC3603002BD16A /* Preview Assets.xcassets in Resources */,
 				57C151AF28FC3603002BD16A /* Assets.xcassets in Resources */,
 			);
@@ -244,27 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570ECBC62901BB0200811945 /* SwipeBackGesture.swift in Sources */,
-				57D0FEE229048EFA009253A2 /* ColorPicker.swift in Sources */,
-				57C151B928FC5BCF002BD16A /* Habit.swift in Sources */,
-				57D0FEE629049B27009253A2 /* EmojiView.swift in Sources */,
-				57C151BD28FC6066002BD16A /* Habits.swift in Sources */,
-				57C151BF28FC6BC0002BD16A /* AddView.swift in Sources */,
-				57C151BB28FC5EB9002BD16A /* HabitListView.swift in Sources */,
-				57DC9D2A296CB34100CB58FA /* HabitDetailView-ViewModel.swift in Sources */,
-				57016A432929324300D3C995 /* IndicaterCircle.swift in Sources */,
-				57C151DB28FDDD18002BD16A /* HabitDetailView.swift in Sources */,
+				57FE89F32971C7D0008287AF /* UserDefaults.swift in Sources */,
+				57FE89F12971C56A008287AF /* Welcome.swift in Sources */,
+				57FE89F82971E5DF008287AF /* Welcome-ViewModel.swift in Sources */,
+				57FE89FD297201CB008287AF /* Colors.swift in Sources */,
+				57FE8A142973A427008287AF /* Modifiers.swift in Sources */,
 				57C151AD28FC3602002BD16A /* ContentView.swift in Sources */,
-				5737EF25291ABB040026B9AE /* Collection.swift in Sources */,
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
-				5737EF23291A80CA0026B9AE /* KeyboardReadable.swift in Sources */,
-				57D0FEE029048D3B009253A2 /* View.swift in Sources */,
-				579E7C2F2913DB4800794F91 /* PickerTextField.swift in Sources */,
-				5737EF212919B30B0026B9AE /* GoalPicker.swift in Sources */,
-				57C151DD28FDE7B9002BD16A /* CreateHabitView.swift in Sources */,
-				570C1DB2292CEC560093C2E4 /* ContentView-ViewModel.swift in Sources */,
-				573539E22900691A00C0FD2E /* Color.swift in Sources */,
-				573539E5290073AF00C0FD2E /* AddHabitListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +329,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Habitus/Info.plist;
+				INFOPLIST_KEY_NSRemindersUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -427,6 +360,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Habitus/Info.plist;
+				INFOPLIST_KEY_NSRemindersUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
