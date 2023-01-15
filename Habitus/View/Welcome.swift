@@ -158,28 +158,47 @@ extension Welcome {
     }
     
     struct PageFour: View {
+        @Environment(\.colorScheme) var colorScheme
         @Binding var currentPage: Int
         @Binding var welcome: Bool
-        @Environment(\.colorScheme) var colorScheme
+        @State private var firstName = ""
+        @State private var lastName = ""
+        @State private var dob = Date.now
+        @State private var image: UIImage?
+        @State private var showingSheet = false
         
         var body: some View {
-            GeometryReader { geo in
+            ScrollView {
                 VStack {
                     Text("Nice to meet you, could you introduce yourself to me?")
                         .font(.title2.bold())
                         .padding(.vertical)
                         .padding(.top, 50)
                         .multilineTextAlignment(.center)
-                        .frame(width: geo.size.width * 0.8065)
+                        .frame(width: 350)
                     
                     Button {
-                        // image picker
+                        showingSheet = true
                     } label: {
                         ZStack {
-                            Image(decorative: "avatar")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150)
+                            if image != nil {
+                                Image(uiImage: self.image!)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 150)
+                                        .cornerRadius(50)
+                                        .padding(.all, 4)
+                                        .frame(width: 100, height: 100)
+                                        .background(Color.black.opacity(0.2))
+                                        .aspectRatio(contentMode: .fill)
+                                        .clipShape(Circle())
+                                        .padding(8)
+                            } else {
+                                Image(decorative: "avatar")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 150)
+                            }
                             Image(systemName: "camera.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -191,23 +210,56 @@ extension Welcome {
                                         .foregroundColor(colorScheme == .dark ? .black : .white)
                                 )
                                 .offset(x: 50, y: 50)
-                                
+                            
                         }
                     }
+                    
+                    
+                    VStack(alignment: .leading) {
+                        Text("Name")
+                            .font(.title2.bold())
+                        TextField(
+                            "First Name",
+                            text: $firstName
+                        )
+                        TextField(
+                            "Last Name (Optional)",
+                            text: $lastName
+                        )
+                        Text("What's your date of birth?")
+                            .font(.title2.bold())
+                    }
+                    .padding(.horizontal, 30)
+                    
+                    
+                    DatePicker(selection: $dob, in: ...Date.now, displayedComponents: .date) {
+                        Text("Date of Birth")
+                    }
+                    .labelsHidden()
+                    .datePickerStyle(.wheel)
                     
                     Spacer()
                     
                     Button {
+                        UserDefaults.standard.dateOfBirth = dob
+                        UserDefaults.standard.firstName = firstName
+                        UserDefaults.standard.lastName = lastName
+                        
                         withAnimation {
                             welcome = true
                         }
                     } label: {
                         Text("Begin")
                             .pinkButton()
+                            .opacity(firstName.isEmpty ? 0.5 : 1.0)
                     }
-                    .padding(.bottom, 50)
+                    .padding(.vertical, 50)
+                    .ignoresSafeArea(.keyboard)
+                    .disabled(firstName.isEmpty)
                 }
-                .position(x: geo.size.width / 2, y: geo.size.height / 2)
+                .sheet(isPresented: $showingSheet) {
+                    ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                }
             }
         }
     }

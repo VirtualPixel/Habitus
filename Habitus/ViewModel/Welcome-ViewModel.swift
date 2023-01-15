@@ -9,7 +9,7 @@ import Foundation
 
 extension Welcome {
     @MainActor class ViewModel: ObservableObject {
-        @Published var currentPage = 3
+        @Published var currentPage = 0
         let quotes: [String] = [
             "We are what we repeatedly do. Excellence, then, is not an act, but a habit. - Aristotle",
             "Habits are at first cobwebs, then cables. - Spanish Proverb",
