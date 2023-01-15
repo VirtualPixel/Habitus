@@ -17,21 +17,12 @@ extension UserDefaults {
         }
     }
     
-    var firstName: String {
+    var name: String {
         get {
             return (UserDefaults.standard.value(forKey: "firstName") as? String) ?? ""
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: "firstName")
-        }
-    }
-    
-    var lastName: String {
-        get {
-            return (UserDefaults.standard.value(forKey: "lastName") as? String) ?? ""
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: "lastName")
         }
     }
     

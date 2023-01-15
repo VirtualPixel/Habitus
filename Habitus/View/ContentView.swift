@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject private var viewModel = ViewModel()
+    
     var body: some View {
-            Text("Content view")
-        
+        Text("Content View")
     }
 }
 

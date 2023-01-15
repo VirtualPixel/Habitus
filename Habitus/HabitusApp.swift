@@ -18,7 +18,7 @@ struct HabitusApp: App {
                 ContentView()
                     .transition(.scale)
                     .onAppear {
-                        //if !UserDefaults.standard.welcomeShown { UserDefaults.standard.welcomeShown = true }
+                        if !UserDefaults.standard.welcomeShown { UserDefaults.standard.welcomeShown = true }
                     }
             case false:
                 Welcome(welcome: $welcome)

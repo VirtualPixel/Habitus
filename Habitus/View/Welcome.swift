@@ -161,8 +161,7 @@ extension Welcome {
         @Environment(\.colorScheme) var colorScheme
         @Binding var currentPage: Int
         @Binding var welcome: Bool
-        @State private var firstName = ""
-        @State private var lastName = ""
+        @State private var name = ""
         @State private var dob = Date.now
         @State private var image: UIImage?
         @State private var showingSheet = false
@@ -218,20 +217,19 @@ extension Welcome {
                     
                     
                     VStack(alignment: .leading) {
-                        Text("Name")
+                        Text("What's your name?")
                             .font(.title2.bold())
+                        
                         TextField(
-                            "First Name",
-                            text: $firstName
+                            "Name",
+                            text: $name
                         )
-                        TextField(
-                            "Last Name (Optional)",
-                            text: $lastName
-                        )
+                        .padding(.bottom)
                         Text("What's your date of birth?")
                             .font(.title2.bold())
                     }
                     .padding(.horizontal, 30)
+                    .padding(.top)
                     
                     
                     DatePicker(selection: $dob, in: ...Date.now, displayedComponents: .date) {
@@ -244,8 +242,7 @@ extension Welcome {
                     
                     Button {
                         UserDefaults.standard.dateOfBirth = dob
-                        UserDefaults.standard.firstName = firstName
-                        UserDefaults.standard.lastName = lastName
+                        UserDefaults.standard.name = name
                         
                         saveImage()
                         
@@ -255,11 +252,11 @@ extension Welcome {
                     } label: {
                         Text("Begin")
                             .pinkButton()
-                            .opacity(firstName.isEmpty ? 0.5 : 1.0)
+                            .opacity(name.isEmpty ? 0.5 : 1.0)
                     }
                     .padding(.vertical, 50)
                     .ignoresSafeArea(.keyboard)
-                    .disabled(firstName.isEmpty)
+                    .disabled(name.isEmpty)
                 }
                 .sheet(isPresented: $showingSheet) {
                     ImagePicker(sourceType: withCamera == true ? .camera : .photoLibrary, selectedImage: self.$image)
