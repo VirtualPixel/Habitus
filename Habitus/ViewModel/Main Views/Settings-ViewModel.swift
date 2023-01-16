@@ -8,7 +8,7 @@
 import Foundation
 
 extension Settings {
-    @MainActor class ViewModel: ObservableObject {
+    class ViewModel: ObservableObject {
         
     }
 }

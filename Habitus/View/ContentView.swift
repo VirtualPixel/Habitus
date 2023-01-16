@@ -25,9 +25,11 @@ struct ContentView: View {
             Profile()
                 .tabItem {
                     Label("", systemImage: "person.fill")
+                    
                 }
                 .tag(2)
         }
+        
         
     }
 }
