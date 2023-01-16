@@ -13,7 +13,7 @@ extension QuickWeek {
         let days = (0...6).reversed().map { Calendar.current.date(byAdding: .day, value: -$0, to: Date())! }
         
         func isSelected(index: Int) -> Bool {
-            selectedDay.formatted() == days[index].formatted()
+            selectedDay.formatted(date: .complete, time: .omitted) == days[index].formatted(date: .complete, time: .omitted)
         }
         
         init(selectedDay: Binding<Date>) {

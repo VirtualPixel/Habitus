@@ -49,7 +49,7 @@ struct QuickWeek: View {
                 .opacity(0.3)
             
             Button {
-                // add habit or mood
+                print(viewModel.selectedDay)
             } label: {
                 Text("+")
                     .frame(width: 40, height: 40)
