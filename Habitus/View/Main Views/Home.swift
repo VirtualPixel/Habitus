@@ -15,7 +15,7 @@ struct Home: View {
         NavigationView {
             VStack {
                 QuickWeek(viewModel: .init(selectedDay: $viewModel.selectedDay))
-                Text("\(viewModel.selectedDay)")
+
                 Spacer()
                 
                 VStack {

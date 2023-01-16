@@ -10,7 +10,11 @@ import SwiftUI
 extension QuickWeek {
     class ViewModel: ObservableObject {
         @Binding var selectedDay: Date
-        let days = (0...6).map { Calendar.current.date(byAdding: .day, value: -$0, to: Date())! }
+        let days = (0...6).reversed().map { Calendar.current.date(byAdding: .day, value: -$0, to: Date())! }
+        
+        func isSelected(index: Int) -> Bool {
+            selectedDay.formatted() == days[index].formatted()
+        }
         
         init(selectedDay: Binding<Date>) {
             self._selectedDay = selectedDay
