@@ -14,7 +14,8 @@ extension Home {
         @Published var showingSort = false
         @Published var showingSettings = false
         @Published var showingAddMood = false
-        @Published var showingAddNewHabit = false
+        @Published var showingHabitList = false
+        @Published var showingCreateHabit = false
         @Published var showContextButtons = false
         
         func blurRadius() -> CGFloat {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		575D287C2976B7EA00C02513 /* CreateHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D287B2976B7EA00C02513 /* CreateHabit.swift */; };
+		575D287E2976B7FE00C02513 /* CreateHabit-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */; };
 		579025E829755FAC009649D0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579025E729755FAC009649D0 /* Home.swift */; };
 		579025EA29755FBC009649D0 /* Home-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579025E929755FBC009649D0 /* Home-ViewModel.swift */; };
 		579025EC29755FDB009649D0 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579025EB29755FDB009649D0 /* Stats.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		575D287B2976B7EA00C02513 /* CreateHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabit.swift; sourceTree = "<group>"; };
+		575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateHabit-ViewModel.swift"; sourceTree = "<group>"; };
 		579025E729755FAC009649D0 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		579025E929755FBC009649D0 /* Home-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home-ViewModel.swift"; sourceTree = "<group>"; };
 		579025EB29755FDB009649D0 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				57C151AC28FC3602002BD16A /* ContentView.swift */,
 				57FE89F02971C56A008287AF /* Welcome.swift */,
 				579025FC29757014009649D0 /* QuickWeek.swift */,
+				575D287B2976B7EA00C02513 /* CreateHabit.swift */,
 				579025F72975608F009649D0 /* Main Views */,
 			);
 			path = View;
@@ -175,6 +180,7 @@
 				57A6E66B2974577F004AA69C /* ContentView-ViewModel.swift */,
 				57FE89F72971E5DF008287AF /* Welcome-ViewModel.swift */,
 				579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */,
+				575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */,
 				579025F829756099009649D0 /* Main Views */,
 			);
 			path = ViewModel;
@@ -252,8 +258,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A6E66A297454D7004AA69C /* FileManager-DocumentsDirectory.swift in Sources */,
+				575D287E2976B7FE00C02513 /* CreateHabit-ViewModel.swift in Sources */,
 				579025FF29757024009649D0 /* QuickWeek-ViewModel.swift in Sources */,
 				579025F02975602A009649D0 /* Profile.swift in Sources */,
+				575D287C2976B7EA00C02513 /* CreateHabit.swift in Sources */,
 				579025EC29755FDB009649D0 /* Stats.swift in Sources */,
 				579025F429756061009649D0 /* Settings.swift in Sources */,
 				57FE89F32971C7D0008287AF /* UserDefaults.swift in Sources */,

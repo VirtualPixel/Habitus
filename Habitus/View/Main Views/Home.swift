@@ -23,7 +23,6 @@ struct Home: View {
                             Button {
                                 withAnimation {
                                     viewModel.showContextButtons = true
-                                    print("Width: \(geo.size.width) Height: \(geo.size.height)")
                                 }
                             } label: {
                                 Text("+")
@@ -57,26 +56,7 @@ struct Home: View {
                         }
                         .blur(radius: viewModel.blurRadius())
                         .frame(width: 300)
-                        .toolbar() {
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Button {
-                                    viewModel.showingSort = true
-                                } label: {
-                                    Image(systemName: "arrow.up.arrow.down")
-                                        .foregroundColor(Color(UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1.00)))
-                                }
-                                .blur(radius: viewModel.blurRadius())
-                            }
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button {
-                                    viewModel.showingSettings = true
-                                } label: {
-                                    Image(systemName: "gearshape")
-                                        .foregroundColor(Color(UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1.00)))
-                                }
-                                .blur(radius: viewModel.blurRadius())
-                            }
-                        }
+                        
                         Spacer()
                     }
                     if viewModel.showContextButtons {
@@ -95,18 +75,18 @@ struct Home: View {
                                 withAnimation {
                                     viewModel.showContextButtons = false
                                 }
-                                viewModel.showingAddNewHabit = true
+                                viewModel.showingHabitList = true
                             } label: {
                                 RoundedRectangle(cornerRadius: 12)
                                     .foregroundColor(
-                                        Color(UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00))
+                                        colorScheme == .dark ? Color.darkModeButton : Color.lightModeButton
                                     )
                                     .frame(width: 70, height: 70)
                                     .shadow(radius: 4, y: 4)
                                     .overlay(
                                         Text("New Habit")
                                             .font(.title2.bold())
-                                            .foregroundColor(Color(UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.00)))
+                                            .foregroundColor(colorScheme == .dark ? .white : Color.lightModeSubtext)
                                             .multilineTextAlignment(.center)
                                     )
                             }
@@ -115,18 +95,18 @@ struct Home: View {
                                 withAnimation {
                                     viewModel.showContextButtons = false
                                 }
-                                viewModel.showingAddNewHabit = true
+                                viewModel.showingHabitList = true
                             } label: {
                                 RoundedRectangle(cornerRadius: 12)
                                     .foregroundColor(
-                                        Color(UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00))
+                                        colorScheme == .dark ? Color.darkModeButton : Color.lightModeButton
                                     )
                                     .frame(width: 70, height: 170)
                                     .shadow(radius: 4, y: 4)
                                     .overlay(
                                         Text("New Habit")
                                             .font(.title2.bold())
-                                            .foregroundColor(Color(UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.00)))
+                                            .foregroundColor(colorScheme == .dark ? .white : Color.lightModeSubtext)
                                             .multilineTextAlignment(.center)
                                     )
                             }
@@ -164,6 +144,32 @@ struct Home: View {
                     }
                     .presentationDetents([.large, .large])
                 }
+                .sheet(isPresented: $viewModel.showingHabitList) {
+                    HabitList(showingView: $viewModel.showingCreateHabit)
+                        .sheet(isPresented: $viewModel.showingCreateHabit) {
+                            CreateHabit()
+                        }
+                }
+                .toolbar() {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            viewModel.showingSort = true
+                        } label: {
+                            Image(systemName: "arrow.up.arrow.down")
+                                .foregroundColor(Color(UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1.00)))
+                        }
+                        .blur(radius: viewModel.blurRadius())
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            viewModel.showingSettings = true
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .foregroundColor(Color(UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1.00)))
+                        }
+                        .blur(radius: viewModel.blurRadius())
+                    }
+                }
             }
         }
     }
@@ -175,3 +181,21 @@ struct Home_Previews: PreviewProvider {
     }
 }
 
+struct HabitList: View {
+    @Binding var showingView: Bool
+    var body: some View {
+        VStack {
+            ScrollView {
+                
+            }
+            Spacer()
+            Button {
+                showingView = true
+            } label: {
+                Text("Create your own")
+                    .pinkButton()
+            }
+            .padding(.bottom, 30)
+        }
+    }
+}
