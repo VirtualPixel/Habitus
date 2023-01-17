@@ -42,13 +42,34 @@ struct QuickWeek: View {
                 }
                 .tag(self.viewModel.days[index])
             }
+            .blur(radius: viewModel.blurAmount)
             
             Divider()
                 .frame(width: 1, height: 25)
                 .background(colorScheme == .dark ? .white : .black)
                 .opacity(0.3)
+                .blur(radius: viewModel.blurAmount)
             
-            
+            Button {
+                withAnimation {
+                    viewModel.showingContextButtons = true
+                }
+            } label: {
+                Text("+")
+                    .frame(width: 40, height: 40)
+                    .font(.system(size: 500))
+                    .minimumScaleFactor(0.01)
+                    .font(.title3.bold())
+                    .offset(y: -2)
+                    .opacity(colorScheme == .dark ? 0.8 : 0.6)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                    .background(
+                        Circle()
+                            .strokeBorder(lineWidth: 3)
+                            .foregroundColor(.mainColor)
+                            .opacity(0.3)
+                    )
+            }
         }
     }
     
@@ -59,7 +80,7 @@ struct QuickWeek: View {
 
 struct QuickWeek_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = QuickWeek.ViewModel(selectedDay: .constant(Date()))
+        let viewModel = QuickWeek.ViewModel(selectedDay: .constant(Date()), showingContextButtons: .constant(false), blurAmount: 0)
             return QuickWeek(viewModel: viewModel)
         }
 }

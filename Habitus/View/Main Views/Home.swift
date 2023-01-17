@@ -16,31 +16,7 @@ struct Home: View {
             NavigationView {
                 ZStack {
                     VStack {
-                        HStack {
-                            QuickWeek(viewModel: .init(selectedDay: $viewModel.selectedDay))
-                                .blur(radius: viewModel.blurRadius())
-                            
-                            Button {
-                                withAnimation {
-                                    viewModel.showContextButtons = true
-                                }
-                            } label: {
-                                Text("+")
-                                    .frame(width: 40, height: 40)
-                                    .font(.system(size: 500))
-                                    .minimumScaleFactor(0.01)
-                                    .font(.title3.bold())
-                                    .offset(y: -2)
-                                    .opacity(colorScheme == .dark ? 0.8 : 0.6)
-                                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                                    .background(
-                                        Circle()
-                                            .strokeBorder(lineWidth: 3)
-                                            .foregroundColor(.mainColor)
-                                            .opacity(0.3)
-                                    )
-                            }
-                        }
+                        QuickWeek(viewModel: .init(selectedDay: $viewModel.selectedDay, showingContextButtons: $viewModel.showingContextButtons, blurAmount: viewModel.blurRadius()))
                         
                         Spacer()
                         
@@ -59,61 +35,8 @@ struct Home: View {
                         
                         Spacer()
                     }
-                    if viewModel.showContextButtons {
-                        RoundedRectangle(cornerRadius: 12)
-                            .background(colorScheme == .dark ? .black : .white)
-                            .ignoresSafeArea()
-                            .opacity(0.01)
-                            .onTapGesture {
-                                withAnimation {
-                                    viewModel.showContextButtons = false
-                                }
-                            }
-                        
-                        VStack {
-                            Button {
-                                withAnimation {
-                                    viewModel.showContextButtons = false
-                                }
-                                viewModel.showingHabitList = true
-                            } label: {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .foregroundColor(
-                                        colorScheme == .dark ? Color.darkModeButton : Color.lightModeButton
-                                    )
-                                    .frame(width: 70, height: 70)
-                                    .shadow(radius: 4, y: 4)
-                                    .overlay(
-                                        Text("New Habit")
-                                            .font(.title2.bold())
-                                            .foregroundColor(colorScheme == .dark ? .white : Color.lightModeSubtext)
-                                            .multilineTextAlignment(.center)
-                                    )
-                            }
-                            
-                            Button {
-                                withAnimation {
-                                    viewModel.showContextButtons = false
-                                }
-                                viewModel.showingHabitList = true
-                            } label: {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .foregroundColor(
-                                        colorScheme == .dark ? Color.darkModeButton : Color.lightModeButton
-                                    )
-                                    .frame(width: 70, height: 170)
-                                    .shadow(radius: 4, y: 4)
-                                    .overlay(
-                                        Text("New Habit")
-                                            .font(.title2.bold())
-                                            .foregroundColor(colorScheme == .dark ? .white : Color.lightModeSubtext)
-                                            .multilineTextAlignment(.center)
-                                    )
-                            }
-                        }
-                        .position(x: geo.size.width * 0.86, y: geo.size.height * 0.24)
-                        
-                    }
+                    
+                    viewModel.showContextButtons(x: geo.size.width, y: geo.size.height, colorSchemeDark: colorScheme == .dark)
                 }
                 .sheet(isPresented: $viewModel.showingSort) {
                     VStack(alignment: .center) {
@@ -173,6 +96,8 @@ struct Home: View {
             }
         }
     }
+    
+    
 }
 
 struct Home_Previews: PreviewProvider {
