@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct HabitusApp: App {
+    @StateObject private var dataController = DataController()
     @State private var welcome = UserDefaults.standard.welcomeShown
     
     var body: some Scene {
@@ -16,6 +17,7 @@ struct HabitusApp: App {
             switch welcome {
             case true:
                 ContentView()
+                    .environment(\.managedObjectContext, dataController.container.viewContext)
                     .transition(.scale)
                     .onAppear {
                         if !UserDefaults.standard.welcomeShown { UserDefaults.standard.welcomeShown = true }

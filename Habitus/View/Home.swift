@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Home: View {
+    @Environment(\.managedObjectContext) var moc
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var viewModel = ViewModel()
     
@@ -36,7 +37,7 @@ struct Home: View {
                         Spacer()
                     }
                     
-                    ContextMenu(viewModel: .init(showingMenu: $viewModel.showingContextButtons, showingHabitList: $viewModel.showingHabitList, screehWidth: geo.size.width, screenHeight: geo.size.height))
+                    ContextMenu(viewModel: .init(showingMenu: $viewModel.showingContextButtons, showingHabitList: $viewModel.showingHabitList, screehWidth: geo.size.width, screenHeight: geo.size.height, colorSchemeIsDark: colorScheme == .dark))
                 }
                 .sheet(isPresented: $viewModel.showingSort) {
                     VStack(alignment: .center) {
@@ -88,8 +89,6 @@ struct Home: View {
             }
         }
     }
-    
-    
 }
 
 struct Home_Previews: PreviewProvider {

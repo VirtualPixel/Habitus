@@ -3,7 +3,7 @@ Meet Habitus - a habit and mood tracking application. With a list of pre-built h
 
 You're also able to set reminders, custom goals, icons, colors, and more. It will keep track of the streaks you have on each habit, and motivate you to keep it going. 
 
-With a personalized approach, Habits will be able to fit your needs.
+With a personalized approach, Habitus will be able to fit your needs.
 
 ## Preview
 List your Habits:
