@@ -168,7 +168,6 @@
 				57D810812975895000B2DB18 /* Date.swift */,
 				57FE8A152973B844008287AF /* ImagePicker.swift */,
 				57FE8A132973A427008287AF /* Modifiers.swift */,
-				579025F9297560CC009649D0 /* Habitus.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +175,7 @@
 		57FE89F52971C9A7008287AF /* DataManagement */ = {
 			isa = PBXGroup;
 			children = (
+				579025F9297560CC009649D0 /* Habitus.xcdatamodeld */,
 				57FE89F22971C7D0008287AF /* UserDefaults.swift */,
 				57A6E669297454D7004AA69C /* FileManager-DocumentsDirectory.swift */,
 			);

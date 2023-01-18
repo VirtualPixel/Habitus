@@ -7,16 +7,16 @@ With a personalized approach, Habits will be able to fit your needs.
 
 ## Preview
 List your Habits:
-<img src="Preview_Images/Habits_List.png" width="472" height="511">
+<br><img src="Preview_Images/Habits_List.png" width="472" height="511"><img src="Preview_Images/Habits_List_Dark.png" width="472" height="511"><br>
 
 Create new habits or set your current mood:
-<img src="Preview_Images/New_Habit.png" width="191" height="511">
+<br><img src="Preview_Images/New_Habit.png" width="191" height="511"><img src="Preview_Images/New_Habit_Dark.png" width="191" height="511"><br>
 
 Track your habits and mood over time:
-<img src="Preview_Images/Stats_View.png" width="511" height="450">
+<br><img src="Preview_Images/Stats_View.png" width="511" height="450"><img src="Preview_Images/Stats_View_Dark.png" width="511" height="450"><br>
 
 Make custom habits to suit your needs:
-<img src="Preview_Images/Create_Habit.png" width="252" height="511">
+<br><img src="Preview_Images/Create_Habit.png" width="252" height="511"><img src="Preview_Images/Create_Habit_Dark.png" width="252" height="511"><br>
 
 
 ## Note worthy technologies/frameworks

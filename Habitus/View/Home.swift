@@ -56,15 +56,7 @@ struct Home: View {
                     .presentationDetents([.fraction(0.25), .medium])
                 }
                 .sheet(isPresented: $viewModel.showingSettings) {
-                    VStack(alignment: .center) {
-                        Text("Settings")
-                            .font(.title2.bold())
-                            .padding(.top)
-                        
-                        Spacer()
-                        
-                        
-                    }
+                    Settings()
                     .presentationDetents([.large, .large])
                 }
                 .sheet(isPresented: $viewModel.showingHabitList) {
