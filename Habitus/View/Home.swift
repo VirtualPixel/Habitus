@@ -72,7 +72,6 @@ struct Home: View {
                             viewModel.showingSort = true
                         } label: {
                             Image(systemName: "arrow.up.arrow.down")
-                                .foregroundColor(Color(UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1.00)))
                         }
                         .blur(radius: viewModel.blurRadius())
                     }
@@ -81,7 +80,6 @@ struct Home: View {
                             viewModel.showingSettings = true
                         } label: {
                             Image(systemName: "gearshape")
-                                .foregroundColor(Color(UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1.00)))
                         }
                         .blur(radius: viewModel.blurRadius())
                     }

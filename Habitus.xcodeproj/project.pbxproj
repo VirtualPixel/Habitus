@@ -29,6 +29,9 @@
 		57B4050E297849E6008D2371 /* Reminders+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4050C297849E6008D2371 /* Reminders+CoreDataClass.swift */; };
 		57B4050F297849E6008D2371 /* Reminders+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4050D297849E6008D2371 /* Reminders+CoreDataProperties.swift */; };
 		57B4051129784E5E008D2371 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4051029784E5E008D2371 /* DataController.swift */; };
+		57B4051829789D0A008D2371 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4051729789D0A008D2371 /* IconPicker.swift */; };
+		57B4051A29789D7F008D2371 /* IconPicker-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4051929789D7F008D2371 /* IconPicker-ViewModel.swift */; };
+		57B4051F2978A336008D2371 /* ColorBlended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4051E2978A336008D2371 /* ColorBlended.swift */; };
 		57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AA28FC3602002BD16A /* HabitusApp.swift */; };
 		57C151AD28FC3602002BD16A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AC28FC3602002BD16A /* ContentView.swift */; };
 		57C151AF28FC3603002BD16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151AE28FC3603002BD16A /* Assets.xcassets */; };
@@ -68,6 +71,9 @@
 		57B4050C297849E6008D2371 /* Reminders+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminders+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57B4050D297849E6008D2371 /* Reminders+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminders+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57B4051029784E5E008D2371 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		57B4051729789D0A008D2371 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
+		57B4051929789D7F008D2371 /* IconPicker-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IconPicker-ViewModel.swift"; sourceTree = "<group>"; };
+		57B4051E2978A336008D2371 /* ColorBlended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBlended.swift; sourceTree = "<group>"; };
 		57C151A728FC3602002BD16A /* Habitus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C151AA28FC3602002BD16A /* HabitusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitusApp.swift; sourceTree = "<group>"; };
 		57C151AC28FC3602002BD16A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -197,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				57DB0C63297741E800CC8884 /* ContextMenu.swift */,
+				57B4051729789D0A008D2371 /* IconPicker.swift */,
 				579025FC29757014009649D0 /* QuickWeek.swift */,
 			);
 			path = Elements;
@@ -206,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				57DB0C652977423C00CC8884 /* ContextMenu-ViewModel.swift */,
+				57B4051929789D7F008D2371 /* IconPicker-ViewModel.swift */,
 				579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */,
 			);
 			path = Elements;
@@ -216,6 +224,7 @@
 			children = (
 				57FE89F52971C9A7008287AF /* DataManagement */,
 				57FE89FC297201CB008287AF /* Colors.swift */,
+				57B4051E2978A336008D2371 /* ColorBlended.swift */,
 				57D810812975895000B2DB18 /* Date.swift */,
 				57FE8A132973A427008287AF /* Modifiers.swift */,
 				57FE8A152973B844008287AF /* ImagePicker.swift */,
@@ -277,6 +286,8 @@
 			dependencies = (
 			);
 			name = Habitus;
+			packageProductDependencies = (
+			);
 			productName = Habitus;
 			productReference = 57C151A728FC3602002BD16A /* Habitus.app */;
 			productType = "com.apple.product-type.application";
@@ -305,6 +316,8 @@
 				Base,
 			);
 			mainGroup = 57C1519E28FC3602002BD16A;
+			packageReferences = (
+			);
 			productRefGroup = 57C151A828FC3602002BD16A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,6 +352,7 @@
 				575D287C2976B7EA00C02513 /* CreateHabit.swift in Sources */,
 				57B4050F297849E6008D2371 /* Reminders+CoreDataProperties.swift in Sources */,
 				57B4051129784E5E008D2371 /* DataController.swift in Sources */,
+				57B4051829789D0A008D2371 /* IconPicker.swift in Sources */,
 				57B4050829784958008D2371 /* HabitProgress+CoreDataClass.swift in Sources */,
 				579025EC29755FDB009649D0 /* Stats.swift in Sources */,
 				57B4050629784958008D2371 /* Habit+CoreDataClass.swift in Sources */,
@@ -353,6 +367,7 @@
 				57FE8A142973A427008287AF /* Modifiers.swift in Sources */,
 				57FE8A162973B844008287AF /* ImagePicker.swift in Sources */,
 				57DB0C64297741E900CC8884 /* ContextMenu.swift in Sources */,
+				57B4051F2978A336008D2371 /* ColorBlended.swift in Sources */,
 				579025EE29755FE5009649D0 /* Stats-ViewModel.swift in Sources */,
 				579025F229756034009649D0 /* Profile-ViewModel.swift in Sources */,
 				57A6E66C2974577F004AA69C /* ContentView-ViewModel.swift in Sources */,
@@ -363,6 +378,7 @@
 				579025F62975606D009649D0 /* Settings-ViewModel.swift in Sources */,
 				57C151AD28FC3602002BD16A /* ContentView.swift in Sources */,
 				57D810822975895000B2DB18 /* Date.swift in Sources */,
+				57B4051A29789D7F008D2371 /* IconPicker-ViewModel.swift in Sources */,
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
 				579025FD29757014009649D0 /* QuickWeek.swift in Sources */,
 			);

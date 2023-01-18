@@ -29,6 +29,7 @@ struct ContextMenu: View {
                 MenuButton(label: "New Habit", buttonColor: buttonColor, buttonText: buttonText, width: 70, height: 70, action: {
                    withAnimation {
                        viewModel.showingMenu = false
+                       viewModel.showingHabitList = true
                    }
                 })
                 

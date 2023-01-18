@@ -8,10 +8,35 @@
 import SwiftUI
 
 struct CreateHabit: View {
+    @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                HStack {
+                    VStack {
+                        IconPicker()
+                    }
+                }
+            }
+            .toolbar() {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Save")
+                    }
+                }
+            }
+        }
     }
 }
 
