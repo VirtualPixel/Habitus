@@ -27,4 +27,12 @@ extension Color {
     public static var darkModeButton: Color {
         Color(UIColor(red: 0.21, green: 0.21, blue: 0.21, alpha: 1.00))
     }
+    
+    public static var darkModeSelected: Color {
+        Color(UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1.00))
+    }
+    
+    public static var lightModeFormBackground: Color {
+        Color(UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.00))
+    }
 }

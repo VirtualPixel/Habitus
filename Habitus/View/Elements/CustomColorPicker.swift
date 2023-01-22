@@ -1,18 +1,15 @@
 //
-//  IconPicker.swift
+//  CustomColorPicker.swift
 //  Habitus
 //
-//  Created by Justin Wells on 1/18/23.
+//  Created by Justin Wells on 1/19/23.
 //
 
 import SwiftUI
 
-struct IconPicker: View {
+struct CustomColorPicker: View {
     @Environment(\.colorScheme) var colorScheme
-    //@StateObject private var viewModel: ViewModel
-    @StateObject private var viewModel = ViewModel()
-    @Binding var selectedIcon: String
-    @Binding private var color: Color
+    @StateObject private var viewModel: ViewModel
     
     var body: some View {
         ZStack {
@@ -20,7 +17,7 @@ struct IconPicker: View {
                 menuView
                     .padding([.top, .bottom], 200)
             } else {
-                selectedIconView
+                selectedColorView
             }
         }
     }
@@ -29,7 +26,7 @@ struct IconPicker: View {
         ZStack {
             backgroundView
             VStack {
-                iconView(selectedIcon)
+                colorView(viewModel.selectedColor)
                     .padding([.bottom, .top], 10)
                     .onTapGesture {
                         withAnimation(.easeInOut) {
@@ -41,9 +38,9 @@ struct IconPicker: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4)) {
-                        ForEach(viewModel.icons, id: \.self) { icon in
-                            IconButton(icon: icon, isSelected: selectedIcon == icon, color: color, onSelection: {
-                                selectedIcon = icon
+                        ForEach(viewModel.colors, id: \.self) { color in
+                            ColorButton(isSelected: viewModel.selectedColor == color, color: color, onSelection: {
+                                viewModel.selectedColor = color
                                 withAnimation(.easeInOut) {
                                     viewModel.showingMenu = false
                                 }
@@ -64,18 +61,15 @@ struct IconPicker: View {
         .transition(AnyTransition.scale.animation(.easeInOut(duration: viewModel.showingMenu ? 0.2 : 0.5)))
     }
     
-    private var selectedIconView: some View {
+    private var selectedColorView: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(colorScheme == .dark ? Color.darkModeButton : .white)
             
-            Image(selectedIcon)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            Circle()
+                .foregroundColor(viewModel.selectedColor)
                 .padding()
-                .blending(color: color)
         }
-        .zIndex(0)
         .frame(width: 120, height: 120)
         .onTapGesture {
             withAnimation(.easeInOut) {
@@ -96,29 +90,25 @@ struct IconPicker: View {
             }
     }
     
-    private func iconView(_ icon: String) -> some View {
+    private func colorView(_ color: Color) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(colorScheme == .dark ? Color.darkModeButton : .white)
             
-            Image(icon)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            Circle()
+                .foregroundColor(viewModel.selectedColor)
                 .padding()
-                .blending(color: color)
         }
         .frame(width: 120, height: 120)
     }
     
-    init(selectedIcon: Binding<String>, color: Binding<Color>) {
-        self._selectedIcon = selectedIcon
-        self._color = color
+    init(selectedColor: Binding<Color>) {
+        _viewModel = StateObject(wrappedValue: ViewModel(selectedColor: selectedColor))
     }
 }
 
-struct IconButton: View {
+struct ColorButton: View {
     @Environment(\.colorScheme) var colorScheme
-    let icon: String
     let isSelected: Bool
     let color: Color
     let onSelection: () -> Void
@@ -130,21 +120,19 @@ struct IconButton: View {
                     .fill(colorScheme == .dark ?  Color.darkModeSelected : Color.lightModeButton)
             }
 
-            Image(icon)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding()
-                .blending(color: color)
+            Circle()
+                .foregroundColor(color)
+                .padding(10)
                 .onTapGesture {
                     onSelection()
+                    print("Button tapped")
                 }
         }
     }
 }
 
-
-struct IconPicker_Previews: PreviewProvider {
+struct CustomColorPicker_Previews: PreviewProvider {
     static var previews: some View {
-        IconPicker(selectedIcon: .constant("heart"), color: .constant(Color(.systemPink)))
+        CustomColorPicker(selectedColor: .constant(.accentColor))
     }
 }

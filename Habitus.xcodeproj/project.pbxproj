@@ -36,6 +36,8 @@
 		57C151AD28FC3602002BD16A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C151AC28FC3602002BD16A /* ContentView.swift */; };
 		57C151AF28FC3603002BD16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151AE28FC3603002BD16A /* Assets.xcassets */; };
 		57C151B228FC3603002BD16A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C151B128FC3603002BD16A /* Preview Assets.xcassets */; };
+		57D5B2792979C60F00F5D926 /* CustomColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5B2782979C60F00F5D926 /* CustomColorPicker.swift */; };
+		57D5B27B2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D5B27A2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift */; };
 		57D810822975895000B2DB18 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D810812975895000B2DB18 /* Date.swift */; };
 		57DB0C64297741E900CC8884 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB0C63297741E800CC8884 /* ContextMenu.swift */; };
 		57DB0C662977423C00CC8884 /* ContextMenu-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB0C652977423C00CC8884 /* ContextMenu-ViewModel.swift */; };
@@ -46,6 +48,7 @@
 		57FE89FF29720366008287AF /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 57FE89FE29720366008287AF /* Fonts */; };
 		57FE8A142973A427008287AF /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE8A132973A427008287AF /* Modifiers.swift */; };
 		57FE8A162973B844008287AF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE8A152973B844008287AF /* ImagePicker.swift */; };
+		57FED4F62979432000E70396 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FED4F52979432000E70396 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +82,8 @@
 		57C151AC28FC3602002BD16A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57C151AE28FC3603002BD16A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C151B128FC3603002BD16A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		57D5B2782979C60F00F5D926 /* CustomColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorPicker.swift; sourceTree = "<group>"; };
+		57D5B27A2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomColorPicker-ViewModel.swift"; sourceTree = "<group>"; };
 		57D810812975895000B2DB18 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		57DB0C63297741E800CC8884 /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		57DB0C652977423C00CC8884 /* ContextMenu-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContextMenu-ViewModel.swift"; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 		57FE89FE29720366008287AF /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		57FE8A132973A427008287AF /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		57FE8A152973B844008287AF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		57FED4F52979432000E70396 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				57DB0C63297741E800CC8884 /* ContextMenu.swift */,
+				57D5B2782979C60F00F5D926 /* CustomColorPicker.swift */,
 				57B4051729789D0A008D2371 /* IconPicker.swift */,
 				579025FC29757014009649D0 /* QuickWeek.swift */,
 			);
@@ -213,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				57DB0C652977423C00CC8884 /* ContextMenu-ViewModel.swift */,
+				57D5B27A2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift */,
 				57B4051929789D7F008D2371 /* IconPicker-ViewModel.swift */,
 				579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */,
 			);
@@ -238,6 +246,7 @@
 				578B832729784876006F9056 /* Persistance */,
 				57FE89F22971C7D0008287AF /* UserDefaults.swift */,
 				57A6E669297454D7004AA69C /* FileManager-DocumentsDirectory.swift */,
+				57FED4F52979432000E70396 /* Constants.swift */,
 			);
 			path = DataManagement;
 			sourceTree = "<group>";
@@ -359,6 +368,7 @@
 				579025F429756061009649D0 /* Settings.swift in Sources */,
 				57FE89F32971C7D0008287AF /* UserDefaults.swift in Sources */,
 				57FE89F12971C56A008287AF /* Welcome.swift in Sources */,
+				57D5B27B2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift in Sources */,
 				57B4050929784958008D2371 /* HabitProgress+CoreDataProperties.swift in Sources */,
 				579025E829755FAC009649D0 /* Home.swift in Sources */,
 				57FE89F82971E5DF008287AF /* Welcome-ViewModel.swift in Sources */,
@@ -377,9 +387,11 @@
 				579025FB297560CC009649D0 /* Habitus.xcdatamodeld in Sources */,
 				579025F62975606D009649D0 /* Settings-ViewModel.swift in Sources */,
 				57C151AD28FC3602002BD16A /* ContentView.swift in Sources */,
+				57D5B2792979C60F00F5D926 /* CustomColorPicker.swift in Sources */,
 				57D810822975895000B2DB18 /* Date.swift in Sources */,
 				57B4051A29789D7F008D2371 /* IconPicker-ViewModel.swift in Sources */,
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
+				57FED4F62979432000E70396 /* Constants.swift in Sources */,
 				579025FD29757014009649D0 /* QuickWeek.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

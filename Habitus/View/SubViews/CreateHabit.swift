@@ -8,16 +8,29 @@
 import SwiftUI
 
 struct CreateHabit: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
-        NavigationView {
-            Form {
+        NavigationStack {
+            VStack {
                 HStack {
                     VStack {
-                        IconPicker()
+                        IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor)
+                        CustomColorPicker(selectedColor: $viewModel.selectedColor)
                     }
+                    Image(viewModel.selectedIcon)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .blending(color: viewModel.selectedColor)
+                }
+                
+                Spacer()
+                Button {
+                    print(viewModel.selectedColor)
+                } label: {
+                    Text("Print")
                 }
             }
             .toolbar() {
@@ -36,6 +49,7 @@ struct CreateHabit: View {
                     }
                 }
             }
+            .background(colorScheme == .dark ? .black : Color.lightModeFormBackground)
         }
     }
 }
