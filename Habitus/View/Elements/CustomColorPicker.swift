@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CustomColorPicker: View {
     @Environment(\.colorScheme) var colorScheme
-    @StateObject private var viewModel: ViewModel
+    @StateObject private var viewModel = ViewModel()
+    @Binding var selectedColor: Color
     
     var body: some View {
         ZStack {
@@ -26,7 +27,7 @@ struct CustomColorPicker: View {
         ZStack {
             backgroundView
             VStack {
-                colorView(viewModel.selectedColor)
+                colorView(selectedColor)
                     .padding([.bottom, .top], 10)
                     .onTapGesture {
                         withAnimation(.easeInOut) {
@@ -39,8 +40,8 @@ struct CustomColorPicker: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4)) {
                         ForEach(viewModel.colors, id: \.self) { color in
-                            ColorButton(isSelected: viewModel.selectedColor == color, color: color, onSelection: {
-                                viewModel.selectedColor = color
+                            ColorButton(isSelected: selectedColor == color, color: color, onSelection: {
+                                selectedColor = color
                                 withAnimation(.easeInOut) {
                                     viewModel.showingMenu = false
                                 }
@@ -67,7 +68,7 @@ struct CustomColorPicker: View {
                 .foregroundColor(colorScheme == .dark ? Color.darkModeButton : .white)
             
             Circle()
-                .foregroundColor(viewModel.selectedColor)
+                .foregroundColor(selectedColor)
                 .padding()
         }
         .frame(width: 120, height: 120)
@@ -96,14 +97,14 @@ struct CustomColorPicker: View {
                 .foregroundColor(colorScheme == .dark ? Color.darkModeButton : .white)
             
             Circle()
-                .foregroundColor(viewModel.selectedColor)
+                .foregroundColor(selectedColor)
                 .padding()
         }
         .frame(width: 120, height: 120)
     }
     
     init(selectedColor: Binding<Color>) {
-        _viewModel = StateObject(wrappedValue: ViewModel(selectedColor: selectedColor))
+        self._selectedColor = selectedColor
     }
 }
 

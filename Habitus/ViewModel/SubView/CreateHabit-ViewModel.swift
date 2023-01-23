@@ -16,6 +16,7 @@ extension CreateHabit {
         
         init() {
             self.selectedIcon = ConstantContainers().iconNames.randomElement() ?? "heart"
+            self.selectedColor = ConstantContainers().colorNames.randomElement() ?? .purple
         }
     }
 }

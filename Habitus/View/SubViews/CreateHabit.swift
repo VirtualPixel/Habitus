@@ -27,11 +27,6 @@ struct CreateHabit: View {
                 }
                 
                 Spacer()
-                Button {
-                    print(viewModel.selectedColor)
-                } label: {
-                    Text("Print")
-                }
             }
             .toolbar() {
                 ToolbarItem(placement: .navigationBarLeading) {

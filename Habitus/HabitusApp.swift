@@ -27,7 +27,6 @@ struct HabitusApp: App {
             }
         }*/
         WindowGroup {
-            //IconPicker(color: Color(.systemPink))
             CreateHabit()
         }
     }
