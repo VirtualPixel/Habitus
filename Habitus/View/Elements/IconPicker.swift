@@ -12,11 +12,12 @@ struct IconPicker: View {
     @StateObject private var viewModel = ViewModel()
     @Binding var selectedIcon: String
     @Binding private var color: Color
+    @Binding private var showingMenu: Bool
     
     var body: some View {
         selectedIconView
         .overlay(
-            viewModel.showingMenu ?
+            showingMenu ?
             menuView
                 .position(x: viewModel.deviceSize.width / 2.15, y: viewModel.deviceSize.height / 2)
             :
@@ -32,7 +33,7 @@ struct IconPicker: View {
                     .padding([.bottom, .top], 10)
                     .onTapGesture {
                         withAnimation(.easeInOut) {
-                            viewModel.showingMenu = false
+                            showingMenu = false
                         }
                     }
                 
@@ -44,7 +45,7 @@ struct IconPicker: View {
                             IconButton(icon: icon, isSelected: selectedIcon == icon, color: color, onSelection: {
                                 selectedIcon = icon
                                 withAnimation(.easeInOut) {
-                                    viewModel.showingMenu = false
+                                    showingMenu = false
                                 }
                             })
                         }
@@ -60,7 +61,7 @@ struct IconPicker: View {
             )
             .frame(width: viewModel.deviceSize.width * 0.95, height: viewModel.deviceSize.height * 0.6)
         }
-        .transition(AnyTransition.scale.animation(.easeInOut(duration: viewModel.showingMenu ? 0.2 : 0.5)))
+        .transition(AnyTransition.scale.animation(.easeInOut(duration: showingMenu ? 0.2 : 0.5)))
     }
     
     private var selectedIconView: some View {
@@ -78,10 +79,10 @@ struct IconPicker: View {
         .frame(width: 120, height: 120)
         .onTapGesture {
             withAnimation(.easeInOut) {
-                viewModel.showingMenu = true
+                showingMenu = true
             }
         }
-        .transition(AnyTransition.scale.animation(.easeInOut(duration: viewModel.showingMenu ? 0.2 : 0.5)))
+        .transition(AnyTransition.scale.animation(.easeInOut(duration: showingMenu ? 0.2 : 0.5)))
     }
     
     private var backgroundView: some View {
@@ -90,7 +91,7 @@ struct IconPicker: View {
             .frame(width: viewModel.deviceSize.width, height: viewModel.deviceSize.height)
             .onTapGesture {
                 withAnimation(.easeInOut) {
-                    viewModel.showingMenu = false
+                    showingMenu = false
                 }
             }
     }
@@ -109,9 +110,10 @@ struct IconPicker: View {
         .frame(width: 120, height: 120)
     }
     
-    init(selectedIcon: Binding<String>, color: Binding<Color>) {
+    init(selectedIcon: Binding<String>, color: Binding<Color>, isShowing: Binding<Bool>) {
         self._selectedIcon = selectedIcon
         self._color = color
+        self._showingMenu = isShowing
     }
 }
 
@@ -144,6 +146,6 @@ struct IconButton: View {
 
 struct IconPicker_Previews: PreviewProvider {
     static var previews: some View {
-        IconPicker(selectedIcon: .constant("heart"), color: .constant(Color(.systemPink)))
+        IconPicker(selectedIcon: .constant("heart"), color: .constant(Color(.systemPink)), isShowing: .constant(false))
     }
 }

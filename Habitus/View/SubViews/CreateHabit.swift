@@ -18,10 +18,10 @@ struct CreateHabit: View {
                 VStack {
                     HStack {
                         VStack {
-                            IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor)
-                                .zIndex(1)
+                            IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor, isShowing: $viewModel.isIconPickerSelected)
+                                .zIndex(viewModel.isIconPickerSelected ? 1 : -2)
                             CustomColorPicker(selectedColor: $viewModel.selectedColor)
-                                .zIndex(-2)
+                                .zIndex(viewModel.isIconPickerSelected ? -2 : 1)
                         }
                         
                         Spacer()
@@ -35,7 +35,6 @@ struct CreateHabit: View {
                                 .lineLimit(6)
                                 .frame(height: 160)
                                 .padding(5)
-                                
                         }
                         .background (
                             RoundedRectangle(cornerRadius: 12)
@@ -69,7 +68,6 @@ struct CreateHabit: View {
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(colorScheme == .dark ? .black : Color.lightModeFormBackground)
-                
             }
         }
     }

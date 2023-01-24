@@ -9,6 +9,8 @@ import SwiftUI
 
 extension CreateHabit {
     class ViewModel: ObservableObject {
+        @Published var isIconPickerSelected = false
+        
         // habit attributes
         @Published var selectedIcon: String
         @Published var selectedColor: Color = Color.accentColor

@@ -8,9 +8,7 @@
 import SwiftUI
 
 extension IconPicker {
-    class ViewModel: ObservableObject {
-        @Published var showingMenu = false
-        
+    class ViewModel: ObservableObject {        
         let deviceSize = UIScreen.main.bounds
         let icons = ConstantContainers().iconNames
         
