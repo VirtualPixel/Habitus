@@ -13,14 +13,14 @@ struct CustomColorPicker: View {
     @Binding var selectedColor: Color
     
     var body: some View {
-        ZStack {
-            if viewModel.showingMenu {
-                menuView
-                    .padding([.top, .bottom], 200)
-            } else {
-                selectedColorView
-            }
-        }
+        selectedColorView
+        .overlay(
+            viewModel.showingMenu ?
+            menuView
+                .position(x: viewModel.deviceSize.width / 2.15, y: viewModel.deviceSize.height / 2.6)
+            :
+            nil
+        )
     }
     
     private var menuView: some View {

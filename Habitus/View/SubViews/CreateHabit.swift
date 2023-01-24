@@ -14,37 +14,63 @@ struct CreateHabit: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                HStack {
-                    VStack {
-                        IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor)
-                        CustomColorPicker(selectedColor: $viewModel.selectedColor)
+             ZStack {
+                VStack {
+                    HStack {
+                        VStack {
+                            IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor)
+                                .zIndex(1)
+                            CustomColorPicker(selectedColor: $viewModel.selectedColor)
+                                .zIndex(-2)
+                        }
+                        
+                        Spacer()
+                        
+                        VStack {
+                            TextField("Name", text: $viewModel.name)
+                                .frame(height: 50)
+                                .padding(5)
+                            Divider()
+                            TextField("Description (Optional)", text: $viewModel.description, axis: .vertical)
+                                .lineLimit(6)
+                                .frame(height: 160)
+                                .padding(5)
+                                
+                        }
+                        .background (
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(colorScheme == .dark ?  Color.darkModeButton : .white)
+                        )
+                        .zIndex(-3)
                     }
-                    Image(viewModel.selectedIcon)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .blending(color: viewModel.selectedColor)
+                    
+                    Spacer()
+                    
                 }
+                .toolbar() {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("Cancel")
+                                .foregroundColor(viewModel.selectedColor)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("Save")
+                                .foregroundColor(viewModel.selectedColor)
+                        }
+                        .disabled(viewModel.disableButton())
+                    }
+                }
+                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(colorScheme == .dark ? .black : Color.lightModeFormBackground)
                 
-                Spacer()
             }
-            .toolbar() {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Cancel")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Save")
-                    }
-                }
-            }
-            .background(colorScheme == .dark ? .black : Color.lightModeFormBackground)
         }
     }
 }

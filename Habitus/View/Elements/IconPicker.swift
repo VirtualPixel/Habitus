@@ -9,20 +9,19 @@ import SwiftUI
 
 struct IconPicker: View {
     @Environment(\.colorScheme) var colorScheme
-    //@StateObject private var viewModel: ViewModel
     @StateObject private var viewModel = ViewModel()
     @Binding var selectedIcon: String
     @Binding private var color: Color
     
     var body: some View {
-        ZStack {
-            if viewModel.showingMenu {
-                menuView
-                    .padding([.top, .bottom], 200)
-            } else {
-                selectedIconView
-            }
-        }
+        selectedIconView
+        .overlay(
+            viewModel.showingMenu ?
+            menuView
+                .position(x: viewModel.deviceSize.width / 2.15, y: viewModel.deviceSize.height / 2)
+            :
+            nil
+        )
     }
     
     private var menuView: some View {
