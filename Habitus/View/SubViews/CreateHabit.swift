@@ -42,6 +42,7 @@ struct CreateHabit: View {
                         )
                         .zIndex(-3)
                     }
+                    .padding([.top, .bottom])
                     
                     Spacer()
                     

@@ -126,7 +126,6 @@ struct ColorButton: View {
                 .padding(10)
                 .onTapGesture {
                     onSelection()
-                    print("Button tapped")
                 }
         }
     }
