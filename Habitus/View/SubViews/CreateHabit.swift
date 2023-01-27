@@ -69,7 +69,7 @@ struct CreateHabit: View {
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(colorScheme == .dark ? .black : Color.lightModeFormBackground)
-            }
+            }//
         }
     }
 }
