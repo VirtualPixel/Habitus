@@ -28,10 +28,12 @@ extension CreateHabit {
                 }
             }
         }
+        @Published var unit: Unit = .hours
+        @Published var unitAmount = 0.5
         
         init() {
-            self.selectedIcon = ConstantContainers().iconNames.randomElement() ?? "heart"
-            self.selectedColor = ConstantContainers().colorNames.randomElement() ?? .purple
+            self.selectedIcon = ConstantContainers().iconNames.randomElement()!
+            self.selectedColor = ConstantContainers().colorNames.randomElement()!
         }
         
         func disableButton() -> Bool {

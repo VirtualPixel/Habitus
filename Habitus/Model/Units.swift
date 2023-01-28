@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Unit: String {
+enum Unit: String, Equatable, CaseIterable {
     case ounces = "ounce"
     case steps = "step"
     case minutes = "minute"
@@ -20,6 +20,7 @@ enum Unit: String {
     case calories = "calorie"
     case glasses = "glass"
     case pages = "page"
+    case chapters = "chapter"
     
     var incrementValues: [Double] {
         switch self {
@@ -30,9 +31,9 @@ enum Unit: String {
         case .minutes:
             return generateValues(start: 1, increment: 1, total: 60)
         case .hours:
-            return generateValues(start: 1, increment: 1, total: 0.5)
+            return generateValues(start: 1, increment: 0.5, total: 20)
         case .miles:
-            return generateValues(start: 0.5, increment: 0.5, total: 52)
+            return generateValues(start: 0.5, increment: 0.5, total: 26)
         case .kilometers:
             return generateValues(start: 1, increment: 1, total: 20)
         case .reps:
@@ -46,7 +47,9 @@ enum Unit: String {
         case .glasses:
             return generateValues(start: 1, increment: 1, total: 8)
         case .pages:
-            return generateValues(start: 1, increment: 1, total: 300)
+            return generateValues(start: 1, increment: 50, total: 1500)
+        case .chapters:
+            return generateValues(start: 1, increment: 1, total: 20)
         }
     }
 
@@ -76,11 +79,14 @@ enum Unit: String {
             return "Glasses"
         case .pages:
             return "Pages"
+        case .chapters:
+            return "Chapters"
         }
     }
     
     private func generateValues(start: Double, increment: Double, total: Double) -> [Double] {
         var values = (0..<Int(total/increment)).map { start + increment*Double($0) }
+
         let remainder = total.truncatingRemainder(dividingBy: increment)
         if remainder != 0 {
             values.append(values.last! + remainder)

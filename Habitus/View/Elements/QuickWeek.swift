@@ -38,7 +38,6 @@ struct QuickWeek: View {
                                 .offset(y: 25)
                         }
                     }
-                    
                 }
                 .tag(self.viewModel.days[index])
             }

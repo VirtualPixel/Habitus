@@ -14,62 +14,95 @@ struct CreateHabit: View {
     
     var body: some View {
         NavigationStack {
-             ZStack {
-                VStack {
-                    HStack {
-                        VStack {
-                            IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor, isShowing: $viewModel.isIconPickerSelected)
-                                .zIndex(viewModel.isIconPickerSelected ? 1 : -2)
-                            CustomColorPicker(selectedColor: $viewModel.selectedColor)
-                                .zIndex(viewModel.isIconPickerSelected ? -2 : 1)
-                        }
-                        
-                        Spacer()
-                        
-                        VStack {
-                            TextField("Name", text: $viewModel.name)
-                                .frame(height: 50)
-                                .padding(5)
-                            Divider()
-                            TextField("Description (Optional)", text: $viewModel.description, axis: .vertical)
-                                .lineLimit(6)
-                                .frame(height: 160)
-                                .padding(5)
-                        }
-                        .background (
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(colorScheme == .dark ?  Color.darkModeButton : .white)
-                        )
-                        .zIndex(-3)
+            VStack {
+                HStack {
+                    VStack {
+                        IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor, isShowing: $viewModel.isIconPickerSelected)
+                            .zIndex(viewModel.isIconPickerSelected ? 1 : -2)
+                        CustomColorPicker(selectedColor: $viewModel.selectedColor)
+                            .zIndex(viewModel.isIconPickerSelected ? -2 : 1)
                     }
-                    .padding([.top, .bottom])
                     
                     Spacer()
                     
+                    VStack {
+                        TextField("Name", text: $viewModel.name)
+                            .frame(height: 50)
+                            .padding(5)
+                        Divider()
+                        TextField("Description (Optional)", text: $viewModel.description, axis: .vertical)
+                            .lineLimit(6)
+                            .frame(height: 160)
+                            .padding(5)
+                    }
+                    .background (
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(colorScheme == .dark ?  Color.darkModeButton : .white)
+                    )
+                    .zIndex(-3)
                 }
-                .toolbar() {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Text("Cancel")
-                                .foregroundColor(viewModel.selectedColor)
+                .padding(.top, 10)
+                
+                VStack {
+                    Picker("Goal Amount", selection: $viewModel.unitAmount) {
+                        ForEach(viewModel.unit.incrementValues, id: \.self) { value in
+                                    Text("\(value.formatted())")
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Text("Save")
-                                .foregroundColor(viewModel.selectedColor)
+                    .pickerStyle(.wheel)
+                    .frame(maxWidth: .infinity, maxHeight: 130)
+                    
+                    Divider()
+                    
+                    HStack {
+                        Text("Unit Type")
+                            .bold()
+                            .font(.system(size: 22))
+                            .minimumScaleFactor(0.01)
+                        
+                        Spacer()
+                        
+                        Picker("Unit Picker", selection: $viewModel.unit) {
+                            ForEach(Unit.allCases, id:\.self) { value in
+                                Text("\(value.displayName)")
+                            }
                         }
-                        .disabled(viewModel.disableButton())
+                        .pickerStyle(.automatic)
+                        .tint(viewModel.selectedColor)
+                    }
+                    .padding([.leading, .bottom, .trailing])
+                    .zIndex(-50)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(colorScheme == .dark ? Color.darkModeButton : .white)
+                )
+                .zIndex(-500)
+                
+                Spacer()
+            }
+            .toolbar() {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Cancel")
+                            .foregroundColor(viewModel.selectedColor)
                     }
                 }
-                .padding()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(colorScheme == .dark ? .black : Color.lightModeFormBackground)
-            }//
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Save")
+                            .foregroundColor(viewModel.selectedColor)
+                    }
+                    .disabled(viewModel.disableButton())
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(colorScheme == .dark ? .black : Color.lightModeFormBackground)
         }
     }
 }
