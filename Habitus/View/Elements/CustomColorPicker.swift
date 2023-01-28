@@ -18,6 +18,7 @@ struct CustomColorPicker: View {
             viewModel.showingMenu ?
             menuView
                 .position(x: viewModel.deviceSize.width / 2.15, y: viewModel.deviceSize.height / 2.6)
+                .frame(height: 400)
             :
             nil
         )

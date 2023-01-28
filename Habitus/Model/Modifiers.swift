@@ -18,8 +18,24 @@ struct PinkButton: ViewModifier {
     }
 }
 
+struct FormBackground: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    func body(content: Content) -> some View {
+        content
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(colorScheme == .dark ? Color.darkModeButton : .white)
+            )
+            .zIndex(-500)
+    }
+}
+
 extension View {
     func pinkButton() -> some View {
         modifier(PinkButton())
+    }
+    
+    func formBackground() -> some View {
+        modifier(FormBackground())
     }
 }

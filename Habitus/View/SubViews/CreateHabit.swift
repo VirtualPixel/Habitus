@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CreateHabit: View {
     @Environment(\.colorScheme) var colorScheme
@@ -14,72 +15,74 @@ struct CreateHabit: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                HStack {
-                    VStack {
-                        IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor, isShowing: $viewModel.isIconPickerSelected)
-                            .zIndex(viewModel.isIconPickerSelected ? 1 : -2)
-                        CustomColorPicker(selectedColor: $viewModel.selectedColor)
-                            .zIndex(viewModel.isIconPickerSelected ? -2 : 1)
-                    }
-                    
-                    Spacer()
-                    
-                    VStack {
-                        TextField("Name", text: $viewModel.name)
-                            .frame(height: 50)
-                            .padding(5)
-                        Divider()
-                        TextField("Description (Optional)", text: $viewModel.description, axis: .vertical)
-                            .lineLimit(6)
-                            .frame(height: 160)
-                            .padding(5)
-                    }
-                    .background (
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(colorScheme == .dark ?  Color.darkModeButton : .white)
-                    )
-                    .zIndex(-3)
-                }
-                .padding(.top, 10)
-                
+            ScrollView {
                 VStack {
-                    Picker("Goal Amount", selection: $viewModel.unitAmount) {
-                        ForEach(viewModel.unit.incrementValues, id: \.self) { value in
-                                    Text("\(value.formatted())")
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(maxWidth: .infinity, maxHeight: 130)
-                    
-                    Divider()
-                    
                     HStack {
-                        Text("Unit Type")
-                            .bold()
-                            .font(.system(size: 22))
-                            .minimumScaleFactor(0.01)
+                        VStack {
+                            IconPicker(selectedIcon: $viewModel.selectedIcon, color: $viewModel.selectedColor, isShowing: $viewModel.isIconPickerSelected)
+                                .zIndex(viewModel.isIconPickerSelected ? 1 : -2)
+                            CustomColorPicker(selectedColor: $viewModel.selectedColor)
+                                .zIndex(viewModel.isIconPickerSelected ? -2 : 1)
+                        }
                         
                         Spacer()
                         
-                        Picker("Unit Picker", selection: $viewModel.unit) {
-                            ForEach(Unit.allCases, id:\.self) { value in
-                                Text("\(value.displayName)")
+                        VStack {
+                            TextField("Name", text: $viewModel.name)
+                                .frame(height: 50)
+                                .padding(5)
+                            Divider()
+                            TextField("Description (Optional)", text: $viewModel.description, axis: .vertical)
+                                .lineLimit(6)
+                                .frame(height: 160)
+                                .padding(5)
+                        }
+                        .background (
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(colorScheme == .dark ?  Color.darkModeButton : .white)
+                        )
+                        .zIndex(-3)
+                    }
+                    .padding(.top, 10)
+                    
+                    VStack {
+                        Picker("Goal Amount", selection: $viewModel.unitAmount) {
+                            ForEach(viewModel.unit.incrementValues, id: \.self) { value in
+                                Text("\(value.formatted())")
                             }
                         }
-                        .pickerStyle(.automatic)
-                        .tint(viewModel.selectedColor)
+                        .pickerStyle(.wheel)
+                        .frame(maxWidth: .infinity, maxHeight: 130)
+                        
+                        Divider()
+                        
+                        HStack {
+                            Text("Unit Type")
+                                .bold()
+                                .font(.system(size: 22))
+                                .minimumScaleFactor(0.01)
+                            
+                            Spacer()
+                            
+                            Picker("Unit Picker", selection: $viewModel.unit) {
+                                ForEach(Unit.allCases, id:\.self) { value in
+                                    Text("\(value.displayName)")
+                                }
+                            }
+                            .accentColor(viewModel.selectedColor)
+                        }
+                        .padding([.leading, .bottom, .trailing])
+                        .zIndex(-50)
                     }
-                    .padding([.leading, .bottom, .trailing])
-                    .zIndex(-50)
+                    .formBackground()
+                    
+                    VStack {
+                        
+                    }
+                    .formBackground()
+                    
+                    Spacer()
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(colorScheme == .dark ? Color.darkModeButton : .white)
-                )
-                .zIndex(-500)
-                
-                Spacer()
             }
             .toolbar() {
                 ToolbarItem(placement: .navigationBarLeading) {

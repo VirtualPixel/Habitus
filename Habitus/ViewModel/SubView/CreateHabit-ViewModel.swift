@@ -8,12 +8,12 @@
 import SwiftUI
 
 extension CreateHabit {
-    class ViewModel: ObservableObject {
+    @MainActor class ViewModel: ObservableObject {
         @Published var isIconPickerSelected = false
         
         // habit attributes
         @Published var selectedIcon: String
-        @Published var selectedColor: Color = Color.accentColor
+        @Published var selectedColor: Color
         @Published var name: String = "" {
             didSet {
                 if name.count > 20 {
@@ -28,8 +28,9 @@ extension CreateHabit {
                 }
             }
         }
-        @Published var unit: Unit = .hours
         @Published var unitAmount = 0.5
+        @Published private(set) var hasNotifications = false
+        var unit: Unit = .hours
         
         init() {
             self.selectedIcon = ConstantContainers().iconNames.randomElement()!
@@ -38,6 +39,12 @@ extension CreateHabit {
         
         func disableButton() -> Bool {
             name.isEmpty
+        }
+        
+        func toggleNotifications() {
+            withAnimation() {
+                hasNotifications.toggle()
+            }
         }
     }
 }
