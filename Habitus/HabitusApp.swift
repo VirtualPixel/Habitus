@@ -28,6 +28,6 @@ struct HabitusApp: App {
         }*/
         WindowGroup {
             CreateHabit()
-        }
+        }//
     }
 }
