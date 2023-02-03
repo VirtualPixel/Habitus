@@ -47,7 +47,7 @@ struct CreateHabit: View {
                     
                     VStack {
                         Picker("Goal Amount", selection: $viewModel.unitAmount) {
-                            ForEach(viewModel.unit.incrementValues, id: \.self) { value in
+                            ForEach(viewModel.unit.incrementalValues, id: \.self) { value in
                                 Text("\(value.formatted())")
                             }
                         }

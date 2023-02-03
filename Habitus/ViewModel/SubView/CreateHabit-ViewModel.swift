@@ -28,9 +28,9 @@ extension CreateHabit {
                 }
             }
         }
-        @Published var unitAmount = 0.5
+        @Published var unitAmount = 1.0
         @Published private(set) var hasNotifications = false
-        var unit: Unit = .hours
+        @Published var unit: Unit = .steps
         
         init() {
             self.selectedIcon = ConstantContainers().iconNames.randomElement()!
