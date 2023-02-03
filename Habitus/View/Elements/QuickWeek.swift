@@ -19,7 +19,7 @@ struct QuickWeek: View {
                 }) {
                     ZStack {
                         Text("\(self.viewModel.days[index].weekdayNarrow)")
-                            .frame(width: 40, height: 40)
+                            .frame(width: viewModel.circleSize, height: viewModel.circleSize)
                             .font(.title3.bold())
                             .opacity(colorScheme == .dark ? 0.8 : 0.6)
                             .foregroundColor(colorScheme == .dark ? .white : .black)
@@ -38,6 +38,7 @@ struct QuickWeek: View {
                                 .offset(y: 25)
                         }
                     }
+                    .padding(.horizontal, -1)
                 }
                 .tag(self.viewModel.days[index])
             }
@@ -55,7 +56,7 @@ struct QuickWeek: View {
                 }
             } label: {
                 Text("+")
-                    .frame(width: 40, height: 40)
+                    .frame(width: viewModel.circleSize, height: viewModel.circleSize)
                     .font(.system(size: 500))
                     .minimumScaleFactor(0.01)
                     .font(.title3.bold())

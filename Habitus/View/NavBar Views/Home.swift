@@ -36,8 +36,11 @@ struct Home: View {
                         
                         Spacer()
                     }
+                    .zIndex(-1)
                     
-                    ContextMenu(viewModel: .init(showingMenu: $viewModel.showingContextButtons, showingHabitList: $viewModel.showingHabitList, screehWidth: geo.size.width, screenHeight: geo.size.height, colorSchemeIsDark: colorScheme == .dark))
+                    
+                    ContextMenu(viewModel: .init(showingMenu: $viewModel.showingContextButtons, showingHabitList: $viewModel.showingHabitList, colorSchemeIsDark: colorScheme == .dark))
+                        .zIndex(500)
                 }
                 .sheet(isPresented: $viewModel.showingSort) {
                     VStack(alignment: .center) {

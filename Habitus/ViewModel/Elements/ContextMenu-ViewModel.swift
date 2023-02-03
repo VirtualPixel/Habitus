@@ -12,16 +12,33 @@ extension ContextMenu {
         @Binding var showingMenu: Bool
         @Binding var showingHabitList: Bool
         let colorSchemeIsDark: Bool
-        let screenWidth: CGFloat
-        let screenHeight: CGFloat
+        let deviceSize = UIScreen.main.bounds
+        let position: CGPoint
+        let buttonColor: Color
+        let buttonText: Color
         
-        init(showingMenu: Binding<Bool>, showingHabitList: Binding<Bool>, screehWidth: CGFloat, screenHeight: CGFloat, colorSchemeIsDark: Bool) {
+        init(showingMenu: Binding<Bool>, showingHabitList: Binding<Bool>, colorSchemeIsDark: Bool) {
             self._showingMenu = showingMenu
             self._showingHabitList = showingHabitList
             
-            self.screenWidth = screehWidth
-            self.screenHeight = screenHeight
             self.colorSchemeIsDark = colorSchemeIsDark
+            
+            self.buttonColor = colorSchemeIsDark ? Color.darkModeButton : Color.lightModeButton
+            self.buttonText = colorSchemeIsDark ? .white : Color.lightModeSubtext
+            
+            self.position = CGPoint(x: deviceSize.width * 0.86, y: 250)
+        }
+        
+        func closeMenu() {
+            withAnimation(.easeInOut) {
+                showingMenu = false
+            }
+        }
+        
+        func showList() {
+            withAnimation(.easeInOut) {
+                showingHabitList = true
+            }
         }
     }
 }

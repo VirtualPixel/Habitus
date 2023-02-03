@@ -13,7 +13,7 @@ struct HabitusApp: App {
     @State private var welcome = UserDefaults.standard.welcomeShown
     
     var body: some Scene {
-        /*WindowGroup {
+        WindowGroup {
             switch welcome {
             case true:
                 ContentView()
@@ -25,9 +25,9 @@ struct HabitusApp: App {
             case false:
                 Welcome(welcome: $welcome)
             }
-        }*/
-        WindowGroup {
-            CreateHabit()
         }
+        /*WindowGroup {
+            CreateHabit()
+        }*/
     }
 }
