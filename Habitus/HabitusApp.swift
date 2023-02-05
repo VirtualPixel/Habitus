@@ -26,8 +26,5 @@ struct HabitusApp: App {
                 Welcome(welcome: $welcome)
             }
         }
-        /*WindowGroup {
-            CreateHabit()
-        }*/
     }
 }

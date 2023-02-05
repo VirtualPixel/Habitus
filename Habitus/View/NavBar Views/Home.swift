@@ -52,7 +52,20 @@ struct Home: View {
                         
                         Picker("Sort habits", selection: $viewModel.selectedSort) {
                             ForEach(SortTypes.allCases) { sort in
-                                Text(sort.rawValue.capitalized)
+                                HStack {
+                                    Spacer()
+                                    Spacer()
+                                    Text(sort.rawValue.capitalized)
+                                    Spacer()
+                                    Image(systemName: "checkmark")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.accentColor)
+                                        .padding(.horizontal)
+                                        .opacity(viewModel.selectedSort == sort ? 1.0 : 0.0)
+                                    
+                                }
                             }
                         }
                         .pickerStyle(.wheel)

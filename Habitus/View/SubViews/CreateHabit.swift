@@ -101,6 +101,7 @@ struct CreateHabit: View {
                             .foregroundColor(viewModel.selectedColor)
                     }
                     .disabled(viewModel.disableButton())
+                    .opacity(viewModel.disableButton() ? 0.3: 1.0)
                 }
             }
             .padding()

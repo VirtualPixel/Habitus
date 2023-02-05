@@ -30,7 +30,7 @@ extension ContextMenu {
         }
         
         func closeMenu() {
-            withAnimation(.easeInOut) {
+            withAnimation(.easeInOut(duration: 0.3)) {
                 showingMenu = false
             }
         }
