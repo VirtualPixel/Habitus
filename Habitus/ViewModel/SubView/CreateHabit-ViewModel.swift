@@ -29,22 +29,20 @@ extension CreateHabit {
             }
         }
         @Published var unitAmount = 1.0
-        @Published private(set) var hasNotifications = false
+        @Published var hasNotifications = false
+        @Published var notificationTime: Date = Date.now
         @Published var unit: Unit = .steps
         
         init() {
             self.selectedIcon = ConstantContainers().iconNames.randomElement()!
             self.selectedColor = ConstantContainers().colorNames.randomElement()!
+            //self.notificationTime = UserDefaults().wakeUpTime.addingTimeInterval(60 * 60)
+            //print(notificationTime)
+            //print(UserDefaults().wakeUpTime)
         }
         
         func disableButton() -> Bool {
             name.isEmpty
-        }
-        
-        func toggleNotifications() {
-            withAnimation() {
-                hasNotifications.toggle()
-            }
         }
     }
 }

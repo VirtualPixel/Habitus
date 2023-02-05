@@ -77,7 +77,15 @@ struct CreateHabit: View {
                     .formBackground()
                     
                     VStack {
+                        Toggle("Remind me at time", isOn: $viewModel.hasNotifications.animation())
+                            .font(.system(size: 22))
+                            .bold()
+                            .padding()
                         
+                        if viewModel.hasNotifications {
+                            DatePicker("What time?", selection: $viewModel.notificationTime, displayedComponents: .hourAndMinute)
+                                .padding()
+                        }
                     }
                     .formBackground()
                     
