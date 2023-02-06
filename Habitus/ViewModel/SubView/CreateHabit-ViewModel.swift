@@ -5,10 +5,11 @@
 //  Created by Justin Wells on 1/17/23.
 //
 
+import CoreData
 import SwiftUI
 
 extension CreateHabit {
-    @MainActor class ViewModel: ObservableObject {
+    class ViewModel: ObservableObject {
         @Published var isIconPickerSelected = false
         
         // habit attributes
@@ -30,19 +31,19 @@ extension CreateHabit {
         }
         @Published var unitAmount = 1.0
         @Published var hasNotifications = false
-        @Published var notificationTime: Date = Date.now
+        @Published var notificationTime: Date
         @Published var unit: Unit = .steps
         
         init() {
             self.selectedIcon = ConstantContainers().iconNames.randomElement()!
             self.selectedColor = ConstantContainers().colorNames.randomElement()!
-            //self.notificationTime = UserDefaults().wakeUpTime.addingTimeInterval(60 * 60)
-            //print(notificationTime)
-            //print(UserDefaults().wakeUpTime)
+            self.notificationTime = UserDefaults().wakeUpTime.addingTimeInterval(60 * 60)
         }
         
         func disableButton() -> Bool {
             name.isEmpty
         }
+        
+        
     }
 }

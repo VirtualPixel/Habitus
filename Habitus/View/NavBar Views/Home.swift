@@ -9,18 +9,19 @@ import SwiftUI
 
 struct Home: View {
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
-        GeometryReader { geo in
-            NavigationView {
-                ZStack {
-                    VStack {
-                        QuickWeek(viewModel: .init(selectedDay: $viewModel.selectedDay, showingContextButtons: $viewModel.showingContextButtons, blurAmount: viewModel.blurRadius()))
-                        
-                        Spacer()
-                        
+        NavigationView {
+            ZStack {
+                VStack {
+                    QuickWeek(viewModel: .init(selectedDay: $viewModel.selectedDay, showingContextButtons: $viewModel.showingContextButtons, blurAmount: viewModel.blurRadius()))
+                    
+                    Spacer()
+                    
+                    if habits.isEmpty {
                         VStack {
                             Image(decorative: colorScheme == .dark ? "darkClipboards" : "empty")
                                 .resizable()
@@ -33,72 +34,90 @@ struct Home: View {
                         }
                         .blur(radius: viewModel.blurRadius())
                         .frame(width: 300)
-                        
-                        Spacer()
-                    }
-                    .zIndex(-1)
-                    
-                    
-                    ContextMenu(viewModel: .init(showingMenu: $viewModel.showingContextButtons, showingHabitList: $viewModel.showingHabitList, colorSchemeIsDark: colorScheme == .dark))
-                        .zIndex(500)
-                }
-                .sheet(isPresented: $viewModel.showingSort) {
-                    VStack(alignment: .center) {
-                        Text("Habits Order")
-                            .font(.title2.bold())
-                            .padding(.top)
-                        
-                        Spacer()
-                        
-                        Picker("Sort habits", selection: $viewModel.selectedSort) {
-                            ForEach(SortTypes.allCases) { sort in
-                                HStack {
-                                    Spacer()
-                                    Spacer()
-                                    Text(sort.rawValue.capitalized)
-                                    Spacer()
-                                    Image(systemName: "checkmark")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 20, height: 20)
-                                        .foregroundColor(.accentColor)
-                                        .padding(.horizontal)
-                                        .opacity(viewModel.selectedSort == sort ? 1.0 : 0.0)
+                    } else {
+                        VStack {
+                            List {
+                                ForEach(habits, id:\.id) { habit in
+                                    Text(habit.wrappedTitle)
+                                }
+                                .onDelete { indexSet in
+                                    let deletedHabit = self.habits[indexSet.first!]
+                                    self.moc.delete(deletedHabit)
                                     
+                                    do {
+                                        try self.moc.save()
+                                    } catch {
+                                        print("Error saving context: \(error)")
+                                    }
                                 }
                             }
                         }
-                        .pickerStyle(.wheel)
+                        
                     }
-                    .presentationDetents([.fraction(0.25), .medium])
+                    Spacer()
                 }
-                .sheet(isPresented: $viewModel.showingSettings) {
-                    Settings()
-                    .presentationDetents([.large, .large])
-                }
-                .sheet(isPresented: $viewModel.showingHabitList) {
-                    HabitList(showingView: $viewModel.showingCreateHabit)
-                        .sheet(isPresented: $viewModel.showingCreateHabit) {
-                            CreateHabit()
+                .zIndex(-1)
+                
+                
+                ContextMenu(viewModel: .init(showingMenu: $viewModel.showingContextButtons, showingHabitList: $viewModel.showingHabitList, colorSchemeIsDark: colorScheme == .dark))
+                    .zIndex(500)
+            }
+            .sheet(isPresented: $viewModel.showingSort) {
+                VStack(alignment: .center) {
+                    Text("Habits Order")
+                        .font(.title2.bold())
+                        .padding(.top)
+                    
+                    Spacer()
+                    
+                    Picker("Sort habits", selection: $viewModel.selectedSort) {
+                        ForEach(SortTypes.allCases) { sort in
+                            HStack {
+                                Spacer()
+                                Spacer()
+                                Text(sort.rawValue.capitalized)
+                                Spacer()
+                                Image(systemName: "checkmark")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(.accentColor)
+                                    .padding(.horizontal)
+                                    .opacity(viewModel.selectedSort == sort ? 1.0 : 0.0)
+                                
+                            }
                         }
-                }
-                .toolbar() {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            viewModel.showingSort = true
-                        } label: {
-                            Image(systemName: "arrow.up.arrow.down")
-                        }
-                        .blur(radius: viewModel.blurRadius())
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            viewModel.showingSettings = true
-                        } label: {
-                            Image(systemName: "gearshape")
-                        }
-                        .blur(radius: viewModel.blurRadius())
+                    .pickerStyle(.wheel)
+                }
+                .presentationDetents([.fraction(0.25), .medium])
+            }
+            .sheet(isPresented: $viewModel.showingSettings) {
+                Settings()
+                .presentationDetents([.large, .large])
+            }
+            .sheet(isPresented: $viewModel.showingHabitList) {
+                HabitList(showingView: $viewModel.showingCreateHabit)
+                    .sheet(isPresented: $viewModel.showingCreateHabit) {
+                        CreateHabit()
                     }
+            }
+            .toolbar() {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        viewModel.showingSort = true
+                    } label: {
+                        Image(systemName: "arrow.up.arrow.down")
+                    }
+                    .blur(radius: viewModel.blurRadius())
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewModel.showingSettings = true
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                    .blur(radius: viewModel.blurRadius())
                 }
             }
         }

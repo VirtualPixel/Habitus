@@ -18,11 +18,15 @@ extension Habit {
 
     @NSManaged public var about: String?
     @NSManaged public var bestStreak: Int16
-    @NSManaged public var color: String?
     @NSManaged public var currentStreak: Int16
+    
+    @NSManaged public var alpha: Float16
+    @NSManaged public var blue: Float16
+    @NSManaged public var green: Float16
+    @NSManaged public var red: Float16
 
     @NSManaged public var currentValue: Int16
-    @NSManaged public var targetValue: Int16
+    @NSManaged public var targetValue: Double
     @NSManaged public var icon: String?
     @NSManaged public var id: UUID?
     @NSManaged public var title: String?
@@ -42,16 +46,13 @@ extension Habit {
     public var wrappedBestStreak: Int16 {
         bestStreak
     }
-    public var wrappedColor: String {
-        color ?? "Unknown"
-    }
     public var wrappedCurrentStreak: Int16 {
         currentStreak
     }
     public var wrappedCurrentValue: Int16 {
         currentValue
     }
-    public var wrappedTargetValue: Int16 {
+    public var wrappedTargetValue: Double {
         targetValue
     }
     public var wrappedIcon: String {

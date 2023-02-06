@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import Combine
 
 struct CreateHabit: View {
+    @Environment(\.managedObjectContext) var moc
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel = ViewModel()
@@ -104,6 +104,7 @@ struct CreateHabit: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         dismiss()
+                        saveHabit()
                     } label: {
                         Text("Save")
                             .foregroundColor(viewModel.selectedColor)
@@ -116,6 +117,23 @@ struct CreateHabit: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(colorScheme == .dark ? .black : Color.lightModeFormBackground)
         }
+    }
+    
+    func saveHabit() {
+        let habit = Habit(context: self.moc)
+        
+        habit.id = UUID()
+        habit.reminderTime = viewModel.notificationTime
+        habit.about = viewModel.description
+        habit.title = viewModel.name
+        habit.icon = viewModel.selectedIcon
+        habit.unitType = viewModel.unit.displayName
+        habit.targetValue = viewModel.unitAmount
+        
+        // color
+        //habit.alpha = viewModel.selectedColor.
+        
+        try? moc.save()
     }
 }
 
