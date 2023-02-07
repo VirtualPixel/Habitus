@@ -34,11 +34,30 @@ struct Home: View {
                         }
                         .blur(radius: viewModel.blurRadius())
                         .frame(width: 300)
+                        .transition(AnyTransition.scale)
                     } else {
                         VStack {
                             List {
                                 ForEach(habits, id:\.id) { habit in
-                                    Text(habit.wrappedTitle)
+                                    HStack {
+                                        Image(habit.wrappedIcon)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .blending(color: habit.wrappedColor)
+                                            .frame(width: 60, height: 60)
+                                            .padding(.horizontal, 5)
+                                        Text(habit.wrappedTitle)
+                                        Spacer()
+                                        VStack {
+                                            Text("\(habit.currentValue) /")
+                                            Text("\(habit.targetValue.formatted())")
+                                            Text("\(habit.wrappedUnitType)")
+                                        }
+                                    }
+                                    .padding()
+                                    .onTapGesture {
+                                        print(habit.)
+                                    }
                                 }
                                 .onDelete { indexSet in
                                     let deletedHabit = self.habits[indexSet.first!]
@@ -51,7 +70,9 @@ struct Home: View {
                                     }
                                 }
                             }
+                            
                         }
+                        .background(.white)
                         
                     }
                     Spacer()

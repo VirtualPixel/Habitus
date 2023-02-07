@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import SwiftUI
 import CoreData
 
 
@@ -17,15 +17,14 @@ extension Habit {
     }
 
     @NSManaged public var about: String?
-    @NSManaged public var bestStreak: Int16
+    @NSManaged public var bestCompletionStreak: Int16
     @NSManaged public var currentStreak: Int16
     
-    @NSManaged public var alpha: Float16
-    @NSManaged public var blue: Float16
-    @NSManaged public var green: Float16
-    @NSManaged public var red: Float16
+    @NSManaged public var blue: Double
+    @NSManaged public var green: Double
+    @NSManaged public var red: Double
 
-    @NSManaged public var currentValue: Int16
+    @NSManaged public var currentCompletionValue: Int16
     @NSManaged public var targetValue: Double
     @NSManaged public var icon: String?
     @NSManaged public var id: UUID?
@@ -39,18 +38,19 @@ extension Habit {
 
     @NSManaged public var habitProgress: Set<HabitProgress>?
     @NSManaged public var reminders: Set<Reminders>?
+    @NSManaged public var isTodayCompleted: Bool
     
     public var wrappedAbout: String {
         about ?? "Unknown"
     }
-    public var wrappedBestStreak: Int16 {
-        bestStreak
+    public var wrappedbestCompletionStreak: Int16 {
+        bestCompletionStreak
     }
     public var wrappedCurrentStreak: Int16 {
         currentStreak
     }
-    public var wrappedCurrentValue: Int16 {
-        currentValue
+    public var wrappedCurrentCompletionValue: Int16 {
+        currentCompletionValue
     }
     public var wrappedTargetValue: Double {
         targetValue
@@ -78,6 +78,9 @@ extension Habit {
     }
     public var wrappedStreakEndDate: Date {
         streakEndDate ?? Date()
+    }
+    public var wrappedColor: Color {
+        Color(red: red, green: green, blue: blue)
     }
 
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5710E97529843D490033CA82 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710E97429843D490033CA82 /* Units.swift */; };
+		573C5673299189DE00ABC7E6 /* HabitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C5672299189DE00ABC7E6 /* HabitManager.swift */; };
 		575D287C2976B7EA00C02513 /* CreateHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D287B2976B7EA00C02513 /* CreateHabit.swift */; };
 		575D287E2976B7FE00C02513 /* CreateHabit-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */; };
 		579025E829755FAC009649D0 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579025E729755FAC009649D0 /* Home.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		5710E97429843D490033CA82 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
+		573C5672299189DE00ABC7E6 /* HabitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitManager.swift; sourceTree = "<group>"; };
 		575D287B2976B7EA00C02513 /* CreateHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabit.swift; sourceTree = "<group>"; };
 		575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateHabit-ViewModel.swift"; sourceTree = "<group>"; };
 		579025E729755FAC009649D0 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				57FE8A132973A427008287AF /* Modifiers.swift */,
 				57FE8A152973B844008287AF /* ImagePicker.swift */,
 				5710E97429843D490033CA82 /* Units.swift */,
+				573C5672299189DE00ABC7E6 /* HabitManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
 				57FED4F62979432000E70396 /* Constants.swift in Sources */,
 				579025FD29757014009649D0 /* QuickWeek.swift in Sources */,
+				573C5673299189DE00ABC7E6 /* HabitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

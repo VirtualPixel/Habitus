@@ -129,9 +129,12 @@ struct CreateHabit: View {
         habit.icon = viewModel.selectedIcon
         habit.unitType = viewModel.unit.displayName
         habit.targetValue = viewModel.unitAmount
+        habit.startDate = Date.now
         
         // color
-        //habit.alpha = viewModel.selectedColor.
+        habit.red = viewModel.selectedColor.components.r
+        habit.green = viewModel.selectedColor.components.g
+        habit.blue = viewModel.selectedColor.components.b
         
         try? moc.save()
     }
