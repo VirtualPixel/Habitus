@@ -24,7 +24,7 @@ extension Habit {
     @NSManaged public var green: Double
     @NSManaged public var red: Double
 
-    @NSManaged public var currentCompletionValue: Int16
+    @NSManaged public var currentCompletionValue: Double
     @NSManaged public var targetValue: Double
     @NSManaged public var icon: String?
     @NSManaged public var id: UUID?
@@ -49,7 +49,7 @@ extension Habit {
     public var wrappedCurrentStreak: Int16 {
         currentStreak
     }
-    public var wrappedCurrentCompletionValue: Int16 {
+    public var wrappedCurrentCompletionValue: Double {
         currentCompletionValue
     }
     public var wrappedTargetValue: Double {

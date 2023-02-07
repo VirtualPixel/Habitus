@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject private var viewModel = ViewModel()
+    @FetchRequest(sortDescriptors: []) var fetchedHabits: FetchedResults<Habit>
     
     var body: some View {
         TabView {
@@ -28,8 +29,6 @@ struct ContentView: View {
                 }
                 .tag(2)
         }
-        
-        
     }
 }
 

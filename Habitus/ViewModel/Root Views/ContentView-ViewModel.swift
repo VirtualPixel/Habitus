@@ -10,6 +10,7 @@ import SwiftUI
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
         @Published var image: Image
+        @Published var timer: Timer?
         
         func loadImage() {
            do {
@@ -20,6 +21,7 @@ extension ContentView {
                 self.image = Image("avatar")
             }
         }
+        
         
         init() {
             self.image = Image("avatar")

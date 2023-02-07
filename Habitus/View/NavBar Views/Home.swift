@@ -12,6 +12,8 @@ struct Home: View {
     @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var viewModel = ViewModel()
+    //private let habitManager: HabitManager //= HabitManager(managedObjectContext: moc)
+        
     
     var body: some View {
         NavigationView {
@@ -49,14 +51,17 @@ struct Home: View {
                                         Text(habit.wrappedTitle)
                                         Spacer()
                                         VStack {
-                                            Text("\(habit.currentValue) /")
+                                            Text("\(habit.currentCompletionValue.formatted())/")
                                             Text("\(habit.targetValue.formatted())")
                                             Text("\(habit.wrappedUnitType)")
                                         }
                                     }
                                     .padding()
                                     .onTapGesture {
-                                        print(habit.)
+                                        //HabitManager().completeHabit(habit: habit)
+                                    }
+                                    .onLongPressGesture {
+                                        //HabitManager().resetHabitProgress(habit: habit)
                                     }
                                 }
                                 .onDelete { indexSet in
@@ -142,6 +147,10 @@ struct Home: View {
                 }
             }
         }
+    }
+    
+    init() {
+        //self.habitManager = HabitManager(managedObjectContext: moc)
     }
 }
 

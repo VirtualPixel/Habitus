@@ -113,6 +113,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		577696DE2992F73C007882EE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				57FE89FC297201CB008287AF /* Colors.swift */,
+				57D810812975895000B2DB18 /* Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		577696DF2992F749007882EE /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				57B4051E2978A336008D2371 /* ColorBlended.swift */,
+				57FE8A132973A427008287AF /* Modifiers.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		577696E02992F7AF007882EE /* Image Handler */ = {
+			isa = PBXGroup;
+			children = (
+				57FE8A152973B844008287AF /* ImagePicker.swift */,
+			);
+			path = "Image Handler";
+			sourceTree = "<group>";
+		};
 		578B832729784876006F9056 /* Persistance */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,11 +283,9 @@
 			isa = PBXGroup;
 			children = (
 				57FE89F52971C9A7008287AF /* DataManagement */,
-				57FE89FC297201CB008287AF /* Colors.swift */,
-				57B4051E2978A336008D2371 /* ColorBlended.swift */,
-				57D810812975895000B2DB18 /* Date.swift */,
-				57FE8A132973A427008287AF /* Modifiers.swift */,
-				57FE8A152973B844008287AF /* ImagePicker.swift */,
+				577696DE2992F73C007882EE /* Extensions */,
+				577696DF2992F749007882EE /* Modifiers */,
+				577696E02992F7AF007882EE /* Image Handler */,
 				5710E97429843D490033CA82 /* Units.swift */,
 				573C5672299189DE00ABC7E6 /* HabitManager.swift */,
 			);
