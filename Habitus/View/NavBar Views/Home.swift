@@ -11,10 +11,8 @@ struct Home: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject private var viewModel = ViewModel()
-    //private let habitManager: HabitManager //= HabitManager(managedObjectContext: moc)
+    @StateObject private var viewModel = ViewModel()
         
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -58,10 +56,10 @@ struct Home: View {
                                     }
                                     .padding()
                                     .onTapGesture {
-                                        //HabitManager().completeHabit(habit: habit)
+                                        HabitManager(managedObjectContext: moc).completeHabit(habit: habit)
                                     }
                                     .onLongPressGesture {
-                                        //HabitManager().resetHabitProgress(habit: habit)
+                                        HabitManager(managedObjectContext: moc).resetHabitProgress(habit: habit)
                                     }
                                 }
                                 .onDelete { indexSet in
@@ -147,10 +145,10 @@ struct Home: View {
                 }
             }
         }
-    }
-    
-    init() {
-        //self.habitManager = HabitManager(managedObjectContext: moc)
+        .onAppear {
+            viewModel.checkIfNeedsToResetHabits(managedObjectContext: moc)
+        }
+        
     }
 }
 

@@ -10,18 +10,18 @@ import SwiftUI
 
 class HabitManager {
     let moc: NSManagedObjectContext
+    @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
     
     func resetHabitProgress(habit: Habit, saveHabit: Bool = true) {
         habit.currentCompletionValue = 0
-        
-        guard saveHabit else { return }
-        
-        save(habit: habit)
+        if saveHabit {
+            save(habit: habit)
+        }
     }
     
     func resetAllHabitsProgress(habits: [Habit]) {
         for habit in habits {
-            resetHabitProgress(habit: habit)
+            resetHabitProgress(habit: habit, saveHabit: false)
         }
     }
     
