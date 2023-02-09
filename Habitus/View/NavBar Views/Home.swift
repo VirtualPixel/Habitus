@@ -12,7 +12,7 @@ struct Home: View {
     @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var viewModel = ViewModel()
-    //
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -21,67 +21,11 @@ struct Home: View {
                     
                     Spacer()
                     
-                    if habits.isEmpty {
-                        VStack {
-                            Image(decorative: colorScheme == .dark ? "darkClipboards" : "empty")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .opacity(0.7)
-                            Text("Your habit journey begins here! Add your first one by clicking the plus button.")
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(colorScheme == .dark ? Color.white : Color.lightModeSubtext)
-                                .opacity(0.5)
-                        }
-                        .blur(radius: viewModel.blurRadius())
-                        .frame(width: 300)
-                        .transition(AnyTransition.scale)
-                    } else {
-                        VStack {
-                            List {
-                                ForEach(habits, id:\.id) { habit in
-                                    HStack {
-                                        Image(habit.wrappedIcon)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .blending(color: habit.wrappedColor)
-                                            .frame(width: 60, height: 60)
-                                            .padding(.horizontal, 5)
-                                        Text(habit.wrappedTitle)
-                                        Spacer()
-                                        VStack {
-                                            Text("\(habit.currentCompletionValue.formatted())/")
-                                            Text("\(habit.targetValue.formatted())")
-                                            Text("\(habit.wrappedUnitType)")
-                                        }
-                                    }
-                                    .padding()
-                                    .onTapGesture {
-                                        HabitManager(managedObjectContext: moc).completeHabit(habit: habit)
-                                    }
-                                    .onLongPressGesture {
-                                        HabitManager(managedObjectContext: moc).resetHabitProgress(habit: habit)
-                                    }
-                                }
-                                .onDelete { indexSet in
-                                    let deletedHabit = self.habits[indexSet.first!]
-                                    self.moc.delete(deletedHabit)
-                                    
-                                    do {
-                                        try self.moc.save()
-                                    } catch {
-                                        print("Error saving context: \(error)")
-                                    }
-                                }
-                            }
-                            
-                        }
-                        .background(.white)
-                        
-                    }
+                    HomeHabitMoodList()
+                    
                     Spacer()
                 }
                 .zIndex(-1)
-                
                 
                 ContextMenu(viewModel: .init(showingMenu: $viewModel.showingContextButtons, showingHabitList: $viewModel.showingHabitList, colorSchemeIsDark: colorScheme == .dark))
                     .zIndex(500)
@@ -108,7 +52,6 @@ struct Home: View {
                                     .foregroundColor(.accentColor)
                                     .padding(.horizontal)
                                     .opacity(viewModel.selectedSort == sort ? 1.0 : 0.0)
-                                
                             }
                         }
                     }
@@ -121,7 +64,7 @@ struct Home: View {
                 .presentationDetents([.large, .large])
             }
             .sheet(isPresented: $viewModel.showingHabitList) {
-                HabitList(showingView: $viewModel.showingCreateHabit)
+                DefaultHabitList(showingView: $viewModel.showingCreateHabit)
                     .sheet(isPresented: $viewModel.showingCreateHabit) {
                         CreateHabit()
                     }
@@ -150,6 +93,44 @@ struct Home: View {
         }
         
     }
+    
+    @ViewBuilder func HomeHabitMoodList() -> some View {
+        if habits.isEmpty {
+            EmptyState(colorScheme: colorScheme)
+                .frame(width: 300)
+                .blur(radius: viewModel.blurRadius())
+        } else {
+            VStack {
+                List {
+                    ForEach(habits, id:\.id) { habit in
+                        HStack {
+                            Image(habit.wrappedIcon)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .blending(color: habit.wrappedColor)
+                                .frame(width: 60, height: 60)
+                                .padding(.horizontal, 5)
+                            Text(habit.wrappedTitle)
+                            Spacer()
+                            VStack {
+                                Text("\(habit.currentCompletionValue.formatted())/")
+                                Text("\(habit.targetValue.formatted())")
+                                Text("\(habit.wrappedUnitType)")
+                            }
+                        }
+                        .padding()
+                        .listRowSeparator(.hidden)
+                    }
+                    .onDelete { indexSet in
+                        let deletedHabit = self.habits[indexSet.first!]
+                        HabitManager(managedObjectContext: moc).deleteHabit(habit: deletedHabit)
+                    }
+                }
+                .listStyle(.inset)
+            }
+            .blur(radius: viewModel.blurRadius())
+        }
+    }
 }
 
 struct Home_Previews: PreviewProvider {
@@ -158,7 +139,7 @@ struct Home_Previews: PreviewProvider {
     }
 }
 
-struct HabitList: View {
+struct DefaultHabitList: View {
     @Binding var showingView: Bool
     var body: some View {
         VStack {
@@ -173,6 +154,23 @@ struct HabitList: View {
                     .pinkButton()
             }
             .padding(.bottom, 30)
+        }
+    }
+}
+
+struct EmptyState: View {
+    var colorScheme: ColorScheme
+
+    var body: some View {
+        VStack {
+            Image(decorative: colorScheme == .dark ? "darkClipboards" : "empty")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .opacity(0.7)
+            Text("Your habit journey begins here! Add your first one by clicking the plus button.")
+                .multilineTextAlignment(.center)
+                .foregroundColor(colorScheme == .dark ? Color.white : Color.lightModeSubtext)
+                .opacity(0.5)
         }
     }
 }

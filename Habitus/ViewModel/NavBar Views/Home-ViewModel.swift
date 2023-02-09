@@ -33,7 +33,8 @@ extension Home {
             let fetchRequest = NSFetchRequest<Habit>(entityName: "Habit")
             do {
                 let habits = try managedObjectContext.fetch(fetchRequest)
-                HabitManager(managedObjectContext: managedObjectContext).resetAllHabitsProgress(habits: habits)
+                HabitManager(managedObjectContext: managedObjectContext).loadNewDay(habits: habits)
+                print("Arvhived all habit progress.")
             } catch let error as NSError {
                 print("Error fetching habits: \(error)")
             }
