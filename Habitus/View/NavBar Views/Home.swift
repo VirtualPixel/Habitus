@@ -12,7 +12,7 @@ struct Home: View {
     @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var viewModel = ViewModel()
-        
+    //
     var body: some View {
         NavigationView {
             ZStack {
