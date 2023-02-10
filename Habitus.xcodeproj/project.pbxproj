@@ -24,6 +24,8 @@
 		579025FF29757024009649D0 /* QuickWeek-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */; };
 		57A6E66A297454D7004AA69C /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A6E669297454D7004AA69C /* FileManager-DocumentsDirectory.swift */; };
 		57A6E66C2974577F004AA69C /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A6E66B2974577F004AA69C /* ContentView-ViewModel.swift */; };
+		57B307492995A80600D34D22 /* SwipeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B307482995A80600D34D22 /* SwipeButton.swift */; };
+		57B3074B2995A81800D34D22 /* SwipeButton-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B3074A2995A81800D34D22 /* SwipeButton-ViewModel.swift */; };
 		57B4050629784958008D2371 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4050029784958008D2371 /* Habit+CoreDataClass.swift */; };
 		57B4050729784958008D2371 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4050129784958008D2371 /* Habit+CoreDataProperties.swift */; };
 		57B4050829784958008D2371 /* HabitProgress+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4050229784958008D2371 /* HabitProgress+CoreDataClass.swift */; };
@@ -71,6 +73,8 @@
 		579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickWeek-ViewModel.swift"; sourceTree = "<group>"; };
 		57A6E669297454D7004AA69C /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		57A6E66B2974577F004AA69C /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		57B307482995A80600D34D22 /* SwipeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButton.swift; sourceTree = "<group>"; };
+		57B3074A2995A81800D34D22 /* SwipeButton-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipeButton-ViewModel.swift"; sourceTree = "<group>"; };
 		57B4050029784958008D2371 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57B4050129784958008D2371 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57B4050229784958008D2371 /* HabitProgress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitProgress+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 				57D5B2782979C60F00F5D926 /* CustomColorPicker.swift */,
 				57B4051729789D0A008D2371 /* IconPicker.swift */,
 				579025FC29757014009649D0 /* QuickWeek.swift */,
+				57B307482995A80600D34D22 /* SwipeButton.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				57D5B27A2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift */,
 				57B4051929789D7F008D2371 /* IconPicker-ViewModel.swift */,
 				579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */,
+				57B3074A2995A81800D34D22 /* SwipeButton-ViewModel.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -416,6 +422,7 @@
 				57FE89F12971C56A008287AF /* Welcome.swift in Sources */,
 				57D5B27B2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift in Sources */,
 				57B4050929784958008D2371 /* HabitProgress+CoreDataProperties.swift in Sources */,
+				57B307492995A80600D34D22 /* SwipeButton.swift in Sources */,
 				579025E829755FAC009649D0 /* Home.swift in Sources */,
 				57FE89F82971E5DF008287AF /* Welcome-ViewModel.swift in Sources */,
 				579025EA29755FBC009649D0 /* Home-ViewModel.swift in Sources */,
@@ -440,6 +447,7 @@
 				57C151AB28FC3602002BD16A /* HabitusApp.swift in Sources */,
 				57FED4F62979432000E70396 /* Constants.swift in Sources */,
 				579025FD29757014009649D0 /* QuickWeek.swift in Sources */,
+				57B3074B2995A81800D34D22 /* SwipeButton-ViewModel.swift in Sources */,
 				573C5673299189DE00ABC7E6 /* HabitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

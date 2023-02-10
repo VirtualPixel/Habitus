@@ -91,7 +91,6 @@ struct Home: View {
         .onAppear {
             viewModel.checkIfNeedsToResetHabits(managedObjectContext: moc)
         }
-        
     }
     
     @ViewBuilder func HomeHabitMoodList() -> some View {
@@ -120,16 +119,22 @@ struct Home: View {
                         }
                         .padding()
                         .listRowSeparator(.hidden)
+                        .overlay(
+                            SwipeButton(habit: habit, onDelete: deleteHabit)
+                        )
                     }
-                    .onDelete { indexSet in
-                        let deletedHabit = self.habits[indexSet.first!]
-                        HabitManager(managedObjectContext: moc).deleteHabit(habit: deletedHabit)
-                    }
+                    .onDelete(perform: deleteHabit)
                 }
                 .listStyle(.inset)
             }
             .blur(radius: viewModel.blurRadius())
         }
+    }
+    
+    func deleteHabit(at offsets: IndexSet) {
+        let deletedHabit = self.habits[offsets.first!]
+        
+        HabitManager(managedObjectContext: moc).deleteHabit(habit: deletedHabit)
     }
 }
 
@@ -174,3 +179,5 @@ struct EmptyState: View {
         }
     }
 }
+
+

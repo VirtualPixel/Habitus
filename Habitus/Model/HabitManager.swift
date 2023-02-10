@@ -35,7 +35,9 @@ class HabitManager {
     }
     
     func deleteHabit(habit: Habit) {
-        moc.delete(habit)
+        withAnimation {
+            moc.delete(habit)
+        }
         //saveChanges()
     }
     
