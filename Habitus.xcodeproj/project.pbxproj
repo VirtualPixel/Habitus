@@ -24,6 +24,8 @@
 		579025FF29757024009649D0 /* QuickWeek-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */; };
 		57A6E66A297454D7004AA69C /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A6E669297454D7004AA69C /* FileManager-DocumentsDirectory.swift */; };
 		57A6E66C2974577F004AA69C /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A6E66B2974577F004AA69C /* ContentView-ViewModel.swift */; };
+		57B2467A2998560600D9C2B0 /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B246792998560600D9C2B0 /* HabitListView.swift */; };
+		57B2467C2998561700D9C2B0 /* HabitListView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B2467B2998561700D9C2B0 /* HabitListView-ViewModel.swift */; };
 		57B307492995A80600D34D22 /* SwipeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B307482995A80600D34D22 /* SwipeButton.swift */; };
 		57B3074B2995A81800D34D22 /* SwipeButton-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B3074A2995A81800D34D22 /* SwipeButton-ViewModel.swift */; };
 		57B4050629784958008D2371 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B4050029784958008D2371 /* Habit+CoreDataClass.swift */; };
@@ -73,6 +75,8 @@
 		579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickWeek-ViewModel.swift"; sourceTree = "<group>"; };
 		57A6E669297454D7004AA69C /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		57A6E66B2974577F004AA69C /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		57B246792998560600D9C2B0 /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
+		57B2467B2998561700D9C2B0 /* HabitListView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitListView-ViewModel.swift"; sourceTree = "<group>"; };
 		57B307482995A80600D34D22 /* SwipeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButton.swift; sourceTree = "<group>"; };
 		57B3074A2995A81800D34D22 /* SwipeButton-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipeButton-ViewModel.swift"; sourceTree = "<group>"; };
 		57B4050029784958008D2371 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				57DB0C63297741E800CC8884 /* ContextMenu.swift */,
 				57D5B2782979C60F00F5D926 /* CustomColorPicker.swift */,
 				57B4051729789D0A008D2371 /* IconPicker.swift */,
+				57B246792998560600D9C2B0 /* HabitListView.swift */,
 				579025FC29757014009649D0 /* QuickWeek.swift */,
 				57B307482995A80600D34D22 /* SwipeButton.swift */,
 			);
@@ -257,6 +262,7 @@
 				57DB0C652977423C00CC8884 /* ContextMenu-ViewModel.swift */,
 				57D5B27A2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift */,
 				57B4051929789D7F008D2371 /* IconPicker-ViewModel.swift */,
+				57B2467B2998561700D9C2B0 /* HabitListView-ViewModel.swift */,
 				579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */,
 				57B3074A2995A81800D34D22 /* SwipeButton-ViewModel.swift */,
 			);
@@ -423,6 +429,7 @@
 				57D5B27B2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift in Sources */,
 				57B4050929784958008D2371 /* HabitProgress+CoreDataProperties.swift in Sources */,
 				57B307492995A80600D34D22 /* SwipeButton.swift in Sources */,
+				57B2467A2998560600D9C2B0 /* HabitListView.swift in Sources */,
 				579025E829755FAC009649D0 /* Home.swift in Sources */,
 				57FE89F82971E5DF008287AF /* Welcome-ViewModel.swift in Sources */,
 				579025EA29755FBC009649D0 /* Home-ViewModel.swift in Sources */,
@@ -434,6 +441,7 @@
 				579025EE29755FE5009649D0 /* Stats-ViewModel.swift in Sources */,
 				579025F229756034009649D0 /* Profile-ViewModel.swift in Sources */,
 				57A6E66C2974577F004AA69C /* ContentView-ViewModel.swift in Sources */,
+				57B2467C2998561700D9C2B0 /* HabitListView-ViewModel.swift in Sources */,
 				57B4050E297849E6008D2371 /* Reminders+CoreDataClass.swift in Sources */,
 				57B4050729784958008D2371 /* Habit+CoreDataProperties.swift in Sources */,
 				57DB0C662977423C00CC8884 /* ContextMenu-ViewModel.swift in Sources */,

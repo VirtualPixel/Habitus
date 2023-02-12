@@ -102,30 +102,14 @@ struct Home: View {
             VStack {
                 List {
                     ForEach(habits, id:\.id) { habit in
-                        HStack {
-                            Image(habit.wrappedIcon)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .blending(color: habit.wrappedColor)
-                                .frame(width: 60, height: 60)
-                                .padding(.horizontal, 5)
-                            Text(habit.wrappedTitle)
-                            Spacer()
-                            VStack {
-                                Text("\(habit.currentCompletionValue.formatted())/")
-                                Text("\(habit.targetValue.formatted())")
-                                Text("\(habit.wrappedUnitType)")
-                            }
-                        }
-                        .padding()
-                        .listRowSeparator(.hidden)
-                        .overlay(
-                            SwipeButton(habit: habit, onDelete: deleteHabit)
-                        )
+                        HabitListView(habit: habit)
+                            .listRowSeparator(.hidden)
+                            .padding(.vertical, -3)
                     }
                     .onDelete(perform: deleteHabit)
                 }
-                .listStyle(.inset)
+                .listStyle(.plain)
+                .padding(.top, 15)
             }
             .blur(radius: viewModel.blurRadius())
         }

@@ -82,7 +82,10 @@ extension Habit {
     public var wrappedColor: Color {
         Color(red: red, green: green, blue: blue)
     }
-
+    
+    public var percentComplete: Double {
+        currentCompletionValue / targetValue
+    }
 }
 
 // MARK: Generated accessors for habitProgress

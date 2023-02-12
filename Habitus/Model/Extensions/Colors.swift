@@ -35,6 +35,10 @@ extension Color {
     public static var lightModeFormBackground: Color {
         Color(UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.00))
     }
+    
+    public static var streakFire: Color {
+        Color(UIColor(red: 0.94, green: 0.47, blue: 0.08, alpha: 1.00))
+    }
 }
 
 // color components

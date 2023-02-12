@@ -33,4 +33,12 @@ class DataController: ObservableObject {
         container.viewContext.delete(object)
         save()
     }
+    
+    static var example: Habit {
+        let habit = Habit()
+        habit.title = "Walk"
+        habit.icon = "walking"
+        //habit.red
+        return habit
+    }
 }
