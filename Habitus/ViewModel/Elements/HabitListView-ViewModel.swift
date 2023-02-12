@@ -10,17 +10,17 @@ import SwiftUI
 extension HabitListView {
     class ViewModel: ObservableObject {
         let deviceSize: CGRect = UIScreen.main.bounds
-        //@Published var habit: HabitExample
-        @Published var habit: Habit
-        /*
+        @Published var habit: HabitExample
+        //@Published var habit: Habit
+        
         init() {
             let habit = HabitExample()
             self.habit = habit
-        }*/
-        
+        }
+        /*
         init(habit: Habit) {
             self.habit = habit
-        }
+        }*/
     }
 }
 
@@ -32,7 +32,7 @@ struct HabitExample {
     let wrappedCurrentCompletionValue: Double = 5_000
     let wrappedTargetValue: Double = 10_000
     let wrappedUnitType: String = "Steps"
-    let wrappedCurrentStreak: Int = 30
+    let wrappedCurrentStreak: Int = 3
     
     var percentComplete: Double {
         wrappedCurrentCompletionValue / wrappedTargetValue

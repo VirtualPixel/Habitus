@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HabitListView: View {
     @Environment(\.colorScheme) var colorScheme
-    @StateObject private var viewModel: ViewModel
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
         ZStack {
@@ -62,6 +62,9 @@ struct HabitListView: View {
                 Text("\(viewModel.habit.wrappedCurrentStreak)")
                     .foregroundColor(.black)
                     .bold()
+                    .font(.system(size: 500))
+                    .minimumScaleFactor(0.01)
+                    .frame(width: 20, height: 20)
             }
                 .offset(x: viewModel.deviceSize.width * -0.43, y: -30)
             :
@@ -70,11 +73,11 @@ struct HabitListView: View {
     }
     
     func color() -> Color {
-        colorScheme == .dark ? Color.darkModeSelected : Color.lightModeButton.opacity(0.5)
+        colorScheme == .dark ? Color.darkModeButton : Color.lightModeButton.opacity(0.5)
     }
     
     init(habit: Habit) {
-        _viewModel = StateObject(wrappedValue: ViewModel(habit: habit))
+        //_viewModel = StateObject(wrappedValue: ViewModel(habit: habit))
     }
 }
 /*
