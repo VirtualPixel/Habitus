@@ -70,7 +70,7 @@ struct HabitListView: View {
             :
             nil
         )
-    }
+    }//
     
     func color() -> Color {
         colorScheme == .dark ? Color.darkModeButton : Color.lightModeButton.opacity(0.5)
