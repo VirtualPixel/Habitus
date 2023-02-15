@@ -8,42 +8,45 @@
 import CoreData
 import SwiftUI
 
-class HabitManager {
-    let moc: NSManagedObjectContext
-    @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
-    
-    init(managedObjectContext: NSManagedObjectContext) {
-        self.moc = managedObjectContext
-    }
-    
+class HabitManager: ObservableObject {
     func loadNewDay(habits: [Habit]) {
+        guard isTodayDifferentFromLastOpenDate() else {
+            print("Not a new day")
+            return
+        }
+        print("Is a new day. Resetting habits.")
         archiveHabits(habits: habits)
         resetAllHabitProgress(habits: habits)
     }
     
     func addOneToValue(habit: Habit) {
         habit.currentCompletionValue += 1
-        
-        saveChanges()
+    }
+    
+    func addTwentyToValue(habit: Habit) {
+        habit.currentCompletionValue += 20
     }
     
     func completeHabit(habit: Habit) {
         guard habit.currentCompletionValue < habit.targetValue else { return }
         
         habit.currentCompletionValue = habit.targetValue
-        saveChanges()
     }
     
-    func deleteHabit(habit: Habit) {
-        moc.delete(habit)
-        //saveChanges()
-    }
-    
-    private func resetHabitProgress(habit: Habit, saveHabit: Bool = true) {
+    func resetHabit(habit: Habit) {
         habit.currentCompletionValue = 0
-        if saveHabit {
-            saveChanges()
-        }
+    }
+    
+    func isTodayDifferentFromLastOpenDate() -> Bool {
+        let defaults = UserDefaults.standard
+        let lastOpenDate = defaults.object(forKey: "lastOpenDate") as? Date ?? Date()
+        let today = Date()
+                    
+        return !Calendar.current.isDate(today, inSameDayAs: lastOpenDate)
+    }
+    
+    private func resetHabitProgress(habit: Habit) {
+        habit.currentCompletionValue = 0
     }
     
     private func resetAllHabitProgress(habits: [Habit]) {
@@ -54,13 +57,5 @@ class HabitManager {
     
     private func archiveHabits(habits: [Habit]) {
         
-    }
-    
-    private func saveChanges() {//habit: Habit) {
-        do {
-            try moc.save()
-        } catch {
-            print("Error in saving changes. \(error)")
-        }
     }
 }

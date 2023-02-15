@@ -5,12 +5,14 @@
 //  Created by Justin Wells on 1/16/23.
 //
 
+import CoreData
 import SwiftUI
 
 struct Home: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
     @Environment(\.colorScheme) var colorScheme
+    @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
+    @EnvironmentObject var habitManager: HabitManager
     @StateObject private var viewModel = ViewModel()
     
     var body: some View {
@@ -89,7 +91,7 @@ struct Home: View {
             }
         }
         .onAppear {
-            viewModel.checkIfNeedsToResetHabits(managedObjectContext: moc)
+            dailyCheck()
         }
     }
     
@@ -105,6 +107,52 @@ struct Home: View {
                         HabitListView(habit: habit)
                             .listRowSeparator(.hidden)
                             .padding(.vertical, -3)
+                            .swipeActions(edge: .leading) {
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.8)) {
+                                        habitManager.completeHabit(habit: habit)
+                                        save()
+                                    }
+                                } label: {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.white)
+                                }
+                                .tint(.green)
+                                .padding()
+                                
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.8)) {
+                                        habitManager.addOneToValue(habit: habit)
+                                        save()
+                                    }
+                                } label: {
+                                    Text("+1")
+                                        .foregroundColor(.white)
+                                }
+                                .tint(.blue)
+                                
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.8)) {
+                                        habitManager.addTwentyToValue(habit: habit)
+                                        save()
+                                    }
+                                } label: {
+                                    Text("+20")
+                                        .foregroundColor(.white)
+                                }
+                                .tint(.blue)
+                                
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.8)) {
+                                        habitManager.resetHabit(habit: habit)
+                                        save()
+                                    }
+                                } label: {
+                                    Image(systemName: "xmark")
+                                        .foregroundColor(.white)
+                                }
+                                .tint(.red)
+                            }
                     }
                     .onDelete(perform: deleteHabit)
                 }
@@ -118,7 +166,28 @@ struct Home: View {
     func deleteHabit(at offsets: IndexSet) {
         let deletedHabit = self.habits[offsets.first!]
         
-        HabitManager(managedObjectContext: moc).deleteHabit(habit: deletedHabit)
+        moc.delete(deletedHabit)
+        
+        save()
+    }
+    
+    func dailyCheck() {
+        do {
+            let habitsList = try moc.fetch(viewModel.fetchRequest)
+            habitManager.loadNewDay(habits: habitsList)
+            
+            save()
+        } catch {
+            print("There was an error fetching habits: \(error)")
+        }
+    }
+    
+    func save() {
+        do {
+            try moc.save()
+        } catch {
+            print("There was an error saving: \(error)")
+        }
     }
 }
 

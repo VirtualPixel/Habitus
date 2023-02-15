@@ -10,17 +10,17 @@ import SwiftUI
 extension HabitListView {
     class ViewModel: ObservableObject {
         let deviceSize: CGRect = UIScreen.main.bounds
-        @Published var habit: HabitExample
-        //@Published var habit: Habit
-        
+        //@Published var habit: HabitExample
+        @ObservedObject var habit: Habit
+        /*
         init() {
             let habit = HabitExample()
             self.habit = habit
-        }
-        /*
+        }*/
+        
         init(habit: Habit) {
             self.habit = habit
-        }*/
+        }
     }
 }
 

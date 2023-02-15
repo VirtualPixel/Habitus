@@ -18,26 +18,10 @@ extension Home {
         @Published var showingHabitList = false
         @Published var showingCreateHabit = false
         @Published var showingContextButtons = false
+        let fetchRequest = NSFetchRequest<Habit>(entityName: "Habit")
         
         func blurRadius() -> CGFloat {
             showingContextButtons ? 5 : 0
-        }
-        
-        func checkIfNeedsToResetHabits(managedObjectContext: NSManagedObjectContext) {
-            let defaults = UserDefaults.standard
-            let lastOpenDate = defaults.object(forKey: "lastOpenDateKey") as? Date ?? Date()
-            let today = Date()
-                        
-            guard !Calendar.current.isDate(today, inSameDayAs: lastOpenDate) else { return }
-            
-            let fetchRequest = NSFetchRequest<Habit>(entityName: "Habit")
-            do {
-                let habits = try managedObjectContext.fetch(fetchRequest)
-                HabitManager(managedObjectContext: managedObjectContext).loadNewDay(habits: habits)
-                print("Arvhived all habit progress.")
-            } catch let error as NSError {
-                print("Error fetching habits: \(error)")
-            }
         }
     }
 }

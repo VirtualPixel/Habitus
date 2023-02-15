@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HabitListView: View {
     @Environment(\.colorScheme) var colorScheme
-    @StateObject private var viewModel = ViewModel()
+    @ObservedObject private var viewModel: ViewModel
     
     var body: some View {
         ZStack {
@@ -19,7 +19,7 @@ struct HabitListView: View {
                 .offset(x: 0, y: 37.5)
             
             HStack {
-                Image("walking")
+                Image("\(viewModel.habit.wrappedIcon)")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .blending(color: viewModel.habit.wrappedColor)
@@ -36,14 +36,16 @@ struct HabitListView: View {
                 Spacer()
                 
                 VStack {
-                    Text("\(viewModel.habit.wrappedCurrentCompletionValue.formatted()) / \(viewModel.habit.wrappedTargetValue.formatted())")
+                    //Text("\(viewModel.habit.wrappedCurrentCompletionValue.formatted()) / \(viewModel.habit.wrappedTargetValue.formatted())")
+                    Text("\(viewModel.habit.currentCompletionValue.formatted()) / \(viewModel.habit.wrappedTargetValue.formatted())")
                         .bold()
                         .font(.title3)
                         .foregroundColor(viewModel.habit.wrappedColor)
                     Text(viewModel.habit.wrappedUnitType)
                         .bold()
-                        .font(.title3)
+                        //.font(.title3)
                 }
+                .frame(width: 90)
                 .padding(.trailing)
             }
         }
@@ -77,7 +79,7 @@ struct HabitListView: View {
     }
     
     init(habit: Habit) {
-        //_viewModel = StateObject(wrappedValue: ViewModel(habit: habit))
+        _viewModel = ObservedObject(wrappedValue: ViewModel(habit: habit))
     }
 }
 /*
@@ -89,6 +91,11 @@ struct HabitListView_Previews: PreviewProvider {
 */
 struct ProgressBar: Shape {
     var progress: Double
+    
+    var animatableData: CGFloat {
+        get { progress }
+        set { progress = newValue }
+    }
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
