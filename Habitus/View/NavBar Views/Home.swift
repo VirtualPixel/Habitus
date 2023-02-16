@@ -90,9 +90,6 @@ struct Home: View {
                 }
             }
         }
-        .onAppear {
-            dailyCheck()
-        }
     }
     
     @ViewBuilder func HomeHabitMoodList() -> some View {
@@ -109,7 +106,7 @@ struct Home: View {
                             .padding(.vertical, -3)
                             .swipeActions(edge: .leading) {
                                 Button {
-                                    withAnimation(.easeInOut(duration: 0.8)) {
+                                    withAnimation(.easeInOut(duration: 1.5)) {
                                         habitManager.completeHabit(habit: habit)
                                         save()
                                     }
@@ -121,7 +118,7 @@ struct Home: View {
                                 .padding()
                                 
                                 Button {
-                                    withAnimation(.easeInOut(duration: 0.8)) {
+                                    withAnimation(.easeInOut(duration: 1.5)) {
                                         habitManager.addOneToValue(habit: habit)
                                         save()
                                     }
@@ -132,7 +129,7 @@ struct Home: View {
                                 .tint(.blue)
                                 
                                 Button {
-                                    withAnimation(.easeInOut(duration: 0.8)) {
+                                    withAnimation(.easeInOut(duration: 1.5)) {
                                         habitManager.addTwentyToValue(habit: habit)
                                         save()
                                     }
@@ -141,17 +138,6 @@ struct Home: View {
                                         .foregroundColor(.white)
                                 }
                                 .tint(.blue)
-                                
-                                Button {
-                                    withAnimation(.easeInOut(duration: 0.8)) {
-                                        habitManager.resetHabit(habit: habit)
-                                        save()
-                                    }
-                                } label: {
-                                    Image(systemName: "xmark")
-                                        .foregroundColor(.white)
-                                }
-                                .tint(.red)
                             }
                     }
                     .onDelete(perform: deleteHabit)
@@ -165,21 +151,8 @@ struct Home: View {
     
     func deleteHabit(at offsets: IndexSet) {
         let deletedHabit = self.habits[offsets.first!]
-        
         moc.delete(deletedHabit)
-        
         save()
-    }
-    
-    func dailyCheck() {
-        do {
-            let habitsList = try moc.fetch(viewModel.fetchRequest)
-            habitManager.loadNewDay(habits: habitsList)
-            
-            save()
-        } catch {
-            print("There was an error fetching habits: \(error)")
-        }
     }
     
     func save() {

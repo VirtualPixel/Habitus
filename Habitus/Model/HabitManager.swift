@@ -10,11 +10,7 @@ import SwiftUI
 
 class HabitManager: ObservableObject {
     func loadNewDay(habits: [Habit]) {
-        guard isTodayDifferentFromLastOpenDate() else {
-            print("Not a new day")
-            return
-        }
-        print("Is a new day. Resetting habits.")
+        guard isTodayDifferentFromLastOpenDate() else { return }
         archiveHabits(habits: habits)
         resetAllHabitProgress(habits: habits)
     }
@@ -38,11 +34,15 @@ class HabitManager: ObservableObject {
     }
     
     func isTodayDifferentFromLastOpenDate() -> Bool {
-        let defaults = UserDefaults.standard
-        let lastOpenDate = defaults.object(forKey: "lastOpenDate") as? Date ?? Date()
+        let lastOpenDate = UserDefaults.standard.lastOpenDate
         let today = Date()
-                    
-        return !Calendar.current.isDate(today, inSameDayAs: lastOpenDate)
+        
+        if !Calendar.current.isDate(today, inSameDayAs: lastOpenDate) {
+            UserDefaults.standard.lastOpenDate = Date()
+            return true
+        } else {
+            return false
+        }
     }
     
     private func resetHabitProgress(habit: Habit) {

@@ -84,7 +84,13 @@ extension Habit {
     }
     
     public var percentComplete: Double {
-        currentCompletionValue / targetValue
+        let value = currentCompletionValue / targetValue
+        switch value {
+        case let x where x > 1.0:
+            return 1.0
+        default:
+            return value
+        }
     }
 }
 

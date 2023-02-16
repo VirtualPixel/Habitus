@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
     @ObservedObject private var viewModel = ViewModel()
-    @FetchRequest(sortDescriptors: []) var fetchedHabits: FetchedResults<Habit>
+    @EnvironmentObject var habitManager: HabitManager
     
     var body: some View {
         TabView {
@@ -28,6 +29,16 @@ struct ContentView: View {
                     Label("", systemImage: "person.fill")
                 }
                 .tag(2)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            do {
+                let habitsList = try moc.fetch(viewModel.fetchRequest)
+                habitManager.loadNewDay(habits: habitsList)
+                
+                try moc.save()
+            } catch {
+                print("There was an error loading a new day: \(error)")
+            }
         }
     }
 }

@@ -36,8 +36,7 @@ struct HabitListView: View {
                 Spacer()
                 
                 VStack {
-                    //Text("\(viewModel.habit.wrappedCurrentCompletionValue.formatted()) / \(viewModel.habit.wrappedTargetValue.formatted())")
-                    Text("\(viewModel.habit.currentCompletionValue.formatted()) / \(viewModel.habit.wrappedTargetValue.formatted())")
+                    Text("\(viewModel.habit.currentCompletionValue.formatted()) / \(viewModel.habit.targetValue.formatted())")
                         .bold()
                         .font(.title3)
                         .foregroundColor(viewModel.habit.wrappedColor)
@@ -47,6 +46,9 @@ struct HabitListView: View {
                 }
                 .frame(width: 90)
                 .padding(.trailing)
+                .transaction { transaction in
+                    transaction.animation = nil
+                }
             }
         }
         .frame(width: viewModel.deviceSize.width * 0.9, height: 80)

@@ -18,7 +18,6 @@ extension Home {
         @Published var showingHabitList = false
         @Published var showingCreateHabit = false
         @Published var showingContextButtons = false
-        let fetchRequest = NSFetchRequest<Habit>(entityName: "Habit")
         
         func blurRadius() -> CGFloat {
             showingContextButtons ? 5 : 0

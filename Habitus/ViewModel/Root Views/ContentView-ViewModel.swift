@@ -5,12 +5,14 @@
 //  Created by Justin Wells on 1/15/23.
 //
 
+import CoreData
 import SwiftUI
 
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
         @Published var image: Image
         @Published var timer: Timer?
+        let fetchRequest = NSFetchRequest<Habit>(entityName: "Habit")
         
         func loadImage() {
            do {

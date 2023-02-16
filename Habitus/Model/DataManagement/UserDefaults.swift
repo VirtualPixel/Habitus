@@ -43,4 +43,13 @@ extension UserDefaults {
             return (UserDefaults.standard.setValue(newValue, forKey: "dateOfBirth"))
         }
     }
+    
+    var lastOpenDate: Date {
+        get {
+            return (UserDefaults.standard.value(forKey: "lastOpenDate") as? Date) ?? Date.distantPast
+        }
+        set {
+            return (UserDefaults.standard.setValue(newValue, forKey: "lastOpenDate"))
+        }
+    }
 }

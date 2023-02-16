@@ -243,6 +243,7 @@ extension Welcome {
                     Button {
                         UserDefaults.standard.dateOfBirth = dob
                         UserDefaults.standard.name = name
+                        UserDefaults.standard.lastOpenDate = Date.now
                         
                         saveImage()
                         
