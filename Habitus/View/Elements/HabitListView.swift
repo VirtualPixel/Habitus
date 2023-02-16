@@ -55,7 +55,7 @@ struct HabitListView: View {
         .background(color())
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(
-            viewModel.habit.wrappedCurrentStreak > 1 ?
+            viewModel.habit.currentStreak > 1 ?
             ZStack {
                 Image("flames")
                     .resizable()
@@ -63,7 +63,7 @@ struct HabitListView: View {
                     .blending(color: Color.streakFire)
                     .frame(width: 35)
                     .offset(y: -3)
-                Text("\(viewModel.habit.wrappedCurrentStreak)")
+                Text("\(viewModel.habit.currentStreak)")
                     .foregroundColor(.black)
                     .bold()
                     .font(.system(size: 500))

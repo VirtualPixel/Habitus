@@ -138,6 +138,17 @@ struct Home: View {
                                         .foregroundColor(.white)
                                 }
                                 .tint(.blue)
+                                
+                                Button {
+                                    withAnimation(.easeInOut(duration: 1.5)) {
+                                        habitManager.resetHabit(habit: habit)
+                                        save()
+                                    }
+                                } label: {
+                                    Text("Reset")
+                                        .foregroundColor(.white)
+                                }
+                                .tint(.red)
                             }
                     }
                     .onDelete(perform: deleteHabit)

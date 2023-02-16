@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct Stats: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var habitsProgress: FetchedResults<HabitProgress>
+    
     var body: some View {
-        Text("Stats")
+        List {
+            ForEach(habitsProgress, id: \.id) { habit in
+                Text("\(habit.wrappedAmount)")
+            }
+        }
     }
 }
 

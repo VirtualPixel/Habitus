@@ -9,10 +9,10 @@ import CoreData
 import SwiftUI
 
 class HabitManager: ObservableObject {
-    func loadNewDay(habits: [Habit]) {
-        guard isTodayDifferentFromLastOpenDate() else { return }
-        archiveHabits(habits: habits)
-        resetAllHabitProgress(habits: habits)
+    func resetHabit(habit: Habit) {
+        habit.currentStreak = habit.isTodayComplete ? habit.currentStreak + 1 : 0
+        habit.bestCompletionStreak = max(habit.currentStreak, habit.bestCompletionStreak)
+        habit.currentCompletionValue = 0
     }
     
     func addOneToValue(habit: Habit) {
@@ -29,10 +29,6 @@ class HabitManager: ObservableObject {
         habit.currentCompletionValue = habit.targetValue
     }
     
-    func resetHabit(habit: Habit) {
-        habit.currentCompletionValue = 0
-    }
-    
     func isTodayDifferentFromLastOpenDate() -> Bool {
         let lastOpenDate = UserDefaults.standard.lastOpenDate
         let today = Date()
@@ -43,19 +39,5 @@ class HabitManager: ObservableObject {
         } else {
             return false
         }
-    }
-    
-    private func resetHabitProgress(habit: Habit) {
-        habit.currentCompletionValue = 0
-    }
-    
-    private func resetAllHabitProgress(habits: [Habit]) {
-        for habit in habits {
-            resetHabitProgress(habit: habit)
-        }
-    }
-    
-    private func archiveHabits(habits: [Habit]) {
-        
     }
 }

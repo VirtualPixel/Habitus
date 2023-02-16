@@ -38,22 +38,9 @@ extension Habit {
 
     @NSManaged public var habitProgress: Set<HabitProgress>?
     @NSManaged public var reminders: Set<Reminders>?
-    @NSManaged public var isTodayCompleted: Bool
     
     public var wrappedAbout: String {
         about ?? "Unknown"
-    }
-    public var wrappedbestCompletionStreak: Int16 {
-        bestCompletionStreak
-    }
-    public var wrappedCurrentStreak: Int16 {
-        currentStreak
-    }
-    public var wrappedCurrentCompletionValue: Double {
-        currentCompletionValue
-    }
-    public var wrappedTargetValue: Double {
-        targetValue
     }
     public var wrappedIcon: String {
         icon ?? "Unknown"
@@ -91,6 +78,10 @@ extension Habit {
         default:
             return value
         }
+    }
+    
+    public var isTodayComplete: Bool {
+        currentCompletionValue >= targetValue
     }
 }
 

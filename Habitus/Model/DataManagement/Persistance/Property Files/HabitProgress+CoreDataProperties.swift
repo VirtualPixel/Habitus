@@ -16,14 +16,14 @@ extension HabitProgress {
         return NSFetchRequest<HabitProgress>(entityName: "HabitProgress")
     }
 
-    @NSManaged public var amount: Int16
+    @NSManaged public var amount: Double
     @NSManaged public var completed: Bool
     @NSManaged public var date: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var notes: String?
     @NSManaged public var habit: Habit?
 
-    public var wrappedAmount: Int16 {
+    public var wrappedAmount: Double {
         amount
     }
     public var wrappedCompleted: Bool {

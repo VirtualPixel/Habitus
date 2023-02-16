@@ -32,8 +32,13 @@ struct ContentView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             do {
-                let habitsList = try moc.fetch(viewModel.fetchRequest)
-                habitManager.loadNewDay(habits: habitsList)
+                guard habitManager.isTodayDifferentFromLastOpenDate() else { return }
+                let habits = try moc.fetch(viewModel.fetchRequest)
+                
+                for habit in habits {
+                    archiveHabit(habit: habit)
+                    habitManager.resetHabit(habit: habit)
+                }
                 
                 try moc.save()
             } catch {
@@ -41,6 +46,19 @@ struct ContentView: View {
             }
         }
     }
+    
+    func archiveHabit(habit: Habit){
+        let habitProgress = HabitProgress(context: moc)
+        
+        habitProgress.amount = habit.currentCompletionValue
+        habitProgress.completed = habit.currentCompletionValue >= habit.targetValue
+        habitProgress.date = Date()
+        habitProgress.id = habit.id
+        habitProgress.notes = ""
+                
+        habit.addToHabitProgress(habitProgress)
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
