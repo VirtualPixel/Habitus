@@ -12,21 +12,25 @@ class HabitManager: ObservableObject {
     func resetHabit(habit: Habit) {
         habit.currentStreak = habit.isTodayComplete ? habit.currentStreak + 1 : 0
         habit.bestCompletionStreak = max(habit.currentStreak, habit.bestCompletionStreak)
+        habit.dateOfLastCompletionStreak = habit.currentStreak == 0 ? Date() : habit.dateOfLastCompletionStreak
         habit.currentCompletionValue = 0
     }
     
-    func addOneToValue(habit: Habit) {
-        habit.currentCompletionValue += 1
+    func addLowerBoundToValue(habit: Habit) {
+        habit.currentCompletionValue += Unit.lowerBound(string: habit.wrappedUnitType)
+        markTimeCompleted(habit: habit)
     }
     
-    func addTwentyToValue(habit: Habit) {
-        habit.currentCompletionValue += 20
+    func addUpperBoundToValue(habit: Habit) {
+        habit.currentCompletionValue += Unit.upperBound(string: habit.wrappedUnitType)
+        markTimeCompleted(habit: habit)
     }
     
     func completeHabit(habit: Habit) {
         guard habit.currentCompletionValue < habit.targetValue else { return }
         
         habit.currentCompletionValue = habit.targetValue
+        markTimeCompleted(habit: habit)
     }
     
     func isTodayDifferentFromLastOpenDate() -> Bool {
@@ -39,5 +43,11 @@ class HabitManager: ObservableObject {
         } else {
             return false
         }
+    }
+    
+    private func markTimeCompleted(habit: Habit) {
+        guard habit.timeCompleted == nil else { return }
+        guard habit.currentCompletionValue >= habit.targetValue else { return }
+        habit.timeCompleted = Date()
     }
 }

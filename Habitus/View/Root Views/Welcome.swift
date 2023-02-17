@@ -244,6 +244,7 @@ extension Welcome {
                         UserDefaults.standard.dateOfBirth = dob
                         UserDefaults.standard.name = name
                         UserDefaults.standard.lastOpenDate = Date.now
+                        UserDefaults.standard.lastArchiveDate = Date.now
                         
                         saveImage()
                         

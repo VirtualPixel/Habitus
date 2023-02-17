@@ -2,7 +2,7 @@
 //  HabitProgress+CoreDataProperties.swift
 //  Habitus
 //
-//  Created by Justin Wells on 1/18/23.
+//  Created by Justin Wells on 2/17/23.
 //
 //
 
@@ -11,18 +11,19 @@ import CoreData
 
 
 extension HabitProgress {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<HabitProgress> {
         return NSFetchRequest<HabitProgress>(entityName: "HabitProgress")
     }
-
+    
     @NSManaged public var amount: Double
     @NSManaged public var completed: Bool
     @NSManaged public var date: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var notes: String?
+    @NSManaged public var archive: Archive?
     @NSManaged public var habit: Habit?
-
+    
     public var wrappedAmount: Double {
         amount
     }
@@ -38,9 +39,8 @@ extension HabitProgress {
     public var wrappedNotes: String {
         notes ?? "Unknown"
     }
-
 }
 
 extension HabitProgress : Identifiable {
-
+    
 }

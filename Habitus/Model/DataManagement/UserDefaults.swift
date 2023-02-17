@@ -52,4 +52,13 @@ extension UserDefaults {
             return (UserDefaults.standard.setValue(newValue, forKey: "lastOpenDate"))
         }
     }
+    
+    var lastArchiveDate: Date {
+        get {
+            return (UserDefaults.standard.value(forKey: "lastArchiveDate") as? Date) ?? Date.distantPast
+        }
+        set {
+            return (UserDefaults.standard.setValue(newValue, forKey: "lastArchiveDate"))
+        }
+    }
 }

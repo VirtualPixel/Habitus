@@ -10,43 +10,83 @@ import Foundation
 enum Unit: String, Equatable, CaseIterable {
     case steps, minutes, hours, calories, reps, sets, weight, ounces, glasses, miles, kilometers, pages, chapters
     
-    var incrementalValues: [Double] {
+    var incrementalValue: Double {
         switch self {
         case .steps:
-            return generateValues(start: 500, increment: 500, total: 15000)
+            return 500
         case .minutes:
-            return generateValues(start: 1, increment: 1, total: 60)
+            return 1
         case .hours:
-            return generateValues(start: 1, increment: 0.5, total: 24)
+            return 0.5
         case .calories:
-            return generateValues(start: 100, increment: 100, total: 5000)
+            return 100
         case .reps:
-            return generateValues(start: 1, increment: 1, total: 100)
+            return 1
         case .sets:
-            return generateValues(start: 1, increment: 1, total: 20)
+            return 1
         case .weight:
-            return generateValues(start: 1, increment: 1, total: 300)
+            return 1
         case .ounces:
-            return generateValues(start: 4, increment: 4, total: 128)
+            return 4
         case .glasses:
-            return generateValues(start: 1, increment: 1, total: 12)
+            return 1
         case .miles:
-            return generateValues(start: 0.5, increment: 0.5, total: 26)
+            return 0.5
         case .kilometers:
-            return generateValues(start: 1, increment: 1, total: 42)
+            return 1
         case .pages:
-            return generateValues(start: 1, increment: 50, total: 5000)
+            return 50
         case .chapters:
-            return generateValues(start: 1, increment: 1, total: 20)
+            return 1
         }
-
     }
-
+    
+    var incrementalValues: [Double] {
+        var values: [Double] = []
+        var currentValue = 0.0
+        while currentValue < total {
+            values.append(currentValue)
+            currentValue += incrementalValue
+        }
+        return values
+    }
+    
+    var total: Double {
+        switch self {
+        case .steps:
+            return 15000
+        case .minutes:
+            return 60
+        case .hours:
+            return 24
+        case .calories:
+            return 5000
+        case .reps:
+            return 100
+        case .sets:
+            return 20
+        case .weight:
+            return 300
+        case .ounces:
+            return 128
+        case .glasses:
+            return 12
+        case .miles:
+            return 26
+        case .kilometers:
+            return 42
+        case .pages:
+            return 5000
+        case .chapters:
+            return 20
+        }
+    }
+    
     var displayName: String {
         switch self {
         case .steps:
             return "Steps"
-        case .ounces:
+        case . ounces:
             return "Ounces"
         case .minutes:
             return "Minutes"
@@ -73,13 +113,17 @@ enum Unit: String, Equatable, CaseIterable {
         }
     }
     
-    private func generateValues(start: Double, increment: Double, total: Double) -> [Double] {
-        var values = (0..<Int(total/increment)).map { start + increment*Double($0) }
-        
-        let remainder = total.truncatingRemainder(dividingBy: increment)
-        if remainder != 0 {
-            values.append(values.last ?? 0.0 + remainder)
-        }
-        return values
+    static func from(string: String) -> Unit {
+        Unit.allCases.first { $0.displayName == string } ?? .steps
+    }
+    
+    static func lowerBound(string: String) -> Double {
+        let unit = from(string: string)
+        return unit.incrementalValue
+    }
+    
+    static func upperBound(string: String) -> Double {
+        let unit = from(string: string)
+        return unit.incrementalValue * 2
     }
 }

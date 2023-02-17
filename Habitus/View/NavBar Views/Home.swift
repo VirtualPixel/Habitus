@@ -119,22 +119,22 @@ struct Home: View {
                                 
                                 Button {
                                     withAnimation(.easeInOut(duration: 1.5)) {
-                                        habitManager.addOneToValue(habit: habit)
+                                        habitManager.addLowerBoundToValue(habit: habit)
                                         save()
                                     }
                                 } label: {
-                                    Text("+1")
+                                    Text("\(Unit.lowerBound(string: habit.wrappedUnitType).formatted())")
                                         .foregroundColor(.white)
                                 }
                                 .tint(.blue)
                                 
                                 Button {
                                     withAnimation(.easeInOut(duration: 1.5)) {
-                                        habitManager.addTwentyToValue(habit: habit)
+                                        habitManager.addUpperBoundToValue(habit: habit)
                                         save()
                                     }
                                 } label: {
-                                    Text("+20")
+                                    Text("\(Unit.upperBound(string: habit.wrappedUnitType).formatted())")
                                         .foregroundColor(.white)
                                 }
                                 .tint(.blue)
