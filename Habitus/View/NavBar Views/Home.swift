@@ -108,7 +108,7 @@ struct Home: View {
                                 Button {
                                     withAnimation(.easeInOut(duration: 1.5)) {
                                         habitManager.completeHabit(habit: habit)
-                                        save()
+                                        save()//
                                     }
                                 } label: {
                                     Image(systemName: "checkmark")
