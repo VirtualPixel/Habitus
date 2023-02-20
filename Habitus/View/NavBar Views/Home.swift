@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Home: View {
     @Environment(\.managedObjectContext) var moc
+    @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.colorScheme) var colorScheme
     @FetchRequest(sortDescriptors: []) var habits: FetchedResults<Habit>
     @EnvironmentObject var habitManager: HabitManager

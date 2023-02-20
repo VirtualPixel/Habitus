@@ -43,7 +43,7 @@ enum Unit: String, Equatable, CaseIterable {
     
     var incrementalValues: [Double] {
         var values: [Double] = []
-        var currentValue = 0.0
+        var currentValue = self.incrementalValue
         while currentValue < total {
             values.append(currentValue)
             currentValue += incrementalValue
