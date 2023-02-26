@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct HabitusApp: App {//
+struct HabitusApp: App {
     @StateObject private var dataController = DataController()
     @StateObject private var habitManager = HabitManager()
     @State private var welcome = UserDefaults.standard.welcomeShown
