@@ -19,27 +19,20 @@ struct Stats: View {
         }
         .padding()
         .onAppear {
-            viewModel.percentComplete = calculateAverageCompletionPercentage(startDate: viewModel.startDate, endDate: viewModel.endDate)
+            calculateStats()
         }
     }
     
-    func calculateAverageCompletionPercentage(startDate: Date, endDate: Date) -> Double {
+    func calculateStats() {
         let fetchRequest: NSFetchRequest<HabitProgress> = HabitProgress.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startDate as NSDate, endDate as NSDate)
+        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date <= %@", viewModel.startDate as NSDate, viewModel.endDate as NSDate)
         let habitProgresses = try? moc.fetch(fetchRequest)
         
-        guard let progresses = habitProgresses else {
-            return 0.0
+        guard let progress = habitProgresses else {
+            return
         }
         
-        let totalProgress = progresses.reduce(0.0, { $0 + $1.amount })
-        let totalTarget = progresses.reduce(0.0, { $0 + $1.habit!.targetValue })
-        
-        if totalTarget == 0 {
-            return 0.0
-        }
-        
-        return totalProgress / totalTarget * 100
+        viewModel.calculateStats(habitProgress: progress)
     }
 }
 /*
