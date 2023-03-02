@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5710E97529843D490033CA82 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710E97429843D490033CA82 /* Units.swift */; };
 		573C5673299189DE00ABC7E6 /* HabitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C5672299189DE00ABC7E6 /* HabitManager.swift */; };
+		57578A4329AF6C7900FC13B5 /* HabitusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57578A4229AF6C7900FC13B5 /* HabitusTests.swift */; };
 		575D287C2976B7EA00C02513 /* CreateHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D287B2976B7EA00C02513 /* CreateHabit.swift */; };
 		575D287E2976B7FE00C02513 /* CreateHabit-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */; };
 		57740C2929A01615009E5C73 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57740C2329A01615009E5C73 /* Habit+CoreDataClass.swift */; };
@@ -59,9 +60,22 @@
 		57FED4F62979432000E70396 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FED4F52979432000E70396 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		57578A4429AF6C7900FC13B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57C1519F28FC3602002BD16A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57C151A628FC3602002BD16A;
+			remoteInfo = Habitus;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5710E97429843D490033CA82 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		573C5672299189DE00ABC7E6 /* HabitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitManager.swift; sourceTree = "<group>"; };
+		57578A3829AF6ABE00FC13B5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		57578A4029AF6C7900FC13B5 /* HabitusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		57578A4229AF6C7900FC13B5 /* HabitusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitusTests.swift; sourceTree = "<group>"; };
 		575D287B2976B7EA00C02513 /* CreateHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabit.swift; sourceTree = "<group>"; };
 		575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateHabit-ViewModel.swift"; sourceTree = "<group>"; };
 		57740C2329A01615009E5C73 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -115,6 +129,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		57578A3D29AF6C7900FC13B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57C151A428FC3602002BD16A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,6 +146,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57578A3729AF6ABE00FC13B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57578A3829AF6ABE00FC13B5 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		57578A4129AF6C7900FC13B5 /* HabitusTests */ = {
+			isa = PBXGroup;
+			children = (
+				57578A4229AF6C7900FC13B5 /* HabitusTests.swift */,
+			);
+			path = HabitusTests;
+			sourceTree = "<group>";
+		};
 		577696DE2992F73C007882EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +251,9 @@
 			isa = PBXGroup;
 			children = (
 				57C151A928FC3602002BD16A /* Habitus */,
+				57578A4129AF6C7900FC13B5 /* HabitusTests */,
 				57C151A828FC3602002BD16A /* Products */,
+				57578A3729AF6ABE00FC13B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -222,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				57C151A728FC3602002BD16A /* Habitus.app */,
+				57578A4029AF6C7900FC13B5 /* HabitusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,6 +386,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		57578A3F29AF6C7900FC13B5 /* HabitusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57578A4629AF6C7900FC13B5 /* Build configuration list for PBXNativeTarget "HabitusTests" */;
+			buildPhases = (
+				57578A3C29AF6C7900FC13B5 /* Sources */,
+				57578A3D29AF6C7900FC13B5 /* Frameworks */,
+				57578A3E29AF6C7900FC13B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				57578A4529AF6C7900FC13B5 /* PBXTargetDependency */,
+			);
+			name = HabitusTests;
+			productName = HabitusTests;
+			productReference = 57578A4029AF6C7900FC13B5 /* HabitusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		57C151A628FC3602002BD16A /* Habitus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57C151B528FC3603002BD16A /* Build configuration list for PBXNativeTarget "Habitus" */;
@@ -372,9 +430,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					57578A3F29AF6C7900FC13B5 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 57C151A628FC3602002BD16A;
+					};
 					57C151A628FC3602002BD16A = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -396,11 +458,19 @@
 			projectRoot = "";
 			targets = (
 				57C151A628FC3602002BD16A /* Habitus */,
+				57578A3F29AF6C7900FC13B5 /* HabitusTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		57578A3E29AF6C7900FC13B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57C151A528FC3602002BD16A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +484,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		57578A3C29AF6C7900FC13B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57578A4329AF6C7900FC13B5 /* HabitusTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57C151A328FC3602002BD16A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -470,7 +548,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		57578A4529AF6C7900FC13B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 57C151A628FC3602002BD16A /* Habitus */;
+			targetProxy = 57578A4429AF6C7900FC13B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		57578A4729AF6C7900FC13B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3LPAZYKA42;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wells.justin.HabitusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habitus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Habitus";
+			};
+			name = Debug;
+		};
+		57578A4829AF6C7900FC13B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3LPAZYKA42;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wells.justin.HabitusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habitus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Habitus";
+			};
+			name = Release;
+		};
 		57C151B328FC3603002BD16A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -654,6 +778,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		57578A4629AF6C7900FC13B5 /* Build configuration list for PBXNativeTarget "HabitusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57578A4729AF6C7900FC13B5 /* Debug */,
+				57578A4829AF6C7900FC13B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		57C151A228FC3602002BD16A /* Build configuration list for PBXProject "Habitus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
