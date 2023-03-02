@@ -14,6 +14,7 @@ class HabitManager: ObservableObject {
         habit.bestCompletionStreak = max(habit.currentStreak, habit.bestCompletionStreak)
         habit.dateOfLastCompletionStreak = habit.currentStreak == 0 ? Date() : habit.dateOfLastCompletionStreak
         habit.currentCompletionValue = 0
+        habit.timeCompleted = nil
     }
     
     func addLowerBoundToValue(habit: Habit) {

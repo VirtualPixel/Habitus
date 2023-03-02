@@ -12,20 +12,26 @@ extension Stats {
         @Published var startDate: Date
         @Published var endDate: Date
         @Published var percentComplete = 0.0
+        @Published var highestStreak = 0
+        @Published var averageTimeToComplete = 0.0
+        @Published var habitsCompleted = ""
         
         init() {
             let calendar = Calendar.current
             let currentDate = Date()
             
-            startDate = calendar.date(byAdding: .day, value: -8, to: currentDate)!
-            endDate = calendar.date(byAdding: .day, value: -1, to: currentDate)!
+            startDate = calendar.date(byAdding: .day, value: -6, to: currentDate)!
+            endDate = calendar.date(byAdding: .day, value: 0, to: currentDate)!
         }
         
-        func calculateStats(habitProgress: [HabitProgress]) {
-            calculateAverageCompletionRange(habitProgress: habitProgress)
+        func updateStats(habitProgress: [HabitProgress]) {
+            updateAverageCompletionRange(habitProgress: habitProgress)
+            updateHighestStreak(habitProgress: habitProgress)
+            updateAverageTimeToComplete(habitProgress: habitProgress)
+            updateHabitsCompleted(habitProgress: habitProgress)
         }
         
-        private func calculateAverageCompletionRange(habitProgress: [HabitProgress]) {
+        private func updateAverageCompletionRange(habitProgress: [HabitProgress]) {
             let totalProgress = habitProgress.reduce(0.0, { $0 + $1.amount })
             let totalTarget = habitProgress.reduce(0.0, { $0 + $1.habit!.targetValue })
             
@@ -33,7 +39,50 @@ extension Stats {
                 return
             }
             
-            percentComplete = totalProgress / totalTarget * 100
+            percentComplete = floor(totalProgress / totalTarget * 100)
+        }
+        
+        private func updateHighestStreak(habitProgress: [HabitProgress]) {
+            highestStreak = habitProgress.map({ Int($0.habit?.bestCompletionStreak ?? 0) }).max() ?? 0
+        }
+        
+        private func updateAverageTimeToComplete(habitProgress: [HabitProgress]) {
+            let completedHabitProgress = habitProgress.filter { $0.completed }
+            
+            guard !completedHabitProgress.isEmpty else { return }
+            
+            var totalCompletionTime = 0.0
+            var completedHabitCount = 0
+            
+            let calendar = Calendar.current
+            
+            for habitProgress in completedHabitProgress {
+                guard let habit = habitProgress.habit,
+                      let timeCompleted = habit.timeCompleted,
+                      let completionDate = habitProgress.date else { continue }
+                
+                let completionDateStartOfDay = calendar.startOfDay(for: completionDate)
+                let timeComponents = calendar.dateComponents([.hour, .minute], from: timeCompleted)
+                
+                if let completionTime = calendar.date(byAdding: timeComponents, to: completionDateStartOfDay),
+                   completionTime >= completionDate {
+                    
+                    let timeDifference = completionTime.timeIntervalSince(completionDateStartOfDay)
+                    totalCompletionTime += timeDifference
+                    completedHabitCount += 1
+                }
+            }
+            
+            guard completedHabitCount > 0 else { return }
+            
+            averageTimeToComplete = floor(totalCompletionTime / Double(completedHabitCount) / 3600)
+        }
+        
+        private func updateHabitsCompleted(habitProgress: [HabitProgress]) {
+            let completedCount = (habitProgress.filter { $0.completed }).count
+            let habitCount = habitProgress.count
+            
+            habitsCompleted = "\(completedCount)/\(habitCount)"
         }
     }
 }

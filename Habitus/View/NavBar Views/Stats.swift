@@ -15,7 +15,10 @@ struct Stats: View {
     
     var body: some View {
         VStack {
-            Text("Percent complete: \(viewModel.percentComplete)")
+            Text("Percent complete: \(viewModel.percentComplete.formatted())%")
+            Text("Highest Streak: \(viewModel.highestStreak)")
+            Text("Average time to complete: \(viewModel.averageTimeToComplete.formatted()) hours")
+            Text("Habits Completed Today: \(viewModel.habitsCompleted)")
         }
         .padding()
         .onAppear {
@@ -32,7 +35,7 @@ struct Stats: View {
             return
         }
         
-        viewModel.calculateStats(habitProgress: progress)
+        viewModel.updateStats(habitProgress: progress)
     }
 }
 /*
