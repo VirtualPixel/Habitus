@@ -37,7 +37,7 @@ struct Stats: View {
         
         viewModel.updateStats(habitProgress: progress)
     }
-}
+}//
 /*
 struct Stats_Previews: PreviewProvider {
     static var previews: some View {
