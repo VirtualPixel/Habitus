@@ -19,6 +19,28 @@ struct Stats: View {
             Text("Highest Streak: \(viewModel.highestStreak)")
             Text("Average time to complete: \(viewModel.averageTimeToComplete.formatted()) hours")
             Text("Habits Completed Today: \(viewModel.habitsCompleted)")
+            
+            Text("Dated Progress Count: \(viewModel.progresses.count)")
+                .padding(.top)
+            Text("All Progress Count: \(viewModel.allProgresses.count)")
+            
+            List {
+                ForEach(viewModel.progresses, id: \.id) { progress in
+                    VStack {
+                        Text("Progress: \(progress.habit?.currentCompletionValue.formatted() ?? "") / \(progress.habit?.targetValue.formatted() ?? "") for \(progress.habit?.title ?? "NO NAME")")
+                        Text("Date: \(progress.wrappedDate.formatted())")
+                    }
+                }
+            }
+            
+            List {
+                ForEach(viewModel.allProgresses, id: \.id) { progress in
+                    VStack {
+                        Text("Progress: \(progress.habit?.currentCompletionValue.formatted() ?? "") / \(progress.habit?.targetValue.formatted() ?? "") for \(progress.habit?.title ?? "NO NAME")")
+                        Text("Date: \(progress.wrappedDate.formatted())")
+                    }
+                }
+            }
         }
         .padding()
         .onAppear {
@@ -28,14 +50,27 @@ struct Stats: View {
     
     func calculateStats() {
         let fetchRequest: NSFetchRequest<HabitProgress> = HabitProgress.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date <= %@", viewModel.startDate as NSDate, viewModel.endDate as NSDate)
-        let habitProgresses = try? moc.fetch(fetchRequest)
         
-        guard let progress = habitProgresses else {
-            return
+        do {
+            viewModel.allProgresses = try moc.fetch(fetchRequest)
+        } catch {
+            print("Error: Nothing found in fetch request: \(error)")
         }
         
-        viewModel.updateStats(habitProgress: progress)
+        fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date <= %@", viewModel.startDate as NSDate, viewModel.endDate as NSDate)
+        //let habitProgresses = try? moc.fetch(fetchRequest)
+        
+        do {
+            viewModel.progresses = try moc.fetch(fetchRequest)
+        } catch {
+            print("Error: Nothing found in fetch request: \(error)")
+        }
+        
+        //guard let progress = habitProgresses else {
+        //    return
+        //}
+        
+        //viewModel.updateStats(habitProgress: progress)
     }
 }//
 /*

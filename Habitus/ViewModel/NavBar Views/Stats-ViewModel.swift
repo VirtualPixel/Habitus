@@ -15,6 +15,8 @@ extension Stats {
         @Published var highestStreak = 0
         @Published var averageTimeToComplete = 0.0
         @Published var habitsCompleted = ""
+        @Published var progresses: [HabitProgress] = []
+        @Published var allProgresses: [HabitProgress] = []
         
         init() {
             let calendar = Calendar.current

@@ -110,7 +110,7 @@ struct ContentView: View {
         habitProgress.amount = habit.currentCompletionValue
         habitProgress.completed = habit.currentCompletionValue >= habit.targetValue
         habitProgress.date = date
-        habitProgress.id = habit.id
+        habitProgress.id = UUID()
         habitProgress.notes = ""
         habitProgress.habit = habit
         habitProgress.archive = archive
