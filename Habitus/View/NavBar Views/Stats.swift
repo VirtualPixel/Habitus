@@ -58,7 +58,7 @@ struct Stats: View {
         }
         
         fetchRequest.predicate = NSPredicate(format: "date >= %@ AND date <= %@", viewModel.startDate as NSDate, viewModel.endDate as NSDate)
-        //let habitProgresses = try? moc.fetch(fetchRequest)
+        let habitProgresses = try? moc.fetch(fetchRequest)
         
         do {
             viewModel.progresses = try moc.fetch(fetchRequest)
@@ -66,11 +66,11 @@ struct Stats: View {
             print("Error: Nothing found in fetch request: \(error)")
         }
         
-        //guard let progress = habitProgresses else {
-        //    return
-        //}
+        guard let progress = habitProgresses else {
+            return
+        }
         
-        //viewModel.updateStats(habitProgress: progress)
+        viewModel.updateStats(habitProgress: progress)
     }
 }//
 /*
