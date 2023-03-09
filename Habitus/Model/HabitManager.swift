@@ -40,8 +40,10 @@ class HabitManager: ObservableObject {
         
         if !Calendar.current.isDate(today, inSameDayAs: lastOpenDate) {
             UserDefaults.standard.lastOpenDate = Date()
+            print("Different day")
             return true
         } else {
+            print("Not a different day")
             return false
         }
     }

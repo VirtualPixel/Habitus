@@ -69,10 +69,14 @@ struct ContentView: View {
     }
     
     func createMissingArchives(from startDate: Date, to endDate: Date, for habit: Habit) {
+        guard let daysDifference = Calendar.current.dateComponents([.day], from: startDate, to: endDate).day, daysDifference > 1 else {
+            return
+        }
+        
         var archiveDate = startDate
         while archiveDate < endDate {
             let archiveRequest: NSFetchRequest<Archive> = Archive.fetchRequest()
-            archiveRequest.predicate = NSPredicate(format: "date >= %@ AND date < %@", archiveDate as NSDate, endDate as NSDate)
+            archiveRequest.predicate = NSPredicate(format: "date == %@", archiveDate as NSDate)
             let existingArchives = try? moc.fetch(archiveRequest)
             
             // If no Archive objects exist for the current day, create a new one
