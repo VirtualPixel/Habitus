@@ -27,7 +27,7 @@ struct Stats: View {
             List {
                 ForEach(viewModel.progresses, id: \.id) { progress in
                     VStack {
-                        Text("Progress: \(progress.habit?.currentCompletionValue.formatted() ?? "") / \(progress.habit?.targetValue.formatted() ?? "") for \(progress.habit?.title ?? "NO NAME")")
+                        Text("Progress: \(progress.amount.formatted()) / \(progress.habit?.targetValue.formatted() ?? "") for \(progress.habit?.title ?? "NO NAME")")
                         Text("Date: \(progress.wrappedDate.formatted())")
                     }
                 }
@@ -36,7 +36,7 @@ struct Stats: View {
             List {
                 ForEach(viewModel.allProgresses, id: \.id) { progress in
                     VStack {
-                        Text("Progress: \(progress.habit?.currentCompletionValue.formatted() ?? "") / \(progress.habit?.targetValue.formatted() ?? "") for \(progress.habit?.title ?? "NO NAME")")
+                        Text("Progress: \(progress.amount.formatted()) / \(progress.habit?.targetValue.formatted() ?? "") for \(progress.habit?.title ?? "NO NAME")")
                         Text("Date: \(progress.wrappedDate.formatted())")
                     }
                 }
