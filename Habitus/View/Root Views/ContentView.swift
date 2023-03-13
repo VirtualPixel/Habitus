@@ -67,7 +67,7 @@ struct ContentView: View {
         let habitProgress = createHabitProgress(for: habit, with: archive, at: currentDate)
         associate(habitProgress: habitProgress, with: habit, and: archive)
     }
-    
+    //
     func createMissingArchives(from startDate: Date, to endDate: Date, for habit: Habit) {
         guard let daysDifference = Calendar.current.dateComponents([.day], from: startDate, to: endDate).day, daysDifference > 1 else {
             return
