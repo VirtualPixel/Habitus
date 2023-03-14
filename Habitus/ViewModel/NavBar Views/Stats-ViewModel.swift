@@ -5,7 +5,7 @@
 //  Created by Justin Wells on 1/16/23.
 //
 
-import Foundation
+import SwiftUI
 
 extension Stats {
     @MainActor class ViewModel: ObservableObject {
@@ -26,11 +26,27 @@ extension Stats {
             endDate = calendar.date(byAdding: .day, value: 0, to: currentDate)!
         }
         
+        func displayDateRange() -> some View {
+            HStack {
+                VStack {
+                    displayDate(date: startDate)
+                        .font(.subheadline)
+                    displayDate(date: endDate)
+                        .font(.title3.bold())
+                }
+                Spacer()
+            }
+        }
+        
         func updateStats(habitProgress: [HabitProgress]) {
             updateAverageCompletionRange(habitProgress: habitProgress)
             updateHighestStreak(habitProgress: habitProgress)
             updateAverageTimeToComplete(habitProgress: habitProgress)
             updateHabitsCompleted(habitProgress: habitProgress)
+        }
+        
+        private func displayDate(date: Date) -> some View {
+            Text("\(date.formatted(.dateTime.day().month(.wide))), \(date.formatted(.dateTime.weekday(.wide)))")
         }
         
         private func updateAverageCompletionRange(habitProgress: [HabitProgress]) {

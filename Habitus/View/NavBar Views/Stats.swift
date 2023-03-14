@@ -10,38 +10,53 @@ import SwiftUI
 
 struct Stats: View {
     @Environment(\.managedObjectContext) var moc
+    @Environment(\.colorScheme) var colorScheme
     @FetchRequest(sortDescriptors: []) var habitsProgress: FetchedResults<HabitProgress>
     @ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
-        VStack {
-            Text("Percent complete: \(viewModel.percentComplete.formatted())%")
-            Text("Highest Streak: \(viewModel.highestStreak)")
-            Text("Average time to complete: \(viewModel.averageTimeToComplete.formatted()) hours")
-            Text("Habits Completed Today: \(viewModel.habitsCompleted)")
-            
-            Text("Dated Progress Count: \(viewModel.progresses.count)")
-                .padding(.top)
-            Text("All Progress Count: \(viewModel.allProgresses.count)")
-            
-            List {
-                ForEach(viewModel.progresses, id: \.id) { progress in
+        GeometryReader { geo in
+            VStack {
+                viewModel.displayDateRange()
+                
+                Spacer()
+                
+                CircularProgressBar(progress: viewModel.percentComplete)
+                    .frame(width: 200, height: 200)
+                
+                HStack {
                     VStack {
-                        Text("Progress: \(progress.amount.formatted()) / \(progress.habit?.targetValue.formatted() ?? "") for \(progress.habit?.title ?? "NO NAME")")
-                        Text("Date: \(progress.wrappedDate.formatted())")
+                        Image("trophy")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Text("Highest Streak")
+                        Text("\(viewModel.highestStreak) \(viewModel.highestStreak == 1 ? "day" : "days")")
+                            .font(.title.bold())
+                    }
+                    .frame(width: geo.size.width * 0.3)
+                    
+                    VStack {
+                        
                     }
                 }
-            }
-            
-            List {
-                ForEach(viewModel.allProgresses, id: \.id) { progress in
-                    VStack {
-                        Text("Progress: \(progress.amount.formatted()) / \(progress.habit?.targetValue.formatted() ?? "") for \(progress.habit?.title ?? "NO NAME")")
-                        Text("Date: \(progress.wrappedDate.formatted())")
-                    }
+                
+                HStack {
+                    
                 }
-            }
-        }
+                
+                /*Group {
+                 Text("Percent complete: \(viewModel.percentComplete.formatted())%")
+                 Text("Highest Streak: \(viewModel.highestStreak)")
+                 Text("Average time to complete: \(viewModel.averageTimeToComplete.formatted()) hours")
+                 Text("Habits Completed Today: \(viewModel.habitsCompleted)")
+                 
+                 Text("Dated Progress Count: \(viewModel.progresses.count)")
+                 .padding(.top)
+                 Text("All Progress Count: \(viewModel.allProgresses.count)")
+                 }*/
+                
+                Spacer()
+            } }
         .padding()
         .onAppear {
             calculateStats()
@@ -72,11 +87,11 @@ struct Stats: View {
         
         viewModel.updateStats(habitProgress: progress)
     }
-}//
-/*
+}
+
 struct Stats_Previews: PreviewProvider {
     static var previews: some View {
         Stats()
     }
 }
-*/
+

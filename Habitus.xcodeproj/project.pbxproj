@@ -12,6 +12,8 @@
 		57578A4329AF6C7900FC13B5 /* HabitusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57578A4229AF6C7900FC13B5 /* HabitusTests.swift */; };
 		575D287C2976B7EA00C02513 /* CreateHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D287B2976B7EA00C02513 /* CreateHabit.swift */; };
 		575D287E2976B7FE00C02513 /* CreateHabit-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */; };
+		577326A229C0EC7F00D5F566 /* CircularProgressBar-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577326A129C0EC7F00D5F566 /* CircularProgressBar-ViewModel.swift */; };
+		577326A429C0ED0000D5F566 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577326A329C0ED0000D5F566 /* CircularProgressBar.swift */; };
 		57740C2929A01615009E5C73 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57740C2329A01615009E5C73 /* Habit+CoreDataClass.swift */; };
 		57740C2A29A01615009E5C73 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57740C2429A01615009E5C73 /* Habit+CoreDataProperties.swift */; };
 		57740C2B29A01615009E5C73 /* Archive+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57740C2529A01615009E5C73 /* Archive+CoreDataClass.swift */; };
@@ -78,6 +80,8 @@
 		57578A4229AF6C7900FC13B5 /* HabitusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitusTests.swift; sourceTree = "<group>"; };
 		575D287B2976B7EA00C02513 /* CreateHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabit.swift; sourceTree = "<group>"; };
 		575D287D2976B7FE00C02513 /* CreateHabit-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateHabit-ViewModel.swift"; sourceTree = "<group>"; };
+		577326A129C0EC7F00D5F566 /* CircularProgressBar-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CircularProgressBar-ViewModel.swift"; sourceTree = "<group>"; };
+		577326A329C0ED0000D5F566 /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		57740C2329A01615009E5C73 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57740C2429A01615009E5C73 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57740C2529A01615009E5C73 /* Archive+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Archive+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 				57D5B2782979C60F00F5D926 /* CustomColorPicker.swift */,
 				57B4051729789D0A008D2371 /* IconPicker.swift */,
 				57B246792998560600D9C2B0 /* HabitListView.swift */,
+				577326A329C0ED0000D5F566 /* CircularProgressBar.swift */,
 				579025FC29757014009649D0 /* QuickWeek.swift */,
 				57B307482995A80600D34D22 /* SwipeButton.swift */,
 			);
@@ -309,6 +314,7 @@
 				57D5B27A2979C61F00F5D926 /* CustomColorPicker-ViewModel.swift */,
 				57B4051929789D7F008D2371 /* IconPicker-ViewModel.swift */,
 				57B2467B2998561700D9C2B0 /* HabitListView-ViewModel.swift */,
+				577326A129C0EC7F00D5F566 /* CircularProgressBar-ViewModel.swift */,
 				579025FE29757024009649D0 /* QuickWeek-ViewModel.swift */,
 				57B3074A2995A81800D34D22 /* SwipeButton-ViewModel.swift */,
 			);
@@ -504,8 +510,10 @@
 				57B4051129784E5E008D2371 /* DataController.swift in Sources */,
 				57740C2B29A01615009E5C73 /* Archive+CoreDataClass.swift in Sources */,
 				57740C2D29A01615009E5C73 /* HabitProgress+CoreDataClass.swift in Sources */,
+				577326A229C0EC7F00D5F566 /* CircularProgressBar-ViewModel.swift in Sources */,
 				57B4051829789D0A008D2371 /* IconPicker.swift in Sources */,
 				579025EC29755FDB009649D0 /* Stats.swift in Sources */,
+				577326A429C0ED0000D5F566 /* CircularProgressBar.swift in Sources */,
 				579025F429756061009649D0 /* Settings.swift in Sources */,
 				57FE89F32971C7D0008287AF /* UserDefaults.swift in Sources */,
 				57FE89F12971C56A008287AF /* Welcome.swift in Sources */,
