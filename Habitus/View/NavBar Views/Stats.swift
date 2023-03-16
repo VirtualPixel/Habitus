@@ -24,28 +24,51 @@ struct Stats: View {
                 CircularProgressBar(progress: viewModel.percentComplete)
                     .frame(width: 200, height: 200)
                 
-                HStack {
-                    VStack {
-                        Image("trophy")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        Text("Highest Streak")
-                        Text("\(viewModel.highestStreak) \(viewModel.highestStreak == 1 ? "day" : "days")")
-                            .font(.title.bold())
-                    }
-                    .frame(width: geo.size.width * 0.3)
-                    
-                    VStack {
-                        
-                    }
-                }
+                Spacer()
                 
-                HStack {
+                Group {
+                    HStack {
+                        Group {
+                            StatBlock(
+                                image: "trophy",
+                                title: "Highest Streak",
+                                dataText: "\(viewModel.highestStreak) \(viewModel.highestStreak == 1 ? "Day" : "Days")",
+                                geo: geo
+                            )
+                            
+                            StatBlock(
+                                image: "tick",
+                                title: "Habits Completed",
+                                dataText: "\(viewModel.habitsCompleted)",
+                                geo: geo
+                            )
+                        }
+                        .padding()
+                    }
                     
+                    HStack {
+                        Group {
+                            StatBlock(
+                                image: "veryHappy",
+                                title: "Current Mood",
+                                dataText: "Happy",
+                                geo: geo
+                            )
+                            
+                            StatBlock(
+                                image: "hourglass-1",
+                                title: "Average Completion Time",
+                                dataText: "\(viewModel.averageTimeToComplete.formatted()) hours",
+                                geo: geo
+                            )
+                        }
+                        .padding()
+                    }
                 }
                 
                 Spacer()
-            } }
+            }
+        }
         .padding()
         .onAppear {
             //calculateStats()
@@ -84,3 +107,25 @@ struct Stats_Previews: PreviewProvider {
     }
 }
 
+struct StatBlock: View {
+    let image: String
+    let title: String
+    let dataText: String
+    let geo: GeometryProxy
+    
+    var body: some View {
+        VStack {
+            Image(image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: geo.size.width * 0.2)
+            Text(title)
+                .padding(.vertical, 1)
+                .multilineTextAlignment(.center)
+                .frame(height: 45)
+            Text(dataText)
+                .font(.title.bold())
+        }
+        .frame(width: geo.size.width * 0.4)
+    }
+}
