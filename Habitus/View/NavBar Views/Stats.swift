@@ -71,7 +71,7 @@ struct Stats: View {
         }
         .padding()
         .onAppear {
-            //calculateStats()
+            calculateStats()
         }
     }
     
