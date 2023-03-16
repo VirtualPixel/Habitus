@@ -44,22 +44,11 @@ struct Stats: View {
                     
                 }
                 
-                /*Group {
-                 Text("Percent complete: \(viewModel.percentComplete.formatted())%")
-                 Text("Highest Streak: \(viewModel.highestStreak)")
-                 Text("Average time to complete: \(viewModel.averageTimeToComplete.formatted()) hours")
-                 Text("Habits Completed Today: \(viewModel.habitsCompleted)")
-                 
-                 Text("Dated Progress Count: \(viewModel.progresses.count)")
-                 .padding(.top)
-                 Text("All Progress Count: \(viewModel.allProgresses.count)")
-                 }*/
-                
                 Spacer()
             } }
         .padding()
         .onAppear {
-            calculateStats()
+            //calculateStats()
         }
     }
     
