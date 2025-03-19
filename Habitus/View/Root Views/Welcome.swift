@@ -87,7 +87,7 @@ extension Welcome {
                                 RoundedRectangle(cornerRadius: 50)
                                     .stroke(Color.notificationsButton, lineWidth: 3)
                             )
-
+                        
                     }
                     Spacer()
                     Button {
@@ -184,16 +184,16 @@ extension Welcome {
                         ZStack {
                             if image != nil {
                                 Image(uiImage: self.image!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 150)
-                                        .cornerRadius(50)
-                                        .padding(.all, 4)
-                                        .frame(width: 100, height: 100)
-                                        .background(Color.black.opacity(0.2))
-                                        .aspectRatio(contentMode: .fill)
-                                        .clipShape(Circle())
-                                        .padding(8)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 150)
+                                    .cornerRadius(50)
+                                    .padding(.all, 4)
+                                    .frame(width: 100, height: 100)
+                                    .background(Color.black.opacity(0.2))
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(Circle())
+                                    .padding(8)
                             } else {
                                 Image(decorative: "avatar")
                                     .resizable()
@@ -211,7 +211,6 @@ extension Welcome {
                                         .foregroundColor(colorScheme == .dark ? .black : .white)
                                 )
                                 .offset(x: 50, y: 50)
-                            
                         }
                     }
                     

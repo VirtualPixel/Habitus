@@ -238,6 +238,7 @@
 		57B4051329786E4A008D2371 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				579025F329756061009649D0 /* Settings.swift */,
 				575D287B2976B7EA00C02513 /* CreateHabit.swift */,
 			);
 			path = SubViews;
@@ -327,7 +328,6 @@
 				579025E729755FAC009649D0 /* Home.swift */,
 				579025EB29755FDB009649D0 /* Stats.swift */,
 				579025EF2975602A009649D0 /* Profile.swift */,
-				579025F329756061009649D0 /* Settings.swift */,
 			);
 			path = "NavBar Views";
 			sourceTree = "<group>";

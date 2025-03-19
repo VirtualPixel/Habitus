@@ -68,7 +68,7 @@ struct ContentView: View {
         associate(habitProgress: habitProgress, with: habit, and: archive)
     }
     
-    func createMissingArchives(from startDate: Date, to endDate: Date, for habit: Habit) {
+    private func createMissingArchives(from startDate: Date, to endDate: Date, for habit: Habit) {
         guard let daysDifference = Calendar.current.dateComponents([.day], from: startDate, to: endDate).day, daysDifference > 1 else {
             return
         }
@@ -100,7 +100,7 @@ struct ContentView: View {
         }
     }
     
-    func createArchive(for date: Date) -> Archive {
+    private func createArchive(for date: Date) -> Archive {
         let archiveRequest: NSFetchRequest<Archive> = Archive.fetchRequest()
         archiveRequest.predicate = NSPredicate(format: "date >= %@ AND date < %@", date as NSDate, Calendar.current.date(byAdding: .day, value: 1, to: date)! as NSDate)
         let existingArchive = try? moc.fetch(archiveRequest).first
@@ -109,7 +109,7 @@ struct ContentView: View {
         return archive
     }
     
-    func createHabitProgress(for habit: Habit, with archive: Archive, at date: Date) -> HabitProgress {
+    private func createHabitProgress(for habit: Habit, with archive: Archive, at date: Date) -> HabitProgress {
         let habitProgress = HabitProgress(context: moc)
         habitProgress.amount = habit.currentCompletionValue
         habitProgress.completed = habit.currentCompletionValue >= habit.targetValue
@@ -121,11 +121,10 @@ struct ContentView: View {
         return habitProgress
     }
     
-    func associate(habitProgress: HabitProgress, with habit: Habit, and archive: Archive) {
+    private func associate(habitProgress: HabitProgress, with habit: Habit, and archive: Archive) {
         archive.addToHabitProgress(habitProgress)
         habit.addToHabitProgress(habitProgress)
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
